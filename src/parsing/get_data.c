@@ -72,15 +72,45 @@ char **trim_file(char *file)
 	return (trimmed);
 }
 
+char	**get_file(char *file)
+{
+    int     size;
+    char   **result;
+	char	*line;
+	char	*tmp;
+    
+	size = 0;
+	result = NULL;
+	line = get_next_line(file);
+	while (line)
+	{
+		result = realloc_map(result, size + 1);
+		if (!result)
+			return (NULL);
+		tmp = trim_endf(line);
+		result[size] = tmp;
+		size++;
+		free(tmp);
+		line = get_next_line(file);
+	}
+	result[size] = NULL;
+	return (result);
+}
+
 int get_data(char *filename, t_data *data)
 {
 	char **file;
 
+	file = get_file(filename);
+	if (!file)
+		return (0);
+	if (!get_map(file, data))
+		return (0);
 	file = trim_file(filename);
 	if (!file)
 		return (0);
 	if (!get_value(file, data))
 		return (0);
-	
+	free_tab(file);
     return (1);
 }

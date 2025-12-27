@@ -10,6 +10,14 @@
 # include <stdbool.h>
 // # include "../libft/libft.h"
 
+struct s_map
+{
+    char    **map;
+    int     width;
+    int     height;
+}               t_map;
+
+
 struct s_data
 {
     char   *no;
@@ -18,7 +26,7 @@ struct s_data
     char   *ea;
     char   *f;
     char   *c;
-    char   **map;
+    t_map   map;
     int     start_map_index;
 }               t_data;
 

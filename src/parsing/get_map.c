@@ -80,7 +80,7 @@ int max_len(char **file, int start_index, int map_size)
     return (max - 1);
 } 
 
-char **get_map(char **file)
+char **get_map(char **file, t_data *data)
 {
     int     map_size;
     char  **map;
@@ -107,6 +107,9 @@ char **get_map(char **file)
         map[i] = trimmed_line;
         i++;
     }
+    data->map.map = map;
+    data->map.width = max_len(file, start_index, map_size) + 1;
+    data->map.height = map_size;
     map[i] = NULL;
     return (map);
 }
