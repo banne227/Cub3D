@@ -1,0 +1,80 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   verif_data.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/29 09:43:27 by banne             #+#    #+#             */
+/*   Updated: 2025/12/29 09:55:44 by banne            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/cub3d.h"
+
+bool verif_color_values(char *color)
+{
+	int     i;
+	int     value;
+
+	i = 0;
+	if (!color || ft_strlen(color) < 5 || ft_strlen(color) > 11 
+		|| color[0] == ',' || color[ft_strlen(color) - 1] == ',')
+		return (false);
+	while (color[i])
+	{
+		value = 0; 
+		while (color[i] && color[i] != ',')
+		{
+			value = value * 10 + (color[i] - '0');
+			i++;
+		}
+		if (value < 0 || value > 255)
+		{
+			ft_printf("Error\nColor value %d out of range (0-255)\n", value);
+			return (false);
+		}
+		if (color[i] == ',')
+			i++;
+	}
+	return (true);
+}
+
+bool	valid_color(char *color)
+{
+	int i;
+	int comma_count;
+
+	i = 0;
+	comma_count = 0;
+	while (color[i])
+	{
+		if (color[i] == ',')
+			comma_count++;
+		else if (!ft_isdigit(color[i]))
+		{
+			ft_printf("Error\nColor contains invalid characters\n");
+			return (false);
+		}
+		i++;
+	}
+	if (comma_count != 2)
+	{
+		ft_printf("Error\nColor must contain exactly two commas and three numbers\n");
+		return (false);
+	}
+	return (verif_color_values(color));
+}
+
+bool data_valid(t_data *data)
+{
+	if (!data->no || !data->so || !data->we || !data->ea ||
+		!data->f || !data->c)
+	{
+		ft_printf("Error\nMissing texture or color information\n");
+		return (false);
+	}
+	if (!valid_color(data->f) || !valid_color(data->c))
+		return (false);
+	return (true);
+}

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_value.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/29 09:15:47 by banne             #+#    #+#             */
+/*   Updated: 2025/12/29 09:15:48 by banne            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
@@ -9,7 +20,7 @@ char *get_direction_texture(char *line)
     i = 2;
     while (line[i] == ' ')
         i++;
-    no = malloc(sizeof(char) * (strlen(line) - i + 1));
+    no = malloc(sizeof(char) * (ft_strlen(line) - i + 1));
     if (!no)
         return (NULL);
     ft_strcpy(no, &line[i]);
@@ -25,7 +36,7 @@ char *get_color_value(char *line)
     i = 1;
     while (line[i] == ' ')
         i++;
-    color = malloc(sizeof(char) * (strlen(line) - i + 1));
+    color = malloc(sizeof(char) * (ft_strlen(line) - i + 1));
     if (!color)
         return (NULL);
     ft_strcpy(color, &line[i]);
@@ -44,7 +55,8 @@ bool have_double(char **file)
         j = i + 1;
         while (file[j])
         {
-            if (ft_strncmp(file[i], file[j], 2) == 0)
+            
+            if ((ft_isalpha(file[i][0])) && (ft_strncmp(file[i], file[j], 2) == 0))
                 return (true);
             j++;
         }

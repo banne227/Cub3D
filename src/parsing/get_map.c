@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_map.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/29 09:15:40 by banne             #+#    #+#             */
+/*   Updated: 2025/12/29 12:40:31 by banne            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
@@ -6,12 +17,10 @@ bool have_digit(char *line)
     int i;
 
     i = 0;
-    while (line[i])
-    {
-        if (line[i] >= '0' && line[i] <= '9')
-            return (true);
+    while (ft_isspace(line[i]))
         i++;
-    }
+    if (line[i] >= '0' && line[i] <= '9')
+        return (true);
     return (false);
 }
 
@@ -22,7 +31,7 @@ int get_first_map_index(char **file)
     i = 0;
     while (file[i])
     {
-        if (have_digit(file[i]))
+        if (have_digit(file[i]) && (file[i][0] != 'F' || file[i][0] != 'C'))
             return (i);
         i++;
     }
@@ -34,28 +43,20 @@ char *trim_spaces(char *line, int size)
     char	*trimmed;
     int     i;
 
-    trimmed = malloc(sizeof(char) * (size + 1));
+    trimmed = malloc(sizeof(char) * (size + 2));
     i = 0;
-    while (line[i] == ' ')
-    {
-        trimmed[i] = '0';
-        i++;
-    }
     while (line[i])
     {
-        trimmed[i] = line[i];
+        if (line[i] != ' ')        
+            trimmed[i] = line[i];
+        else
+            trimmed[i] = 'V';
         i++;
     }
-    while (i <= size)
+    while (i < size + 1)
     {
-        trimmed[i] = '0';
+        trimmed[i] = 'V';
         i++;
-    }
-    i = ft_strlen(line) - 1;
-    while (line[i] == ' ')
-    {
-        trimmed[i] = '0';
-        i--;
     }
     trimmed[size + 1] = '\0';
     free(line);
