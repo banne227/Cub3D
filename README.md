@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>cub3D</title>
-</head>
 <body>
 
-<h1>cub3D</h1>
+<h1>Cub3D</h1>
 
 <p><strong>Projet réalisé dans le cadre du cursus de l’école 42.</strong></p>
 
