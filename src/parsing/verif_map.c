@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:17 by banne             #+#    #+#             */
-/*   Updated: 2025/12/29 12:45:57 by banne            ###   ########.fr       */
+/*   Updated: 2026/01/15 08:08:12 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ bool map_valid(t_data *data)
 		return (false);
 	if (!map_is_closed(data->map.map, data->map.width, data->map.height))
 	{
-		ft_printf("Map is not closed\n");
+		ft_printf("Map isn't closed\n");
 		return (false);
 	}
 	if (!have_valid_chars(data->map.map))

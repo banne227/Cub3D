@@ -1,0 +1,16 @@
+
+
+C 0,0,0
+
+NO ./textures/n.xpm
+WE ./textures/w.xpm
+
+F 255,255,255
+EA ./textures/e.xpm
+SO ./textures/s.xpm
+
+111111
+100001
+10E001
+100001
+111111

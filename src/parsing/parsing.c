@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:31:00 by banne             #+#    #+#             */
-/*   Updated: 2025/12/29 12:44:18 by banne            ###   ########.fr       */
+/*   Updated: 2026/01/15 08:06:28 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int parse(int argc, char **argv, t_data *data)
     printf("Parsed data:\n");
     print_data(data);
     if (!map_valid(data))
-		return (0);
+		return (1);
     return (0);
 }

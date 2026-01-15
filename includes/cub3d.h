@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2025/12/29 09:53:16 by banne            ###   ########.fr       */
+/*   Updated: 2026/01/15 08:29:48 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,44 @@
 # include <stdbool.h>
 # include "../src/libft/libft.h"
 
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	t_map	map;
+	int		win_w;
+	int		win_h;
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;
+	int		floor_color;
+	int		ceiling_color;
+}   t_game;
+
+
 typedef struct s_map
 {
-    char    **map;
-    int     width;
-    int     height;
+    char	**map;
+    int		width;
+    int		height;
 }   t_map;
 
 typedef struct s_data
 {
-    char    *no;
-    char    *so;
-    char    *we;
-    char    *ea;
-    char    *f;
-    char    *c;
-    t_map   map;
-    int     start_map_index;
+    char	*no;
+    char	*so;
+    char	*we;
+    char	*ea;
+    char	*f;
+    char	*c;
+    t_map	map;
+	t_game	game;
+    int		start_map_index;
+	bool	error;
 }   t_data;
 
 bool 	extension_check(char *filename);
@@ -57,5 +78,6 @@ int 	get_value(char **file, t_data *data);
 int		parse(int argc, char **argv, t_data *data);
 bool    map_valid(t_data *data);
 bool    data_valid(t_data *data);
+t_data	init_data(void);
 
 #endif
