@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:43:27 by banne             #+#    #+#             */
-/*   Updated: 2025/12/29 09:55:44 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/02 16:27:52 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ bool verif_color_values(char *color)
 	int     value;
 
 	i = 0;
-	if (!color || ft_strlen(color) < 5 || ft_strlen(color) > 11 
+	if (!color || ft_strlen(color) < 5
 		|| color[0] == ',' || color[ft_strlen(color) - 1] == ',')
 		return (false);
 	while (color[i])
 	{
-		value = 0; 
+		value = 0;
+		while (color[i] == ' ')
+			i++;
 		while (color[i] && color[i] != ',')
 		{
 			value = value * 10 + (color[i] - '0');
@@ -51,7 +53,7 @@ bool	valid_color(char *color)
 	{
 		if (color[i] == ',')
 			comma_count++;
-		else if (!ft_isdigit(color[i]))
+		else if (!ft_isdigit(color[i]) && color[i] != ' ')
 		{
 			ft_printf("Error\nColor contains invalid characters\n");
 			return (false);

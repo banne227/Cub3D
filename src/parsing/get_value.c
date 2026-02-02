@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:47 by banne             #+#    #+#             */
-/*   Updated: 2025/12/29 09:15:48 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/02 16:38:19 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ char *get_color_value(char *line)
     int  i;
 
     i = 1;
-    while (line[i] == ' ')
+    while (line[i])
         i++;
     color = malloc(sizeof(char) * (ft_strlen(line) - i + 1));
     if (!color)
         return (NULL);
-    ft_strcpy(color, &line[i]);
+    copy_without_space(color, &line[1]);
     color = trim_endf(color);
     return (color);
 }

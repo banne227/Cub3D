@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/01/15 08:29:48 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/02 16:46:20 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,20 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include "../src/libft/libft.h"
+# include "../includes/minilibx-linux/mlx.h"
+
+#define WIN_W 1280
+#define WIN_H 720
+#define MOVE_SPEED 0.05
+#define ROT_SPEED 0.03
+
+
+typedef struct s_map
+{
+    char	**map;
+    int		width;
+    int		height;
+}   t_map;
 
 typedef struct s_game
 {
@@ -36,14 +50,6 @@ typedef struct s_game
 	int		floor_color;
 	int		ceiling_color;
 }   t_game;
-
-
-typedef struct s_map
-{
-    char	**map;
-    int		width;
-    int		height;
-}   t_map;
 
 typedef struct s_data
 {
@@ -79,5 +85,7 @@ int		parse(int argc, char **argv, t_data *data);
 bool    map_valid(t_data *data);
 bool    data_valid(t_data *data);
 t_data	init_data(void);
+bool	init_mlx(t_game *game);
+void copy_without_space(char *dest, const char *src);
 
 #endif
