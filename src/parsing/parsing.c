@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:31:00 by banne             #+#    #+#             */
-/*   Updated: 2026/01/15 08:06:28 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/02 16:53:49 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void print_data(t_data *data)
 {
-	ft_printf("NO: %s\n", data->no);
-	ft_printf("SO: %s\n", data->so);
-	ft_printf("WE: %s\n", data->we);
-	ft_printf("EA: %s\n", data->ea);
-	ft_printf("F: %s\n", data->f);
-	ft_printf("C: %s\n", data->c);
+	ft_printf("NO: %s\n", data->tex.NO);
+	ft_printf("SO: %s\n", data->tex.SO);
+	ft_printf("WE: %s\n", data->tex.WE);
+	ft_printf("EA: %s\n", data->tex.EA);
+	ft_printf("F: %s\n", data->tex.F);
+	ft_printf("C: %s\n", data->tex.C);
 	ft_printf("Map (width: %d, height: %d):\n", data->map.width, data->map.height);
     for (int i = 0; i < data->map.height; i++)
     {

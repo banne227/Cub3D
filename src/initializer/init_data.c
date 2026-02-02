@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/01/15 08:31:11 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/02 16:54:32 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ t_data init_data(void)
 {
 	t_data data;
 	
-	data.no = NULL;
-	data.so = NULL;
-	data.we = NULL;
-	data.ea = NULL;
-	data.f = NULL;
-	data.c = NULL;
+	data.tex.NO = NULL;
+	data.tex.SO = NULL;
+	data.tex.WE = NULL;
+	data.tex.EA = NULL;
+	data.tex.F = NULL;
+	data.tex.C = NULL;
 	data.map = init_map();
 	data.game = init_game();
 	data.start_map_index = -1;

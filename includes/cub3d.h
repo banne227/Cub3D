@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/02 16:46:20 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/02 16:53:55 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@
 #define MOVE_SPEED 0.05
 #define ROT_SPEED 0.03
 
+typedef struct s_text
+{
+	char	*NO;
+	char	*SO;
+	char	*WE;
+	char	*EA;
+	char	*F;
+	char	*C;
+} t_text;
 
 typedef struct s_map
 {
@@ -53,12 +62,7 @@ typedef struct s_game
 
 typedef struct s_data
 {
-    char	*no;
-    char	*so;
-    char	*we;
-    char	*ea;
-    char	*f;
-    char	*c;
+	t_text	tex;
     t_map	map;
 	t_game	game;
     int		start_map_index;
