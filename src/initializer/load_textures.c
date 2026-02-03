@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 08:29:55 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 09:06:18 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/03 09:10:05 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,18 @@ bool check_loading(t_data *data, void *img, void *texture)
 	return (true);
 }
 
-void load_textures(t_data *data)
+int load_textures(t_data *data)
 {
-	check_loading(data, load(&data->game, data->text_path[NO]), data->tex.no);
-	data->tex.so = load(&data->game, data->text_path[SOUTH]);
-	data->tex.we = load(&data->game, data->text_path[WEST]);
-	data->tex.ea = load(&data->game, data->text_path[EAST]);
-	data->tex.f = load(&data->game, data->text_path[F]);
-	data->tex.c = load(&data->game, data->text_path[C]);
+	check_loading(data, load(&data->game, data->text_path[NORTH]), data->tex.no);
+	check_loading(data, load(&data->game, data->text_path[SOUTH]), data->tex.so);
+	check_loading(data, load(&data->game, data->text_path[WEST]), data->tex.we);
+	check_loading(data, load(&data->game, data->text_path[EAST]), data->tex.ea);
+	check_loading(data, load(&data->game, data->text_path[F]), data->tex.f);
+	check_loading(data, load(&data->game, data->text_path[C]), data->tex.c);
+	if (data->error)
+	{
+		//free_textures(data);
+		return (1);
+	}
+	return (0);
 }

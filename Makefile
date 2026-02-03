@@ -6,7 +6,7 @@
 #    By: banne <banne@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 15:02:14 by banne             #+#    #+#              #
-#    Updated: 2026/02/02 16:34:16 by banne            ###   ########.fr        #
+#    Updated: 2026/02/03 09:18:14 by banne            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS        = src/main.c \
               src/parsing/verif_map.c \
 			  src/parsing/verif_data.c \
 			  src/utils/copy.c \
+			  src/utils/free.c \
 
 OBJS        = $(SRCS:.c=.o)
 

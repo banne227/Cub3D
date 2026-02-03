@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 09:06:18 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/03 09:28:02 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef struct s_game
 
 typedef enum e_direction
 {
-	NO = 0,
+	NORTH = 0,
 	SOUTH,
 	WEST,
 	EAST,
@@ -123,5 +123,8 @@ bool	init_mlx(t_game *game);
 void copy_without_space(char *dest, const char *src);
 void update_player_data(t_data *data, char d);
 bool is_wall(t_map *map, int x, int y);
+int		close_game(void *param);
+int		load_textures(t_data *data);
+void	free_data(t_data *data);
 
 #endif

@@ -6,24 +6,51 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 08:23:31 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/03 09:13:12 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_map init_map(void)
+t_text	init_text(void)
 {
-	t_map map;
+	t_text	text;
+
+	text.no = NULL;
+	text.so = NULL;
+	text.we = NULL;
+	text.ea = NULL;
+	text.f = NULL;
+	text.c = NULL;
+	return (text);
+}
+
+t_map	init_map(void)
+{
+	t_map	map;
 
 	map.map = NULL;
 	map.width = 0;
 	map.height = 0;
 	return (map);
 }
-t_game init_game(void)
+
+t_player	init_player(void)
 {
-	t_game game;
+	t_player	player;
+
+	player.posX = 0.0;
+	player.posY = 0.0;
+	player.dirX = 0.0;
+	player.dirY = 0.0;
+	player.planeX = 0.0;
+	player.planeY = 0.0;
+	return (player);
+}
+
+t_game	init_game(void)
+{
+	t_game	game;
 
 	game.mlx = NULL;
 	game.win = NULL;
@@ -31,12 +58,7 @@ t_game init_game(void)
 	game.map = init_map();
 	game.win_w = WIN_W;
 	game.win_h = WIN_H;
-	game.player.posX = 0.0;
-	game.player.posY = 0.0;
-	game.player.dirX = 0.0;
-	game.player.dirY = 0.0;
-	game.player.planeX = 0.0;
-	game.player.planeY = 0.0;
+	game.player = init_player();
 	game.floor_color = 0;
 	game.ceiling_color = 0;
 	if (!init_mlx(&game))
@@ -44,16 +66,18 @@ t_game init_game(void)
 	return (game);
 }
 
-t_data init_data(void)
+t_data	init_data(void)
 {
-	t_data data;
-	
-	data.tex.NO = NULL;
-	data.tex.SO = NULL;
-	data.tex.WE = NULL;
-	data.tex.EA = NULL;
-	data.tex.F = NULL;
-	data.tex.C = NULL;
+	t_data	data;
+	int		i;
+
+	i = 0;
+	while (i < 6)
+	{
+		data.text_path[i] = NULL;
+		i++;
+	}
+	data.tex = init_text();
 	data.map = init_map();
 	data.game = init_game();
 	data.start_map_index = -1;
@@ -63,7 +87,7 @@ t_data init_data(void)
 	return (data);
 }
 
-void update_player_data(t_data *data, char d)
+void	update_player_data(t_data *data, char d)
 {
 	if (d == 'N')
 	{

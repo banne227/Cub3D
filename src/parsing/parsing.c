@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:31:00 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 09:06:18 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/03 09:08:16 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void print_data(t_data *data)
 {
-	ft_printf("NO: %s\n", data->text_path[NO]);
+	ft_printf("NO: %s\n", data->text_path[NORTH]);
 	ft_printf("SO: %s\n", data->text_path[SOUTH]);
 	ft_printf("WE: %s\n", data->text_path[WEST]);
 	ft_printf("EA: %s\n", data->text_path[EAST]);
