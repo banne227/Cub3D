@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/02 16:53:55 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/03 08:26:35 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@
 #define MOVE_SPEED 0.05
 #define ROT_SPEED 0.03
 
+/* Movement */
+#define KEY_W        119   // w
+#define KEY_A        97    // a
+#define KEY_S        115   // s
+#define KEY_D        100   // d
+
+/* Arrows */
+#define KEY_LEFT     65361
+#define KEY_RIGHT    65363
+
+/* Exit */
+#define KEY_ESC      65307
+
+
 typedef struct s_text
 {
 	char	*NO;
@@ -42,22 +56,27 @@ typedef struct s_map
     int		height;
 }   t_map;
 
-typedef struct s_game
+typedef struct s_player
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	t_map	map;
-	int		win_w;
-	int		win_h;
 	double	posX;
 	double	posY;
 	double	dirX;
 	double	dirY;
 	double	planeX;
 	double	planeY;
-	int		floor_color;
-	int		ceiling_color;
+}	t_player;
+
+typedef struct s_game
+{
+	void		*mlx;
+	void		*win;
+	void		*img;
+	t_map		map;
+	int			win_w;
+	int			win_h;
+	t_player	player;
+	int			floor_color;
+	int			ceiling_color;
 }   t_game;
 
 typedef struct s_data
@@ -91,5 +110,6 @@ bool    data_valid(t_data *data);
 t_data	init_data(void);
 bool	init_mlx(t_game *game);
 void copy_without_space(char *dest, const char *src);
+void update_player_data(t_data *data, char d);
 
 #endif

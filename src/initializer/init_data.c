@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/02/02 16:54:32 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/03 08:23:31 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ t_game init_game(void)
 	game.win = NULL;
 	game.img = NULL;
 	game.map = init_map();
-	game.win_w = 800;
-	game.win_h = 600;
-	game.posX = 0.0;
-	game.posY = 0.0;
-	game.dirX = 0.0;
-	game.dirY = 0.0;
-	game.planeX = 0.0;
-	game.planeY = 0.0;
+	game.win_w = WIN_W;
+	game.win_h = WIN_H;
+	game.player.posX = 0.0;
+	game.player.posY = 0.0;
+	game.player.dirX = 0.0;
+	game.player.dirY = 0.0;
+	game.player.planeX = 0.0;
+	game.player.planeY = 0.0;
 	game.floor_color = 0;
 	game.ceiling_color = 0;
 	if (!init_mlx(&game))
@@ -63,3 +63,34 @@ t_data init_data(void)
 	return (data);
 }
 
+void update_player_data(t_data *data, char d)
+{
+	if (d == 'N')
+	{
+		data->game.player.dirX = 0;
+		data->game.player.dirY = -1;
+		data->game.player.planeX = 0.66;
+		data->game.player.planeY = 0;
+	}
+	else if (d == 'S')
+	{
+		data->game.player.dirX = 0;
+		data->game.player.dirY = 1;
+		data->game.player.planeX = -0.66;
+		data->game.player.planeY = 0;
+	}
+	else if (d == 'E')
+	{
+		data->game.player.dirX = 1;
+		data->game.player.dirY = 0;
+		data->game.player.planeX = 0;
+		data->game.player.planeY = 0.66;
+	}
+	else if (d == 'W')
+	{
+		data->game.player.dirX = -1;
+		data->game.player.dirY = 0;
+		data->game.player.planeX = 0;
+		data->game.player.planeY = -0.66;
+	}
+}

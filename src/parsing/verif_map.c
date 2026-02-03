@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:17 by banne             #+#    #+#             */
-/*   Updated: 2026/01/15 08:08:12 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/03 08:24:05 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static bool have_valid_chars(char **map)
 	return (true);
 }
 
-static bool	only_one_player(char **map)
+static bool	only_one_player(char **map, t_data *data)
 {
 	int		x;
 	int		y;
@@ -88,7 +88,11 @@ static bool	only_one_player(char **map)
 		{
 			if (map[y][x] == 'N' || map[y][x] == 'S' ||
 				map[y][x] == 'E' || map[y][x] == 'W')
+			{
+				update_player_data(data, map[y][x]);
 				player_count++;
+			}
+				
 			x++;
 		}
 		y++;
@@ -112,7 +116,7 @@ bool map_valid(t_data *data)
 		ft_printf("Error\nMap contains invalid characters\n");
 		return (false);
 	}
-	if (!only_one_player(data->map.map))
+	if (!only_one_player(data->map.map, data))
 	{
 		ft_printf("Error\nMap must contain exactly one player start position\n");
 		return (false);
