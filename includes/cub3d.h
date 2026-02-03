@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 08:26:35 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/03 09:06:18 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@
 
 typedef struct s_text
 {
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-	char	*F;
-	char	*C;
+	void	*no;
+	void	*so;
+	void	*we;
+	void	*ea;
+	void	*f;
+	void	*c;
 } t_text;
 
 typedef struct s_map
@@ -79,8 +79,19 @@ typedef struct s_game
 	int			ceiling_color;
 }   t_game;
 
+typedef enum e_direction
+{
+	NO = 0,
+	SOUTH,
+	WEST,
+	EAST,
+	F,
+	C
+}	t_direction;
+
 typedef struct s_data
 {
+	char	*text_path[6];
 	t_text	tex;
     t_map	map;
 	t_game	game;
@@ -111,5 +122,6 @@ t_data	init_data(void);
 bool	init_mlx(t_game *game);
 void copy_without_space(char *dest, const char *src);
 void update_player_data(t_data *data, char d);
+bool is_wall(t_map *map, int x, int y);
 
 #endif

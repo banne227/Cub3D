@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:47 by banne             #+#    #+#             */
-/*   Updated: 2026/02/02 16:53:30 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/03 09:06:18 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,17 @@ int get_value(char **file, t_data *data)
     while (file[i])
     {
         if (ft_strncmp(file[i], "NO", 2) == 0)
-            data->tex.NO = get_direction_texture(file[i]);
+            data->text_path[NO] = get_direction_texture(file[i]);
         else if (ft_strncmp(file[i], "SO", 2) == 0)
-            data->tex.SO = get_direction_texture(file[i]);
+            data->text_path[SOUTH] = get_direction_texture(file[i]);
         else if (ft_strncmp(file[i], "WE", 2) == 0)
-            data->tex.WE = get_direction_texture(file[i]);
+            data->text_path[WEST] = get_direction_texture(file[i]);
         else if (ft_strncmp(file[i], "EA", 2) == 0)
-            data->tex.EA = get_direction_texture(file[i]);
+            data->text_path[EAST] = get_direction_texture(file[i]);
         else if (ft_strncmp(file[i], "F", 1) == 0)
-            data->tex.F = get_color_value(file[i]);
+            data->text_path[F] = get_color_value(file[i]);
         else if (ft_strncmp(file[i], "C", 1) == 0)
-            data->tex.C = get_color_value(file[i]);
+            data->text_path[C] = get_color_value(file[i]);
         i++;
     }
     return (1);

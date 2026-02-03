@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:43:27 by banne             #+#    #+#             */
-/*   Updated: 2026/02/02 16:55:07 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/03 09:06:18 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ bool	valid_color(char *color)
 
 bool data_valid(t_data *data)
 {
-	if (!data->tex.NO || !data->tex.SO || !data->tex.WE || !data->tex.EA ||
-		!data->tex.F || !data->tex.C)
+	if (!data->text_path[NO] || !data->text_path[SOUTH] || !data->text_path[WEST] 
+		|| !data->text_path[EAST] || !data->text_path[F] || !data->text_path[C])
 	{
 		ft_printf("Error\nMissing texture or color information\n");
 		return (false);
 	}
-	if (!valid_color(data->tex.F) || !valid_color(data->tex.C))
+	if (!valid_color(data->text_path[F]) || !valid_color(data->text_path[C]))
 		return (false);
 	return (true);
 }
