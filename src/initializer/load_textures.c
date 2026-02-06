@@ -6,14 +6,11 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 08:29:55 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 09:10:05 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/03 10:32:24 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-
-
 
 void *load(t_game *game, char *path)
 {

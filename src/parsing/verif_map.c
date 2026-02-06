@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:17 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 08:24:05 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/06 11:17:08 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ static bool	only_one_player(char **map, t_data *data)
 			if (map[y][x] == 'N' || map[y][x] == 'S' ||
 				map[y][x] == 'E' || map[y][x] == 'W')
 			{
+				data->game.player.posX = x + 0.5;
+				data->game.player.posY = y + 0.5;
 				update_player_data(data, map[y][x]);
 				player_count++;
 			}

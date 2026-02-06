@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 09:28:02 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/06 12:09:00 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,16 @@
 # include <stdbool.h>
 # include "../src/libft/libft.h"
 # include "../includes/minilibx-linux/mlx.h"
+# include <math.h>
 
 #define WIN_W 1280
 #define WIN_H 720
-#define MOVE_SPEED 0.05
+#define MOVE_SPEED 0.1
 #define ROT_SPEED 0.03
+
+#define MINI_TILE 10
+#define WALL_COLOR 0xFFFFFF
+#define FLOOR_COLOR 0x777777
 
 /* Movement */
 #define KEY_W        119   // w
@@ -126,5 +131,10 @@ bool is_wall(t_map *map, int x, int y);
 int		close_game(void *param);
 int		load_textures(t_data *data);
 void	free_data(t_data *data);
+void draw_minimap(t_game *game);
+void print_player_pos(t_game *game, int x, int y);
+int render(void *param);
+void move_player(t_data *data, int keycode);
+void rotate_player(t_data *data, int keycode);
 
 #endif
