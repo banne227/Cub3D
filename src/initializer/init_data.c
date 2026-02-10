@@ -63,6 +63,7 @@ t_game	init_game(void)
 	game.ceiling_color = 0;
 	game.state = STATE_MENU;
 	game.last_key = 0;
+	game.menu_option = 0;
 	if (!init_mlx(&game))
 		printf("Error\nFailed to initialize game graphics\n");
 	return (game);

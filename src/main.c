@@ -44,8 +44,16 @@ int handle_key(int keycode, void *param)
 	{
 		if (keycode == KEY_ENTER || keycode == KEY_SPACE)
 		{
-			printf("Starting game...\n");
-			data->game.state = STATE_PLAY;
+			if (data->game.menu_option == 0)
+			{
+				printf("Starting game...\n");
+				data->game.state = STATE_PLAY;
+			}
+			else if (data->game.menu_option == 1)
+			{
+				printf("Quitting game...\n");
+				close_game(data);
+			}
 		}
 		return (0);
 	}

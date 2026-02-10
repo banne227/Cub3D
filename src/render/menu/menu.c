@@ -17,27 +17,33 @@ void *get_menu_image(t_game *game, char *filename)
 
 void render_menu(t_game *game)
 {   
-    void *menu_img1 = get_menu_image(game, "./textures/menu/menu1.xpm");
-    void *menu_img2 = get_menu_image(game, "./textures/menu/menu2.xpm");
-    void *menu = menu_img1;
+    void *menu_enter = get_menu_image(game, "./textures/menu/menu1.xpm");
+    void *menu_quit = get_menu_image(game, "./textures/menu/menu2.xpm");
+    void *menu = menu_enter;
 
-    if (!menu_img1 || !menu_img2)
+    if (!menu_enter || !menu_quit)
         return;
-    if (menu == menu_img1 && (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE))
+    if (menu == menu_enter && (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE))
     {
         game->state = STATE_PLAY;
+        game->menu_option = 0;
         mlx_clear_window(game->mlx, game->win);
+        mlx_destroy_image(game->mlx, menu_enter);
+        mlx_destroy_image(game->mlx, menu_quit);
         return;
     }
-    else if (menu == menu_img2 && (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE))
+    else if (menu == menu_quit && (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE))
     {
         game->state = STATE_EXIT;
+        game->menu_option = 1;
         mlx_clear_window(game->mlx, game->win);
+        mlx_destroy_image(game->mlx, menu_enter);
+        mlx_destroy_image(game->mlx, menu_quit);
         return;
     }
-    if (menu == menu_img1 && (game->last_key == KEY_DOWN || game->last_key == KEY_RIGHT))
-        menu = menu_img2;
-    else if (menu == menu_img2 && (game->last_key == KEY_UP || game->last_key == KEY_LEFT   ))
-        menu = menu_img1;
+    if (menu == menu_enter && (game->last_key == KEY_DOWN || game->last_key == KEY_RIGHT))
+        menu = menu_quit;
+    else if (menu == menu_quit && (game->last_key == KEY_UP || game->last_key == KEY_LEFT))
+        menu = menu_enter;
     mlx_put_image_to_window(game->mlx, game->win, menu, 0, 0);
 }

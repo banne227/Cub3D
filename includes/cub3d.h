@@ -96,6 +96,7 @@ typedef struct s_game
 	int			ceiling_color;
 	t_game_state state;
 	int 	last_key;
+	int			menu_option;
 }   t_game;
 
 typedef enum e_direction
