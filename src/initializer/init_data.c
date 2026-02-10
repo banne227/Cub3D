@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 09:13:12 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/10 15:47:22 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ t_game	init_game(void)
 	game.player = init_player();
 	game.floor_color = 0;
 	game.ceiling_color = 0;
+	game.state = STATE_MENU;
+	game.last_key = 0;
 	if (!init_mlx(&game))
 		printf("Error\nFailed to initialize game graphics\n");
 	return (game);

@@ -6,7 +6,7 @@
 #    By: banne <banne@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 15:02:14 by banne             #+#    #+#              #
-#    Updated: 2026/02/06 12:08:16 by banne            ###   ########.fr        #
+#    Updated: 2026/02/10 13:46:13 by banne            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,9 @@ SRCS        = src/main.c \
 			  src/render/minimap/minimap.c \
 			  src/render/render.c \
 			  src/game/needed.c \
-			  src/game/mouvement.c
+			  src/game/mouvement.c \
+			  src/render/menu/menu.c \
+			  src/utils/time.c
 
 OBJS        = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/06 12:09:00 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/10 15:55:29 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdbool.h>
+#include <time.h>
+#include <sys/time.h>
 # include "../src/libft/libft.h"
 # include "../includes/minilibx-linux/mlx.h"
 # include <math.h>
@@ -39,10 +41,20 @@
 /* Arrows */
 #define KEY_LEFT     65361
 #define KEY_RIGHT    65363
+#define KEY_UP       65362
+#define KEY_DOWN     65364
 
 /* Exit */
 #define KEY_ESC      65307
+#define KEY_ENTER    65293
+#define KEY_SPACE    32
 
+typedef enum e_game_state
+{
+    STATE_MENU = 0,
+    STATE_PLAY,
+	STATE_EXIT
+}	t_game_state;
 
 typedef struct s_text
 {
@@ -82,6 +94,8 @@ typedef struct s_game
 	t_player	player;
 	int			floor_color;
 	int			ceiling_color;
+	t_game_state state;
+	int 	last_key;
 }   t_game;
 
 typedef enum e_direction
@@ -136,5 +150,7 @@ void print_player_pos(t_game *game, int x, int y);
 int render(void *param);
 void move_player(t_data *data, int keycode);
 void rotate_player(t_data *data, int keycode);
+void render_menu(t_game *game);
+long	timestamp(void);
 
 #endif

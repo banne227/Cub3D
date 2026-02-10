@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/06 10:57:11 by banne             #+#    #+#             */
-/*   Updated: 2026/02/10 15:53:25 by banne            ###   ########.fr       */
+/*   Created: 2026/02/10 13:45:39 by banne             #+#    #+#             */
+/*   Updated: 2026/02/10 13:45:54 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int render(void *param)
+long	timestamp(void)
 {
-	t_data *data = (t_data *)param;
+    struct timeval	tv;
 
-	if (data->game.state == STATE_EXIT)
-		close_game(data);
-	if (!data->game.img)
-		data->game.img = mlx_new_image(data->game.mlx, data->game.win_w, data->game.win_h);
-	if (data->game.state == STATE_MENU)
-	{
-		render_menu(&data->game);
-		return (0);
-	}
-	draw_minimap(&data->game);
-	mlx_put_image_to_window(data->game.mlx, data->game.win, data->game.img, 0, 0);
-	return (0);
+    gettimeofday(&tv, NULL);
+    return (tv.tv_sec * 1000L + tv.tv_usec / 1000L);
 }
