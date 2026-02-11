@@ -37,6 +37,7 @@
 #define KEY_A        97    // a
 #define KEY_S        115   // s
 #define KEY_D        100   // d
+#define KEY_M        109   // m
 
 /* Arrows */
 #define KEY_LEFT     65361
@@ -55,6 +56,19 @@ typedef enum e_game_state
     STATE_PLAY,
 	STATE_EXIT
 }	t_game_state;
+
+typedef struct t_enter
+{
+	void *ent1;
+	void *ent2;
+	void *ent3;
+	void *ent4;
+	void *ent5;
+	void *ent6;
+	void *ent7;
+	void *ent8;
+	void *ent9;
+}	t_enter;
 
 typedef struct s_text
 {
@@ -95,7 +109,7 @@ typedef struct s_game
 	int			floor_color;
 	int			ceiling_color;
 	t_game_state state;
-	int 	last_key;
+	int 		last_key;
 	int			menu_option;
 }   t_game;
 
@@ -153,5 +167,6 @@ void move_player(t_data *data, int keycode);
 void rotate_player(t_data *data, int keycode);
 void render_menu(t_game *game);
 long	timestamp(void);
+void display_enter(t_data *data);
 
 #endif

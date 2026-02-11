@@ -48,6 +48,22 @@ t_player	init_player(void)
 	return (player);
 }
 
+t_enter	init_enter(void)
+{
+	t_enter	enter;
+
+	enter.ent1 = NULL;
+	enter.ent2 = NULL;
+	enter.ent3 = NULL;
+	enter.ent4 = NULL;
+	enter.ent5 = NULL;
+	enter.ent6 = NULL;
+	enter.ent7 = NULL;
+	enter.ent8 = NULL;
+	enter.ent9 = NULL;
+	return (enter);
+}
+
 t_game	init_game(void)
 {
 	t_game	game;
@@ -64,6 +80,7 @@ t_game	init_game(void)
 	game.state = STATE_MENU;
 	game.last_key = 0;
 	game.menu_option = 0;
+	game.enter = init_enter();
 	if (!init_mlx(&game))
 		printf("Error\nFailed to initialize game graphics\n");
 	return (game);

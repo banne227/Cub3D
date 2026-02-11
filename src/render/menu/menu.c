@@ -25,11 +25,10 @@ void render_menu(t_game *game)
         return;
     if (menu == menu_enter && (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE))
     {
-        game->state = STATE_PLAY;
-        game->menu_option = 0;
         mlx_clear_window(game->mlx, game->win);
         mlx_destroy_image(game->mlx, menu_enter);
         mlx_destroy_image(game->mlx, menu_quit);
+        display_enter(game);
         return;
     }
     else if (menu == menu_quit && (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE))

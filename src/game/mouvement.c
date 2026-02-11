@@ -17,6 +17,8 @@ void move_player(t_data *data, int keycode)
 	double newPosX = -1;
 	double newPosY = -1; 
 	
+	if (data->game.state != STATE_PLAY)
+		return;
 	if (keycode == KEY_W)
 	{
 		newPosX = data->game.player.posX + data->game.player.dirX * MOVE_SPEED;

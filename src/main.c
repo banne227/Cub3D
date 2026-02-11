@@ -40,29 +40,12 @@ int handle_key(int keycode, void *param)
 		printf("Exiting game...\n");
 		close_game(data);
 	}
-	if (data->game.state == STATE_MENU)
-	{
-		if (keycode == KEY_ENTER || keycode == KEY_SPACE)
-		{
-			if (data->game.menu_option == 0)
-			{
-				printf("Starting game...\n");
-				data->game.state = STATE_PLAY;
-			}
-			else if (data->game.menu_option == 1)
-			{
-				printf("Quitting game...\n");
-				close_game(data);
-			}
-		}
-		return (0);
-	}
+	if (keycode == KEY_M)
+		data->game.state = STATE_MENU;
 	move_player(data, keycode);
 	rotate_player(data, keycode);
     return (0);
 }
-
-
 
 int main(int argc, char **argv)
 {
