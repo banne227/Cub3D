@@ -22,6 +22,13 @@
 # include "../src/libft/libft.h"
 # include "../includes/minilibx-linux/mlx.h"
 # include <math.h>
+# include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+#include <limits.h>
+#include <signal.h>
+#include <sys/types.h> 
+
 
 #define WIN_W 1280
 #define WIN_H 720
@@ -111,6 +118,8 @@ typedef struct s_game
 	t_game_state state;
 	int 		last_key;
 	int			menu_option;
+	pid_t		music_pid;
+	t_enter		enter;
 }   t_game;
 
 typedef enum e_direction
@@ -168,5 +177,7 @@ void rotate_player(t_data *data, int keycode);
 void render_menu(t_game *game);
 long	timestamp(void);
 void display_enter(t_data *data);
+void play_background_music(t_game *game);
+void stop_background_music(t_game *game);
 
 #endif

@@ -81,6 +81,7 @@ t_game	init_game(void)
 	game.last_key = 0;
 	game.menu_option = 0;
 	game.enter = init_enter();
+	game.music_pid = 0;
 	if (!init_mlx(&game))
 		printf("Error\nFailed to initialize game graphics\n");
 	return (game);

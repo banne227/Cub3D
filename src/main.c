@@ -60,9 +60,12 @@ int main(int argc, char **argv)
 	printf("Parsing successful!\n");
 	print_controls();
 	data.game.map = data.map;
-	mlx_loop_hook(data.game.mlx, render, &data);
-	mlx_hook(data.game.win, 2, 1L<<0, handle_key, &data);
-	mlx_hook(data.game.win, 17, 0, close_game, &data);
-	mlx_loop(data.game.mlx);
+	play_background_music(&data.game);
+	// mlx_loop_hook(data.game.mlx, render, &data);
+	// mlx_hook(data.game.win, 2, 1L<<0, handle_key, &data);
+	// mlx_hook(data.game.win, 17, 0, close_game, &data);
+	// mlx_loop(data.game.mlx);
+	usleep(5000000); // Keep the program running for a while to hear the music
+	stop_background_music(&data.game);
 	return (0);
 }

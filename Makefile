@@ -38,7 +38,8 @@ SRCS        = src/main.c \
 			  src/game/needed.c \
 			  src/game/mouvement.c \
 			  src/render/menu/menu.c \
-			  src/utils/time.c
+			  src/utils/time.c \
+			  src/audio/audio.c
 
 OBJS        = $(SRCS:.c=.o)
 

@@ -51,6 +51,7 @@ int close_game(void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
+	stop_background_music(&data->game);
 	free_data(data);
 	exit(0);
 	return (0);
