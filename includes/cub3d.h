@@ -140,6 +140,7 @@ typedef struct s_data
 	t_game	game;
     int		start_map_index;
 	bool	error;
+	t_enter		enter;
 }   t_data;
 
 bool 	extension_check(char *filename);
@@ -174,7 +175,7 @@ void print_player_pos(t_game *game, int x, int y);
 int render(void *param);
 void move_player(t_data *data, int keycode);
 void rotate_player(t_data *data, int keycode);
-void render_menu(t_game *game);
+void render_menu(t_game *game, t_data *data);
 long	timestamp(void);
 void display_enter(t_data *data);
 void play_background_music(t_game *game);

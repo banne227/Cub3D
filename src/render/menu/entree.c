@@ -47,7 +47,6 @@ void destroy_enter(t_data *data)
 void display_enter(t_data *data)
 {
     t_enter *enter = &data->enter;
-    void *img;
 
     display_img(data, enter->ent1);
     display_img(data, enter->ent2);

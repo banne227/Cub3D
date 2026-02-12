@@ -22,7 +22,7 @@ int render(void *param)
 		data->game.img = mlx_new_image(data->game.mlx, data->game.win_w, data->game.win_h);
 	if (data->game.state == STATE_MENU)
 	{
-		render_menu(&data->game);
+		render_menu(&data->game, data);
 		return (0);
 	}
 	draw_minimap(&data->game);

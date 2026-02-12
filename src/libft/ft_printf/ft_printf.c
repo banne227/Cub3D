@@ -35,7 +35,7 @@ int	ft_format(va_list ap, char c)
 		return (ft_puthexupp(va_arg(ap, int)));
 	if (c == '%')
 		return (ft_putchar('%'));
-	return (0);
+	return (count);
 }
 
 int	ft_printf(const char *format, ...)
