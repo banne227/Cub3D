@@ -50,6 +50,11 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(MLX):
+	@if [ ! -d "$(MLX_DIR)" ] || [ ! -f "$(MLX_DIR)/configure" ]; then \
+		echo "Cloning minilibx-linux..."; \
+		rm -rf $(MLX_DIR); \
+		git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR); \
+	fi
 	cd $(MLX_DIR) && ./configure
 	$(MAKE) -C $(MLX_DIR)
 
