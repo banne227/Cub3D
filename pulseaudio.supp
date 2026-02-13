@@ -1,0 +1,67 @@
+{
+   PulseAudio_libpulse_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libpulse*.so*
+}
+
+{
+   PulseAudio_libpulsecommon_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/libpulsecommon*.so*
+}
+
+{
+   PulseAudio_pacat_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/pacat
+}
+
+{
+   PulseAudio_paplay_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:*/paplay
+}
+
+{
+   PulseAudio_all_malloc
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:malloc
+   ...
+   obj:*/libpulse*.so*
+}
+
+{
+   PulseAudio_all_calloc
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:calloc
+   ...
+   obj:*/libpulse*.so*
+}
+
+{
+   PulseAudio_common_malloc
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:malloc
+   ...
+   obj:*/libpulsecommon*.so*
+}
+
+{
+   PulseAudio_common_calloc
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:calloc
+   ...
+   obj:*/libpulsecommon*.so*
+}

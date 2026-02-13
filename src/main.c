@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:09:25 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 15:00:32 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 15:16:55 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ static void	print_controls(void)
 int handle_key(int keycode, void *param)
 {
     t_data *data = (t_data *)param;
-    
-	printf("Key pressed: %d\n", keycode);
+
 	data->game.last_key = keycode;
     if (keycode == KEY_ESC || data->game.state == STATE_EXIT)
 	{

@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 13:51:53 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 15:19:27 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@
 # include "../includes/minilibx-linux/mlx.h"
 # include <math.h>
 # include <unistd.h>
-#include <fcntl.h>
-#include <string.h>
-#include <limits.h>
-#include <signal.h>
-#include <sys/types.h> 
+# include <fcntl.h>
+# include <string.h>
+# include <limits.h>
+# include <signal.h>
+# include <sys/types.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+
 
 
 #define WIN_W 1280

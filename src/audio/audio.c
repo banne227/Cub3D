@@ -38,6 +38,7 @@ void stop_background_music(t_game *game)
     if (game->music_pid > 0)
     {
         kill(game->music_pid, SIGTERM);
+        waitpid(game->music_pid, NULL, 0);
         game->music_pid = 0;
         printf("Music stopped\n");
     }
