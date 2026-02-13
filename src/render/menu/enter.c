@@ -1,5 +1,31 @@
 #include "../../includes/cub3d.h"
 
+void fade_display_img(t_data *data, void *img, int opacity)
+{
+    char    *addr;
+    int     x, y, bits, line_len, endian;
+    unsigned int pixel;
+
+    if (!img || !data->game.mlx || !data->game.win)
+        return;
+    addr = mlx_get_data_addr(img, &bits, &line_len, &endian);
+    y = 0;
+    while (y < 512)
+    {
+        x = 0;
+        while (x < 512)
+        {
+            pixel = *(unsigned int *)(addr + y * line_len + x * 4);
+            pixel = (pixel & 0xFFFFFF) | ((unsigned int)(opacity) << 24);
+            *(unsigned int *)(addr + y * line_len + x * 4) = pixel;
+            x++;
+        }
+        y++;
+    }
+    mlx_put_image_to_window(data->game.mlx, data->game.win, img, 0, 0);
+    data->anim.last_img = img;
+}
+
 void display_img(t_data *data, void *img)
 {
     int h;
@@ -59,35 +85,29 @@ void init_anim(t_data *data)
 
 void display_enter(t_data *data)
 {
-    if (data->anim.enter_frame == 0)
-        display_img(data, data->anim.ent[0]);
-    else if (data->anim.enter_frame == 1)
-        display_img(data, data->anim.ent[1]);
-    else if (data->anim.enter_frame == 2)
-        display_img(data, data->anim.ent[2]);
-    else if (data->anim.enter_frame == 3)
-        display_img(data, data->anim.ent[3]);
-    else if (data->anim.enter_frame == 4)
-        display_img(data, data->anim.ent[4]);
-    else if (data->anim.enter_frame == 5)
-        display_img(data, data->anim.ent[5]);
-    else if (data->anim.enter_frame == 6)
-        display_img(data, data->anim.ent[6]);
-    else if (data->anim.enter_frame == 7)
-        display_img(data, data->anim.ent[7]);
-    else if (data->anim.enter_frame == 8)
-        display_img(data, data->anim.ent[8]);
-    else if (data->anim.enter_frame == 9)
-        display_img(data, data->anim.ent[9]);
-    else
+    int     elapsed;
+    int     opacity;
+
+    if (data->anim.enter_frame > 9)
     {
         destroy_enter(data);
         data->game.state = STATE_PLAY;
         data->game.menu_option = 0;
+        play_background_music(&data->game);
         return;
     }
     
-    if (timestamp() - data->anim.last_frame_time > 175)
+    elapsed = timestamp() - data->anim.last_frame_time;
+    
+    if (elapsed < 50)
+        opacity = (elapsed * 255) / 50;
+    else if (elapsed < 125)
+        opacity = 255;
+    else
+        opacity = 255 - (((elapsed - 125) * 255) / 50);
+    
+    fade_display_img(data, data->anim.ent[data->anim.enter_frame], opacity);
+    if (elapsed > 150)
     {
         data->anim.enter_frame++;
         data->anim.last_frame_time = timestamp();
