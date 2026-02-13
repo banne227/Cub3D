@@ -17,36 +17,38 @@ void *get_menu_image(t_game *game, char *filename)
 
 void render_menu(t_game *game, t_data *data)
 {  
-    (void)data;
     void *menu_enter = get_menu_image(game, "./textures/menu/menu1.xpm");
     void *menu_quit = get_menu_image(game, "./textures/menu/menu2.xpm");
-    void *menu = menu_enter;
+    void *menu;
 
     if (!menu_enter || !menu_quit)
         return;
-    if (menu == menu_enter && (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE))
-    {
-        mlx_clear_window(game->mlx, game->win);
-        mlx_destroy_image(game->mlx, menu_enter);
-        mlx_destroy_image(game->mlx, menu_quit);
-        data->game.state = STATE_PLAY;
-        data->game.menu_option = 0;
-        // display_enter(data);
-        return;
-    }
-    else if (menu == menu_quit && (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE))
-    {
-        data->game.state = STATE_EXIT;
+    if (game->last_key == KEY_DOWN || game->last_key == KEY_RIGHT)
         game->menu_option = 1;
+    else if (game->last_key == KEY_UP || game->last_key == KEY_LEFT)
+        game->menu_option = 0;
+    if (game->menu_option == 0)
+        menu = menu_enter;
+    else
+        menu = menu_quit;
+    if (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE)
+    {
         mlx_clear_window(game->mlx, game->win);
         mlx_destroy_image(game->mlx, menu_enter);
         mlx_destroy_image(game->mlx, menu_quit);
+        if (game->menu_option == 0)
+        {
+            data->game.state = STATE_PLAY;
+            data->game.menu_option = 0;
+            display_enter(data);
+            return;
+        }
+        data->game.state = STATE_EXIT;
+        close_game(data);
         return;
     }
-    if (menu == menu_enter && (game->last_key == KEY_DOWN || game->last_key == KEY_RIGHT))
-        menu = menu_quit;
-    else if (menu == menu_quit && (game->last_key == KEY_UP || game->last_key == KEY_LEFT))
-        menu = menu_enter;
     mlx_clear_window(game->mlx, game->win);
     mlx_put_image_to_window(game->mlx, game->win, menu, 0, 0);
+    mlx_destroy_image(game->mlx, menu_enter);
+    mlx_destroy_image(game->mlx, menu_quit);
 }

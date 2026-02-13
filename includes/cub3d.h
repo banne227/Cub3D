@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/10 15:55:29 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 11:23:20 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,5 +180,6 @@ long	timestamp(void);
 void display_enter(t_data *data);
 void play_background_music(t_game *game);
 void stop_background_music(t_game *game);
+void destroy_img(void *mlx, void *img);
 
 #endif

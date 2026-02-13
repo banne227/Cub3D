@@ -5,10 +5,12 @@ void display_img(t_data *data, void *img)
     int h;
     int w;
 
+    if (!img || !data->game.mlx || !data->game.win)
+        return;
     h = 0;
     w = 0;
+    mlx_clear_window(data->game.mlx, data->game.win);
     mlx_put_image_to_window(data->game.mlx, data->game.win, img, w, h);
-    usleep(200000);
 }
 
 t_enter load_enter(void *mlx)
@@ -33,30 +35,29 @@ t_enter load_enter(void *mlx)
 
 void destroy_enter(t_data *data)
 {
-    mlx_destroy_image(data->game.mlx, data->enter.ent1);
-    mlx_destroy_image(data->game.mlx, data->enter.ent2);
-    mlx_destroy_image(data->game.mlx, data->enter.ent3);
-    mlx_destroy_image(data->game.mlx, data->enter.ent4);
-    mlx_destroy_image(data->game.mlx, data->enter.ent5);
-    mlx_destroy_image(data->game.mlx, data->enter.ent6);
-    mlx_destroy_image(data->game.mlx, data->enter.ent7);
-    mlx_destroy_image(data->game.mlx, data->enter.ent8);
-    mlx_destroy_image(data->game.mlx, data->enter.ent9);
+    destroy_img(data->game.mlx, data->enter.ent1);
+    destroy_img(data->game.mlx, data->enter.ent2);
+    destroy_img(data->game.mlx, data->enter.ent3);
+    destroy_img(data->game.mlx, data->enter.ent4);
+    destroy_img(data->game.mlx, data->enter.ent5);
+    destroy_img(data->game.mlx, data->enter.ent6);
+    destroy_img(data->game.mlx, data->enter.ent7);
+    destroy_img(data->game.mlx, data->enter.ent8);
+    destroy_img(data->game.mlx, data->enter.ent9);
 }
 
 void display_enter(t_data *data)
 {
-    t_enter *enter = &data->enter;
-
-    display_img(data, enter->ent1);
-    display_img(data, enter->ent2);
-    display_img(data, enter->ent3);
-    display_img(data, enter->ent4);
-    display_img(data, enter->ent5);
-    display_img(data, enter->ent6);
-    display_img(data, enter->ent7);
-    display_img(data, enter->ent8);
-    display_img(data, enter->ent9);
+    data->enter = load_enter(data->game.mlx);
+    display_img(data, data->enter.ent1);
+    display_img(data, data->enter.ent2);
+    display_img(data, data->enter.ent3);
+    display_img(data, data->enter.ent4);
+    display_img(data, data->enter.ent5);
+    display_img(data, data->enter.ent6);
+    display_img(data, data->enter.ent7);
+    display_img(data, data->enter.ent8);
+    display_img(data, data->enter.ent9);
     destroy_enter(data);
     data->game.state = STATE_PLAY;
     data->game.menu_option = 0;

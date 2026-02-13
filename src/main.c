@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:09:25 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 10:44:13 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 11:02:21 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int handle_key(int keycode, void *param)
     if (keycode == KEY_ESC || data->game.state == STATE_EXIT)
 	{
 		printf("Exiting game...\n");
-		close_game(data);
+		return (close_game(data));
 	}
 	if (keycode == KEY_M)
 		data->game.state = STATE_MENU;

@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 09:14:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 10:08:00 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 12:31:09 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,22 @@ void	free_data(t_data *data)
 	}
 }
 
+void destroy_img(void *mlx, void *img)
+{
+	if (img)
+	{
+		mlx_destroy_image(mlx, img);
+		img = NULL;
+	}
+}
+
 int close_game(void *param)
 {
 	t_data	*data;
 
 	data = (t_data *)param;
+	mlx_clear_window(data->game.mlx, data->game.win);
+	mlx_loop_end(data->game.mlx);
 	stop_background_music(&data->game);
 	free_data(data);
 	exit(0);
