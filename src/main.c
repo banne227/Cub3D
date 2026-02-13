@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:09:25 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 15:16:55 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 16:50:41 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
 #include "../includes/color.h"
+#include "../includes/cub3d.h"
 
 static void	print_controls(void)
 {
@@ -29,12 +29,13 @@ static void	print_controls(void)
 	printf("\n");
 }
 
-int handle_key(int keycode, void *param)
+int	handle_key(int keycode, void *param)
 {
-    t_data *data = (t_data *)param;
+	t_data	*data;
 
+	data = (t_data *)param;
 	data->game.last_key = keycode;
-    if (keycode == KEY_ESC || data->game.state == STATE_EXIT)
+	if (keycode == KEY_ESC || data->game.state == STATE_EXIT)
 	{
 		printf("Exiting game...\n");
 		return (close_game(data));
@@ -50,16 +51,16 @@ int handle_key(int keycode, void *param)
 		{
 			data->game.state = STATE_MENU;
 			stop_background_music(&data->game);
-		}	
+		}
 	}
 	move_player(data, keycode);
 	rotate_player(data, keycode);
-    return (0);
+	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data data;
+	t_data	data;
 
 	data = init_data();
 	if (data.error || parse(argc, argv, &data) != 0)
@@ -71,7 +72,7 @@ int main(int argc, char **argv)
 	print_controls();
 	data.game.map = data.map;
 	mlx_loop_hook(data.game.mlx, render, &data);
-	mlx_hook(data.game.win, 2, 1L<<0, handle_key, &data);
+	mlx_hook(data.game.win, 2, 1L << 0, handle_key, &data);
 	mlx_hook(data.game.win, 17, 0, close_game, &data);
 	mlx_loop(data.game.mlx);
 	stop_background_music(&data.game);

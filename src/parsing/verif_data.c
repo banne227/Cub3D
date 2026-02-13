@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   verif_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:43:27 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 09:08:31 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 16:50:16 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-bool verif_color_values(char *color)
+bool	verif_color_values(char *color)
 {
-	int     i;
-	int     value;
+	int	i;
+	int	value;
 
 	i = 0;
-	if (!color || ft_strlen(color) < 5
-		|| color[0] == ',' || color[ft_strlen(color) - 1] == ',')
+	if (!color || ft_strlen(color) < 5 || color[0] == ','
+		|| color[ft_strlen(color) - 1] == ',')
 		return (false);
 	while (color[i])
 	{
@@ -44,8 +44,8 @@ bool verif_color_values(char *color)
 
 bool	valid_color(char *color)
 {
-	int i;
-	int comma_count;
+	int	i;
+	int	comma_count;
 
 	i = 0;
 	comma_count = 0;
@@ -68,10 +68,11 @@ bool	valid_color(char *color)
 	return (verif_color_values(color));
 }
 
-bool data_valid(t_data *data)
+bool	data_valid(t_data *data)
 {
-	if (!data->text_path[NORTH] || !data->text_path[SOUTH] || !data->text_path[WEST] 
-		|| !data->text_path[EAST] || !data->text_path[F] || !data->text_path[C])
+	if (!data->text_path[NORTH] || !data->text_path[SOUTH]
+		|| !data->text_path[WEST] || !data->text_path[EAST]
+		|| !data->text_path[F] || !data->text_path[C])
 	{
 		ft_printf("Error\nMissing texture or color information\n");
 		return (false);

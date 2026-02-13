@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:25:07 by banne             #+#    #+#             */
-/*   Updated: 2026/01/15 08:26:01 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 16:49:55 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-bool init_mlx(t_game *game)
+bool	init_mlx(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)

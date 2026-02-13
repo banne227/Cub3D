@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: banne <banne@student.42.fr>                +#+  +:+       +#+         #
+#    By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 15:02:14 by banne             #+#    #+#              #
-#    Updated: 2026/02/13 14:10:46 by banne            ###   ########.fr        #
+#    Updated: 2026/02/13 16:55:42 by jhauvill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ $(MLX):
 	cd $(MLX_DIR) && ./configure
 	$(MAKE) -C $(MLX_DIR)
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
+$(NAME): $(MLX) $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(LDFLAGS) -o $@
 
 clean:

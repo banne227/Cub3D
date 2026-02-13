@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 09:14:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 12:31:09 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 16:50:36 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	free_data(t_data *data)
 	}
 }
 
-void destroy_img(void *mlx, void *img)
+void	destroy_img(void *mlx, void *img)
 {
 	if (img)
 	{
@@ -55,9 +55,9 @@ void destroy_img(void *mlx, void *img)
 	}
 }
 
-int close_game(void *param)
+int	close_game(void *param)
 {
-	t_data	*data;
+	t_data *data;
 
 	data = (t_data *)param;
 	mlx_clear_window(data->game.mlx, data->game.win);

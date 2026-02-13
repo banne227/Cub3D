@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   verif_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:17 by banne             #+#    #+#             */
-/*   Updated: 2026/02/06 11:17:08 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 16:50:18 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static bool print_pos_error(int x, int y)
+static bool	print_pos_error(int x, int y)
 {
 	ft_printf("Error\nInvalid position at (%d, %d)\n", x, y);
 	return (false);
 }
 
-static bool map_is_closed(char **map, int width, int height)
+static bool	map_is_closed(char **map, int width, int height)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	y = 0;
 	if (!map)
@@ -31,13 +31,13 @@ static bool map_is_closed(char **map, int width, int height)
 		x = 0;
 		while (x < width)
 		{
-			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' ||
-				map[y][x] == 'E' || map[y][x] == 'W')
+			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
+				|| map[y][x] == 'E' || map[y][x] == 'W')
 			{
 				if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
 					return (print_pos_error(x, y));
-				if (map[y - 1][x] == 'V' || map[y + 1][x] == 'V' ||
-					map[y][x - 1] == 'V' || map[y][x + 1] == 'V')
+				if (map[y - 1][x] == 'V' || map[y + 1][x] == 'V' || map[y][x
+					- 1] == 'V' || map[y][x + 1] == 'V')
 					return (print_pos_error(x, y));
 			}
 			x++;
@@ -47,10 +47,10 @@ static bool map_is_closed(char **map, int width, int height)
 	return (true);
 }
 
-static bool have_valid_chars(char **map)
+static bool	have_valid_chars(char **map)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	y = 0;
 	if (!map)
@@ -60,9 +60,9 @@ static bool have_valid_chars(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] != '0' && map[y][x] != '1' && map[y][x] != 'V' &&
-				map[y][x] != 'N' && map[y][x] != 'S' &&
-				map[y][x] != 'E' && map[y][x] != 'W')
+			if (map[y][x] != '0' && map[y][x] != '1' && map[y][x] != 'V'
+				&& map[y][x] != 'N' && map[y][x] != 'S' && map[y][x] != 'E'
+				&& map[y][x] != 'W')
 				return (false);
 			x++;
 		}
@@ -73,9 +73,9 @@ static bool have_valid_chars(char **map)
 
 static bool	only_one_player(char **map, t_data *data)
 {
-	int		x;
-	int		y;
-	int		player_count;
+	int	x;
+	int	y;
+	int	player_count;
 
 	y = 0;
 	player_count = 0;
@@ -86,15 +86,14 @@ static bool	only_one_player(char **map, t_data *data)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'N' || map[y][x] == 'S' ||
-				map[y][x] == 'E' || map[y][x] == 'W')
+			if (map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'E'
+				|| map[y][x] == 'W')
 			{
 				data->game.player.posX = x + 0.5;
 				data->game.player.posY = y + 0.5;
 				update_player_data(data, map[y][x]);
 				player_count++;
 			}
-				
 			x++;
 		}
 		y++;
@@ -102,7 +101,7 @@ static bool	only_one_player(char **map, t_data *data)
 	return (player_count == 1);
 }
 
-bool map_valid(t_data *data)
+bool	map_valid(t_data *data)
 {
 	if (!data->map.map || data->map.width <= 0 || data->map.height <= 0)
 		return (false);

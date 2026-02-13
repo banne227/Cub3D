@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   copy.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 16:30:09 by banne             #+#    #+#             */
-/*   Updated: 2026/02/02 16:30:58 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 16:50:33 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void copy_without_space(char *dest, const char *src)
+void	copy_without_space(char *dest, const char *src)
 {
 	int i;
 	int j;

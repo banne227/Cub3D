@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:26 by banne             #+#    #+#             */
-/*   Updated: 2026/02/02 16:38:34 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 16:50:06 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-char **realloc_map(char **map, int new_size)
+char	**realloc_map(char **map, int new_size)
 {
-	char **new_map;
+	char	**new_map;
 	int		i;
 
 	new_map = malloc(sizeof(char *) * (new_size + 1));
@@ -33,8 +33,7 @@ char **realloc_map(char **map, int new_size)
 	return (new_map);
 }
 
-
-char *trim_endf(char *line)
+char	*trim_endf(char *line)
 {
 	int		len;
 	char	*trimmed;
@@ -44,7 +43,7 @@ char *trim_endf(char *line)
 		len++;
 	if (len == 0)
 		return (line);
-	//len -= 1;
+	// len -= 1;
 	trimmed = malloc(sizeof(char) * (len + 1));
 	if (!trimmed)
 		return (NULL);
@@ -54,10 +53,10 @@ char *trim_endf(char *line)
 	return (trimmed);
 }
 
-char **trim_file(char **file)
+char	**trim_file(char **file)
 {
-    int     size;
-    char    **trimmed;
+	int		size;
+	char	**trimmed;
 	char	*tmp;
 	int		i;
 
@@ -70,7 +69,7 @@ char **trim_file(char **file)
 		{
 			free(file[i]);
 			i++;
-			continue;
+			continue ;
 		}
 		trimmed = realloc_map(trimmed, size + 1);
 		if (!trimmed)
@@ -87,11 +86,11 @@ char **trim_file(char **file)
 
 char	**get_file(int fd)
 {
-    int     size;
-    char   **result;
+	int		size;
+	char	**result;
 	char	*line;
 	char	*tmp;
-    
+
 	size = 0;
 	result = NULL;
 	line = get_next_line(fd);
@@ -111,10 +110,10 @@ char	**get_file(int fd)
 	return (result);
 }
 
-int get_data(char *filename, t_data *data)
+int	get_data(char *filename, t_data *data)
 {
-	char **file;
-	int   fd;
+	char	**file;
+	int		fd;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
@@ -133,5 +132,5 @@ int get_data(char *filename, t_data *data)
 	if (!data_valid(data))
 		return (0);
 	free_tab(file);
-    return (1);
+	return (1);
 }

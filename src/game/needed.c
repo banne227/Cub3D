@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   needed.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 08:32:01 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 08:33:37 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 16:49:48 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-bool is_wall(t_map *map, int x, int y)
+bool	is_wall(t_map *map, int x, int y)
 {
 	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
 		return (0);

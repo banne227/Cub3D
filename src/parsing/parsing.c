@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:31:00 by banne             #+#    #+#             */
-/*   Updated: 2026/02/03 09:08:16 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 16:50:13 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void print_data(t_data *data)
+void	print_data(t_data *data)
 {
 	ft_printf("NO: %s\n", data->text_path[NORTH]);
 	ft_printf("SO: %s\n", data->text_path[SOUTH]);
@@ -20,27 +20,28 @@ void print_data(t_data *data)
 	ft_printf("EA: %s\n", data->text_path[EAST]);
 	ft_printf("F: %s\n", data->text_path[F]);
 	ft_printf("C: %s\n", data->text_path[C]);
-	ft_printf("Map (width: %d, height: %d):\n", data->map.width, data->map.height);
-    for (int i = 0; i < data->map.height; i++)
-    {
-        ft_printf("%s\n", data->map.map[i]);
-    }
+	ft_printf("Map (width: %d, height: %d):\n", data->map.width,
+		data->map.height);
+	for (int i = 0; i < data->map.height; i++)
+	{
+		ft_printf("%s\n", data->map.map[i]);
+	}
 }
 
-int parse(int argc, char **argv, t_data *data)
+int	parse(int argc, char **argv, t_data *data)
 {
-    if (argc != 2 || argv[1] == NULL)
-    {
-        printf("Error\nInvalid number of arguments\n");
-        return (1);
-    }
-    if (!extension_check(argv[1]) || !file_check(argv[1]))
-        return (1);
-    if (!get_data(argv[1], data))
-        return (1);
-    printf("Parsed data:\n");
-    print_data(data);
-    if (!map_valid(data))
+	if (argc != 2 || argv[1] == NULL)
+	{
+		printf("Error\nInvalid number of arguments\n");
 		return (1);
-    return (0);
+	}
+	if (!extension_check(argv[1]) || !file_check(argv[1]))
+		return (1);
+	if (!get_data(argv[1], data))
+		return (1);
+	printf("Parsed data:\n");
+	print_data(data);
+	if (!map_valid(data))
+		return (1);
+	return (0);
 }
