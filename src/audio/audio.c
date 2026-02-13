@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 00:00:00 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 15:02:53 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 15:16:34 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ void play_background_music(t_game *game)
     pid = fork();
     if (pid == 0)
     {
-        // Rediriger stdout et stderr pour éviter les messages
-        freopen("/dev/null", "w", stdout);
-        freopen("/dev/null", "w", stderr);
-
         execlp("paplay", "paplay", "./sounds/Mortal_Kombat.wav", NULL);
         exit(1);
     }
