@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 00:00:00 by banne             #+#    #+#             */
-/*   Updated: 2026/02/11 00:00:00 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 10:19:29 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void play_background_music(t_game *game)
         
         // Lancer mpg123 en boucle infinie (-1) et silencieux (-q)
         execlp("mpg123", "mpg123", "-q", "--loop", "-1", 
-               "./assets/music/background.mp3", NULL);
+               "./assets/music/Mortal_Kombat.mp3", NULL);
         
         // Si execlp échoue, on sort
         exit(1);

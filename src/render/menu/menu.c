@@ -17,7 +17,7 @@ void *get_menu_image(t_game *game, char *filename)
 
 void render_menu(t_game *game, t_data *data)
 {  
-    (void)data; // To avoid unused parameter warning
+    (void)data;
     void *menu_enter = get_menu_image(game, "./textures/menu/menu1.xpm");
     void *menu_quit = get_menu_image(game, "./textures/menu/menu2.xpm");
     void *menu = menu_enter;
@@ -29,12 +29,14 @@ void render_menu(t_game *game, t_data *data)
         mlx_clear_window(game->mlx, game->win);
         mlx_destroy_image(game->mlx, menu_enter);
         mlx_destroy_image(game->mlx, menu_quit);
+        data->game.state = STATE_PLAY;
+        data->game.menu_option = 0;
         // display_enter(data);
         return;
     }
     else if (menu == menu_quit && (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE))
     {
-        game->state = STATE_EXIT;
+        data->game.state = STATE_EXIT;
         game->menu_option = 1;
         mlx_clear_window(game->mlx, game->win);
         mlx_destroy_image(game->mlx, menu_enter);
@@ -45,5 +47,6 @@ void render_menu(t_game *game, t_data *data)
         menu = menu_quit;
     else if (menu == menu_quit && (game->last_key == KEY_UP || game->last_key == KEY_LEFT))
         menu = menu_enter;
+    mlx_clear_window(game->mlx, game->win);
     mlx_put_image_to_window(game->mlx, game->win, menu, 0, 0);
 }
