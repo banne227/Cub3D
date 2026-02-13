@@ -38,9 +38,7 @@ void render_menu(t_game *game, t_data *data)
         mlx_destroy_image(game->mlx, menu_quit);
         if (game->menu_option == 0)
         {
-            data->game.state = STATE_PLAY;
-            data->game.menu_option = 0;
-            display_enter(data);
+            data->game.state = STATE_ENTER;
             return;
         }
         data->game.state = STATE_EXIT;

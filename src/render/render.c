@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:57:11 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 11:04:03 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 12:57:23 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ int render(void *param)
 	if (data->game.state == STATE_MENU)
 	{
 		render_menu(&data->game, data);
+		return (0);
+	}
+	if (data->game.state == STATE_ENTER)
+	{
+		init_anim(data);
+		display_enter(data);
 		return (0);
 	}
 	draw_minimap(&data->game);

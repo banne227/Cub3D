@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 11:23:20 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 12:55:09 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef enum e_game_state
 {
     STATE_MENU = 0,
     STATE_PLAY,
+	STATE_ENTER,
 	STATE_EXIT
 }	t_game_state;
 
@@ -141,6 +142,8 @@ typedef struct s_data
     int		start_map_index;
 	bool	error;
 	t_enter		enter;
+	int 	enter_frame;
+	long	last_frame_time;
 }   t_data;
 
 bool 	extension_check(char *filename);
@@ -181,5 +184,6 @@ void display_enter(t_data *data);
 void play_background_music(t_game *game);
 void stop_background_music(t_game *game);
 void destroy_img(void *mlx, void *img);
+void init_anim(t_data *data);
 
 #endif

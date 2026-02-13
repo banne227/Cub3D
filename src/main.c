@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:09:25 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 11:02:21 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 12:47:38 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int main(int argc, char **argv)
 	print_controls();
 	data.game.map = data.map;
 	//play_background_music(&data.game);
-	 mlx_loop_hook(data.game.mlx, render, &data);
-	 mlx_hook(data.game.win, 2, 1L<<0, handle_key, &data);
-	 mlx_hook(data.game.win, 17, 0, close_game, &data);
-	 mlx_loop(data.game.mlx);
+	mlx_loop_hook(data.game.mlx, render, &data);
+	mlx_hook(data.game.win, 2, 1L<<0, handle_key, &data);
+	mlx_hook(data.game.win, 17, 0, close_game, &data);
+	mlx_loop(data.game.mlx);
 	//usleep(5000000); // Keep the program running for a while to hear the music
 	//stop_background_music(&data.game);
 	return (0);

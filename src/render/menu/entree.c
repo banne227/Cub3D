@@ -46,19 +46,45 @@ void destroy_enter(t_data *data)
     destroy_img(data->game.mlx, data->enter.ent9);
 }
 
+void init_anim(t_data *data)
+{
+    data->enter = load_enter(data->game.mlx);
+    data->enter_frame = 0;
+    data->last_frame_time = timestamp();
+}
+
+
 void display_enter(t_data *data)
 {
     data->enter = load_enter(data->game.mlx);
-    display_img(data, data->enter.ent1);
-    display_img(data, data->enter.ent2);
-    display_img(data, data->enter.ent3);
-    display_img(data, data->enter.ent4);
-    display_img(data, data->enter.ent5);
-    display_img(data, data->enter.ent6);
-    display_img(data, data->enter.ent7);
-    display_img(data, data->enter.ent8);
-    display_img(data, data->enter.ent9);
-    destroy_enter(data);
-    data->game.state = STATE_PLAY;
-    data->game.menu_option = 0;
+    if (data->enter_frame == 0)
+        display_img(data, data->enter.ent1);
+    else if (data->enter_frame == 1)
+        display_img(data, data->enter.ent2);
+    else if (data->enter_frame == 2)
+        display_img(data, data->enter.ent3);
+    else if (data->enter_frame == 3)
+        display_img(data, data->enter.ent4);
+    else if (data->enter_frame == 4)
+        display_img(data, data->enter.ent5);
+    else if (data->enter_frame == 5)
+        display_img(data, data->enter.ent6);
+    else if (data->enter_frame == 6)
+        display_img(data, data->enter.ent7);
+    else if (data->enter_frame == 7)
+        display_img(data, data->enter.ent8);
+    else if (data->enter_frame == 8)
+        display_img(data, data->enter.ent9);
+    if (data->enter_frame > 8)
+    {
+        data->enter_frame = 0;
+        destroy_enter(data);
+        data->game.state = STATE_PLAY;
+        data->game.menu_option = 0;
+    }
+    if (timestamp() - data->last_frame_time > 100)
+    {
+        data->enter_frame++;
+        data->last_frame_time = timestamp();
+    }
 }
