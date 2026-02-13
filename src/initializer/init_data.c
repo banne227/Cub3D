@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/02/10 15:47:22 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 14:19:25 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,6 @@ t_player	init_player(void)
 	return (player);
 }
 
-t_enter	init_enter(void)
-{
-	t_enter	enter;
-
-	enter.ent1 = NULL;
-	enter.ent2 = NULL;
-	enter.ent3 = NULL;
-	enter.ent4 = NULL;
-	enter.ent5 = NULL;
-	enter.ent6 = NULL;
-	enter.ent7 = NULL;
-	enter.ent8 = NULL;
-	enter.ent9 = NULL;
-	return (enter);
-}
-
 t_game	init_game(void)
 {
 	t_game	game;
@@ -80,7 +64,6 @@ t_game	init_game(void)
 	game.state = STATE_MENU;
 	game.last_key = 0;
 	game.menu_option = 0;
-	game.enter = init_enter();
 	game.music_pid = 0;
 	if (!init_mlx(&game))
 		printf("Error\nFailed to initialize game graphics\n");
@@ -98,6 +81,7 @@ t_data	init_data(void)
 		data.text_path[i] = NULL;
 		i++;
 	}
+	data.anim.enter_frame = 0;
 	data.tex = init_text();
 	data.map = init_map();
 	data.game = init_game();

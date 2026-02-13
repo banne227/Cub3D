@@ -6,13 +6,13 @@
 #    By: banne <banne@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 15:02:14 by banne             #+#    #+#              #
-#    Updated: 2026/02/10 13:46:13 by banne            ###   ########.fr        #
+#    Updated: 2026/02/13 14:10:46 by banne            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = cub3d
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g3 -Iincludes -Iincludes/minilibx-linux -Isrc/libft -Isrc/libft/ft_printf -Isrc/libft/gnl -g3
+CFLAGS      = -Wall -Wextra -Werror -g3 -Iincludes -Iincludes/minilibx-linux -Isrc/libft -Isrc/libft/ft_printf -Isrc/libft/gnl -g3 -O3
 LDFLAGS     = -Lincludes/minilibx-linux -lmlx -lX11 -lXext -lm
 RM          = rm -f
 
@@ -38,7 +38,7 @@ SRCS        = src/main.c \
 			  src/game/needed.c \
 			  src/game/mouvement.c \
 			  src/render/menu/menu.c \
-			  src/render/menu/entree.c \
+			  src/render/menu/enter.c \
 			  src/utils/time.c \
 			  src/audio/audio.c
 

@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:57:11 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 12:57:23 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 13:00:43 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ int render(void *param)
 		render_menu(&data->game, data);
 		return (0);
 	}
-	if (data->game.state == STATE_ENTER)
+	if (data->game.state == STATE_ANIMATION)
 	{
-		init_anim(data);
 		display_enter(data);
 		return (0);
 	}

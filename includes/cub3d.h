@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 12:55:09 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 13:51:53 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,9 @@ typedef enum e_game_state
 {
     STATE_MENU = 0,
     STATE_PLAY,
-	STATE_ENTER,
+	STATE_ANIMATION,
 	STATE_EXIT
 }	t_game_state;
-
-typedef struct t_enter
-{
-	void *ent1;
-	void *ent2;
-	void *ent3;
-	void *ent4;
-	void *ent5;
-	void *ent6;
-	void *ent7;
-	void *ent8;
-	void *ent9;
-}	t_enter;
 
 typedef struct s_text
 {
@@ -120,7 +107,6 @@ typedef struct s_game
 	int 		last_key;
 	int			menu_option;
 	pid_t		music_pid;
-	t_enter		enter;
 }   t_game;
 
 typedef enum e_direction
@@ -133,6 +119,14 @@ typedef enum e_direction
 	C
 }	t_direction;
 
+typedef struct s_anim
+{
+	void    *last_img;
+	int 	enter_frame;
+	long	last_frame_time;
+	void	*ent[10];
+}   t_anim;
+
 typedef struct s_data
 {
 	char	*text_path[6];
@@ -141,9 +135,9 @@ typedef struct s_data
 	t_game	game;
     int		start_map_index;
 	bool	error;
-	t_enter		enter;
 	int 	enter_frame;
 	long	last_frame_time;
+	t_anim	anim;
 }   t_data;
 
 bool 	extension_check(char *filename);
