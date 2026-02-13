@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 14:19:25 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/13 17:18:01 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ t_player	init_player(void)
 {
 	t_player	player;
 
-	player.posX = 0.0;
-	player.posY = 0.0;
-	player.dirX = 0.0;
-	player.dirY = 0.0;
-	player.planeX = 0.0;
-	player.planeY = 0.0;
+	player.pos_x = 0.0;
+	player.pos_y = 0.0;
+	player.dir_x = 0.0;
+	player.dir_y = 0.0;
+	player.plane_x = 0.0;
+	player.plane_y = 0.0;
 	return (player);
 }
 
@@ -90,36 +90,4 @@ t_data	init_data(void)
 	if (!data.game.mlx || !data.game.win)
 		data.error = true;
 	return (data);
-}
-
-void	update_player_data(t_data *data, char d)
-{
-	if (d == 'N')
-	{
-		data->game.player.dirX = 0;
-		data->game.player.dirY = -1;
-		data->game.player.planeX = 0.66;
-		data->game.player.planeY = 0;
-	}
-	else if (d == 'S')
-	{
-		data->game.player.dirX = 0;
-		data->game.player.dirY = 1;
-		data->game.player.planeX = -0.66;
-		data->game.player.planeY = 0;
-	}
-	else if (d == 'E')
-	{
-		data->game.player.dirX = 1;
-		data->game.player.dirY = 0;
-		data->game.player.planeX = 0;
-		data->game.player.planeY = 0.66;
-	}
-	else if (d == 'W')
-	{
-		data->game.player.dirX = -1;
-		data->game.player.dirY = 0;
-		data->game.player.planeX = 0;
-		data->game.player.planeY = -0.66;
-	}
 }

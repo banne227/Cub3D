@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+         #
+#    By: banne <banne@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 15:02:14 by banne             #+#    #+#              #
-#    Updated: 2026/02/13 16:55:42 by jhauvill         ###   ########.fr        #
+#    Updated: 2026/02/13 17:17:35 by banne            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRCS        = src/main.c \
 			  src/render/menu/menu.c \
 			  src/render/menu/enter.c \
 			  src/utils/time.c \
-			  src/audio/audio.c
+			  src/audio/audio.c \
+			  src/initializer/player_pos.c
 
 OBJS        = $(SRCS:.c=.o)
 

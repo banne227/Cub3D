@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 16:53:07 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/13 17:08:14 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	double			posX;
-	double			posY;
-	double			dirX;
-	double			dirY;
-	double			planeX;
-	double			planeY;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
 }					t_player;
 
 typedef struct s_game
@@ -169,7 +169,7 @@ void				free_data(t_data *data);
 void				draw_minimap(t_game *game);
 void				print_player_pos(t_game *game, int x, int y);
 int					render(void *param);
-void				move_player(t_data *data, int keycode);
+void				move_player(t_game *game, int keycode);
 void				rotate_player(t_data *data, int keycode);
 void				render_menu(t_game *game, t_data *data);
 long				timestamp(void);

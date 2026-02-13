@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 09:28:48 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 16:49:21 by jhauvill         ###   ########.fr       */
+/*   Created: 2026/02/13 17:02:40 by banne             #+#    #+#             */
+/*   Updated: 2026/02/13 17:03:32 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLORS_H
-# define COLORS_H
+#ifndef COLOR_H
+# define COLOR_H
 
 # define RESET "\e[0m"
 

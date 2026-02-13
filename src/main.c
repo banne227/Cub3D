@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:09:25 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 16:50:41 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/13 17:07:54 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	handle_key(int keycode, void *param)
 			stop_background_music(&data->game);
 		}
 	}
-	move_player(data, keycode);
+	move_player(&data->game, keycode);
 	rotate_player(data, keycode);
 	return (0);
 }

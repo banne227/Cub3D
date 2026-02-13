@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:50:21 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 16:50:28 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/13 17:05:05 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	draw_player_direction(t_game *game, int x, int y)
 	i = 0;
 	while (i < 8)
 	{
-		put_pixel_to_img(game, x + (int)(game->player.dirX * i), y
-			+ (int)(game->player.dirY * i), 0x00FF00);
+		put_pixel_to_img(game, x + (int)(game->player.dir_x * i), y
+			+ (int)(game->player.dir_y * i), 0x00FF00);
 		i++;
 	}
 }
@@ -82,6 +82,6 @@ void	draw_minimap(t_game *game)
 		}
 		y++;
 	}
-	print_player_pos(game, (int)(game->player.posX * MINI_TILE),
-		(int)(game->player.posY * MINI_TILE));
+	print_player_pos(game, (int)(game->player.pos_x * MINI_TILE),
+		(int)(game->player.pos_y * MINI_TILE));
 }

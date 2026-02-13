@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:17 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 16:50:18 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/13 17:04:41 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ static bool	only_one_player(char **map, t_data *data)
 			if (map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'E'
 				|| map[y][x] == 'W')
 			{
-				data->game.player.posX = x + 0.5;
-				data->game.player.posY = y + 0.5;
+				data->game.player.pos_x = x + 0.5;
+				data->game.player.pos_y = y + 0.5;
 				update_player_data(data, map[y][x]);
 				player_count++;
 			}
