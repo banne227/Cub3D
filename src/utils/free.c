@@ -59,6 +59,7 @@ int	close_game(void *param)
 {
 	t_data *data;
 
+	printf("Exiting game...\n");
 	data = (t_data *)param;
 	mlx_clear_window(data->game.mlx, data->game.win);
 	mlx_loop_end(data->game.mlx);

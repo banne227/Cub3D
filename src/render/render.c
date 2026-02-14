@@ -35,5 +35,6 @@ int	render(void *param)
 	draw_minimap(&data->game);
 	mlx_put_image_to_window(data->game.mlx, data->game.win, data->game.img, 0,
 		0);
+	draw_weapon(&data->game);
 	return (0);
 }

@@ -91,6 +91,30 @@ typedef struct s_player
 	double			plane_y;
 }					t_player;
 
+typedef struct s_knife
+{
+	int	damage;
+	int	range;
+	void *img[2];
+}					t_knife;
+
+typedef struct s_gun
+{
+	int	damage;
+	int	range;
+	void *img;
+	void *shoot[6];
+	void *reload[4];
+}					t_gun;
+
+typedef struct s_weapon
+{
+	int	type;
+	void *crosshair;
+	t_knife	knife;
+	t_gun	gun;
+} 					t_weapon;
+
 typedef struct s_game
 {
 	void			*mlx;
@@ -106,6 +130,7 @@ typedef struct s_game
 	int				last_key;
 	int				menu_option;
 	pid_t			music_pid;
+	t_weapon		weapon;
 }					t_game;
 
 typedef enum e_direction
@@ -178,5 +203,9 @@ void				play_background_music(t_game *game);
 void				stop_background_music(t_game *game);
 void				destroy_img(void *mlx, void *img);
 void				init_anim(t_data *data);
-
+void				load_weapons(t_weapon *weapon, void *mlx);
+t_game				init_game(void);
+t_map				init_map(void);
+int					swap_weapon(t_game *game);
+void				draw_weapon(t_game *game);
 #endif

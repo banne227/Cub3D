@@ -36,10 +36,7 @@ int	handle_key(int keycode, void *param)
 	data = (t_data *)param;
 	data->game.last_key = keycode;
 	if (keycode == KEY_ESC || data->game.state == STATE_EXIT)
-	{
-		printf("Exiting game...\n");
 		return (close_game(data));
-	}
 	if (keycode == KEY_M)
 	{
 		if (data->game.state == STATE_MENU)
@@ -53,6 +50,8 @@ int	handle_key(int keycode, void *param)
 			stop_background_music(&data->game);
 		}
 	}
+	if (data->game.state == STATE_PLAY && keycode == KEY_SPACE)
+		return(swap_weapon(&data->game));
 	move_player(&data->game, keycode);
 	rotate_player(data, keycode);
 	return (0);
