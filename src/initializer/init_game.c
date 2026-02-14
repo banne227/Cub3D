@@ -28,6 +28,8 @@ t_weapon	init_weapon(void *mlx)
     t_weapon	weapon;
     int i = 0;
 
+	weapon.attack = 0;
+	weapon.hit = 0;
     weapon.type = 0;
     weapon.knife.damage = 10;
     weapon.knife.range = 1;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_weapons.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/14 18:48:26 by codespace         #+#    #+#             */
+/*   Updated: 2026/02/14 18:49:22 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 static void	*load_weapon_textures(void *mlx, char *path)
@@ -29,5 +41,6 @@ void load_weapons(t_weapon *weapon, void *mlx)
     weapon->gun.reload[1] = load_weapon_textures(mlx, "textures/weapons/gun/gunreload2.xpm");
     weapon->gun.reload[2] = load_weapon_textures(mlx, "textures/weapons/gun/gunreload3.xpm");
     weapon->gun.reload[3] = load_weapon_textures(mlx, "textures/weapons/gun/gunreload4.xpm");
-    weapon->crosshair = load_weapon_textures(mlx, "textures/weapons/crosshair.xpm");
+    weapon->crosshair[0] = load_weapon_textures(mlx, "textures/weapons/crosshair/crosshair.xpm");
+    weapon->crosshair[1] = load_weapon_textures(mlx, "textures/weapons/crosshair/crosshairhit.xpm");
 }

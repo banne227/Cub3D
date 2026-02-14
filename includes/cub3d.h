@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 17:08:14 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/14 19:00:21 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// modif menu2.xpm avant 2 = #B7B7B1
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -110,7 +111,9 @@ typedef struct s_gun
 typedef struct s_weapon
 {
 	int	type;
-	void *crosshair;
+	int attack;
+	int hit;
+	void *crosshair[2];
 	t_knife	knife;
 	t_gun	gun;
 } 					t_weapon;
