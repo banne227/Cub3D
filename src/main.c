@@ -13,7 +13,7 @@
 #include "../includes/color.h"
 #include "../includes/cub3d.h"
 
-static void	print_controls(void)
+static void print_controls(void)
 {
 	printf(CYAN "\n");
 	printf("░█▀▀░█░█░█▀▄░▀▀█░█▀▄░░░█▀▀░█▀█░█▀█░▀█▀░█▀▄░█▀█░█░░░█▀▀\n");
@@ -29,9 +29,9 @@ static void	print_controls(void)
 	printf("\n");
 }
 
-int	handle_key(int keycode, void *param)
+int handle_key(int keycode, void *param)
 {
-	t_data	*data;
+	t_data *data;
 
 	data = (t_data *)param;
 	data->game.last_key = keycode;
@@ -52,9 +52,21 @@ int	handle_key(int keycode, void *param)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+int handle_mouse(int button, int x, int y, void *param)
 {
-	t_data	data;
+	t_data *data;
+
+	(void)x;
+	(void)y;
+	data = (t_data *)param;
+	if (data->game.state == STATE_PLAY)
+		make_action(data, button);
+	return (0);
+}
+
+int main(int argc, char **argv)
+{
+	t_data data;
 
 	data = init_data();
 	if (data.error || parse(argc, argv, &data) != 0)
@@ -67,6 +79,7 @@ int	main(int argc, char **argv)
 	data.game.map = data.map;
 	mlx_loop_hook(data.game.mlx, render, &data);
 	mlx_hook(data.game.win, 2, 1L << 0, handle_key, &data);
+	mlx_hook(data.game.win, 4, 1L << 2, handle_mouse, &data);
 	mlx_hook(data.game.win, 17, 0, close_game, &data);
 	mlx_loop(data.game.mlx);
 	stop_background_music(&data.game);

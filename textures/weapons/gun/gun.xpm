@@ -1,7 +1,7 @@
 /* XPM */
 static char *result[] = {
 /* columns rows colors chars-per-pixel */
-"80 111 54 1 ",
+"80 114 54 1 ",
 "  c #070707",
 ". c #0B0B0B",
 "X c #170F07",
@@ -167,5 +167,8 @@ static char *result[] = {
 "mmmmmmmmmmmmmmmmmmmmm ##26622>O %O%277877eaytjkklasszzzkkapshzskxkllkhshstr6mmmm",
 "mmmmmmmmmmmmmmmmmmmmmm #>,2>>%O %OO>7e777rarpskzkhpalzxkhrhhhxklzzkklhhjasty6mmm",
 "mmmmmmmmmmmmmmmmmmmmmmm%&>,>>#O%%#OO2ee77ryppsfklhyaklksjyrajlzllllxzllklalppt6m",
+"mmmmmmmmmmmmmmmmmmmmmmm %&,>>#OO%##O#2772repaphklarpklakhntslzlhlzzkjszjjjlasrt6",
+"mmmmmmmmmmmmmmmmmmmmmmm %&,>>#OO%##O#2772repaphklarpklakhntslzlhlzzkjszjjjlasrt6",
+"mmmmmmmmmmmmmmmmmmmmmmm %&,>>#OO%##O#2772repaphklarpklakhntslzlhlzzkjszjjjlasrt6",
 "mmmmmmmmmmmmmmmmmmmmmmm %&,>>#OO%##O#2772repaphklarpklakhntslzlhlzzkjszjjjlasrt6"
 };

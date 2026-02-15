@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fshoot.c                                            :+:      :+:    :+:   */
+/*   shoot.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,19 +14,18 @@
 
 void shoot(t_weapon *weapon, t_game *game)
 {
-    if (weapon->type == 0 || weapon->attack == 0 || weapon->gun.ammo == 0
-        || weapon->gun.freload > 0)
-        return ;
-    weapon->gun.fshoot++;
-    if (weapon->gun.fshoot % 2 == 0)
-        weapon->img = weapon->gun.shoot[weapon->gun.fshoot / 2];
-    if (weapon->gun.fshoot >= 12)
-    {
+	if (weapon->type == 0 || weapon->attack == 0 || weapon->gun.ammo == 0 || weapon->gun.freload > 0)
+		return;
+	weapon->gun.fshoot++;
+	if (weapon->gun.fshoot % 3 == 0 && weapon->gun.fshoot / 3 < 6)
+		weapon->img = weapon->gun.shoot[weapon->gun.fshoot / 3];
+	if (weapon->gun.fshoot >= 18)
+	{
 		weapon->img = weapon->gun.img;
 		weapon->attack = 0;
-        weapon->gun.fshoot = 0; 
-        weapon->gun.ammo--;
-    }
+		weapon->gun.fshoot = 0;
+		weapon->gun.ammo--;
+	}
 	if (bullet_hit(weapon, game->player, game->map))
 		weapon->hit = 1;
 }
@@ -44,18 +43,17 @@ int bullet_hit(t_weapon *weapon, t_player player, t_map map)
 		bullet_y += player.dir_y * step_size;
 		distance_traveled += step_size;
 
-		if ((int)bullet_x < 0 || (int)bullet_x >= map.width 
-			|| (int)bullet_y < 0 || (int)bullet_y >= map.height)
+		if ((int)bullet_x < 0 || (int)bullet_x >= map.width || (int)bullet_y < 0 || (int)bullet_y >= map.height)
 			break;
 
-		if (map.map[(int)bullet_x][(int)bullet_y] == '1')
+		if (map.map[(int)bullet_y][(int)bullet_x] == '1')
 			return 0;
 
-		if (map.map[(int)bullet_x][(int)bullet_y] == 'E')
+		if (map.map[(int)bullet_y][(int)bullet_x] == 'E')
 		{
 			// take_damage(weapon->gun.damage, (int)bullet_x, (int)bullet_y);
 			return 1;
-		}	
+		}
 	}
 	return 0;
 }

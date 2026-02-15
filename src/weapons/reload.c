@@ -17,9 +17,9 @@ void reload(t_weapon *weapon)
     if (weapon->type == 0 || weapon->gun.ammo == 8)
         return ;
     weapon->gun.freload++;
-    if (weapon->gun.freload % 2 == 0)
-        weapon->img = weapon->gun.reload[weapon->gun.freload / 2];
-    if (weapon->gun.freload >= 8)
+    if (weapon->gun.freload % 10 == 0 && weapon->gun.freload / 10 < 4)
+        weapon->img = weapon->gun.reload[weapon->gun.freload / 10];
+    if (weapon->gun.freload >= 40)
     {
         weapon->img = weapon->gun.img;
         weapon->gun.freload = 0;

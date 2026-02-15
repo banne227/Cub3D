@@ -205,7 +205,7 @@ int					close_game(void *param);
 int					load_textures(t_data *data);
 void				free_data(t_data *data);
 void				draw_minimap(t_game *game);
-void				print_player_pos(t_game *game, int x, int y);
+void 				print_player_pos(t_game *game, int *img_data, int line_len,int x, int y);
 int					render(void *param);
 void				move_player(t_game *game, int keycode);
 void				rotate_player(t_data *data, int keycode);

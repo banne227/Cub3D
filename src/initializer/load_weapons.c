@@ -34,12 +34,12 @@ void load_gun(t_weapon *weapon, void *mlx)
 	weapon->gun.fshoot = 0;
 	weapon->gun.ammo = 8;
     weapon->gun.img = load_weapon_textures(mlx, "textures/weapons/gun/gun.xpm");
-    weapon->gun.shoot[0] = load_weapon_textures(mlx, "textures/weapons/gun/gunshoot1.xpm");
-    weapon->gun.shoot[1] = load_weapon_textures(mlx, "textures/weapons/gun/gunshoot2.xpm");
-    weapon->gun.shoot[2] = load_weapon_textures(mlx, "textures/weapons/gun/gunshoot3.xpm");
-    weapon->gun.shoot[3] = load_weapon_textures(mlx, "textures/weapons/gun/gunshoot4.xpm");
-    weapon->gun.shoot[4] = load_weapon_textures(mlx, "textures/weapons/gun/gunshoot5.xpm");
-    weapon->gun.shoot[5] = load_weapon_textures(mlx, "textures/weapons/gun/gunshoot6.xpm");
+    weapon->gun.shoot[0] = load_weapon_textures(mlx, "textures/weapons/gun/gunshot1.xpm");
+    weapon->gun.shoot[1] = load_weapon_textures(mlx, "textures/weapons/gun/gunshot2.xpm");
+    weapon->gun.shoot[2] = load_weapon_textures(mlx, "textures/weapons/gun/gunshot3.xpm");
+    weapon->gun.shoot[3] = load_weapon_textures(mlx, "textures/weapons/gun/gunshot4.xpm");
+    weapon->gun.shoot[4] = load_weapon_textures(mlx, "textures/weapons/gun/gunshot5.xpm");
+    weapon->gun.shoot[5] = load_weapon_textures(mlx, "textures/weapons/gun/gunshot6.xpm");
     weapon->gun.reload[0] = load_weapon_textures(mlx, "textures/weapons/gun/gunreload1.xpm");
     weapon->gun.reload[1] = load_weapon_textures(mlx, "textures/weapons/gun/gunreload2.xpm");
     weapon->gun.reload[2] = load_weapon_textures(mlx, "textures/weapons/gun/gunreload3.xpm");
@@ -58,8 +58,8 @@ void load_weapons(t_weapon *weapon, void *mlx)
 {
     load_knife(weapon, mlx);
     load_gun(weapon, mlx);
-    weapon->crosshair[0] = load_weapon_textures(mlx, "textures/weapons/crosshair.xpm");
-    weapon->crosshair[1] = load_weapon_textures(mlx, "textures/weapons/crosshairhit.xpm");
+    weapon->crosshair[0] = load_weapon_textures(mlx, "textures/weapons/crosshair/crosshair.xpm");
+    weapon->crosshair[1] = load_weapon_textures(mlx, "textures/weapons/crosshair/crosshairhit.xpm");
     if (weapon->knife.img[0])
         weapon->img = weapon->knife.img[0];
     else if (weapon->gun.img)

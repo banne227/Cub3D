@@ -6,12 +6,19 @@ void make_action(t_data *data, int keycode)
     if (keycode == MOUSE_LEFT)
     {
         if (data->game.weapon.type == 0)
-            cut(&data->game.weapon, &data->game);
-        else if (data->game.weapon.type == 1)
-            shoot(&data->game.weapon, &data->game);
+            data->game.weapon.attack = 1;
+        else if (data->game.weapon.type == 1
+            && data->game.weapon.gun.ammo > 0
+            && data->game.weapon.gun.freload == 0)
+            data->game.weapon.attack = 1;
     }
-    else if (keycode == MOUSE_RIGHT || keycode == KEY_R)
-        reload(&data->game.weapon);
+    else if (keycode == MOUSE_RIGHT || keycode == 3 || keycode == KEY_R)
+    {
+        if (data->game.weapon.type == 1
+            && data->game.weapon.gun.ammo < 8
+            && data->game.weapon.gun.freload == 0)
+            data->game.weapon.gun.freload = 1;
+    }
     else if (keycode == KEY_M)
     {
         data->game.state = STATE_MENU;

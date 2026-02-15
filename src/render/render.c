@@ -32,6 +32,15 @@ int	render(void *param)
 		display_enter(data);
 		return (0);
 	}
+	if (data->game.weapon.attack)
+	{
+		if (data->game.weapon.type == 0)
+			cut(&data->game.weapon, &data->game);
+		else
+			shoot(&data->game.weapon, &data->game);
+	}
+	if (data->game.weapon.gun.freload > 0)
+		reload(&data->game.weapon);
 	draw_minimap(&data->game);
 	mlx_put_image_to_window(data->game.mlx, data->game.win, data->game.img, 0,
 		0);

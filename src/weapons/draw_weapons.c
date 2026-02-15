@@ -39,8 +39,18 @@ void draw_weapon(t_game *game)
 int swap_weapon(t_game *game)
 {
     if (game->weapon.type == 0)
+    {
         game->weapon.type = 1;
+        game->weapon.img = game->weapon.gun.img;
+    }
     else
+    {
         game->weapon.type = 0;
+        game->weapon.img = game->weapon.knife.img[0];
+    }
+    game->weapon.attack = 0;
+    game->weapon.frame = 0;
+    game->weapon.gun.fshoot = 0;
+    game->weapon.gun.freload = 0;
     return (0);
 }
