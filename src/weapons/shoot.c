@@ -24,7 +24,7 @@ void shoot(t_weapon *weapon, t_game *game)
     {
 		weapon->img = weapon->gun.img;
 		weapon->attack = 0;
-        weapon->gun.fshoot = 0;
+        weapon->gun.fshoot = 0; 
         weapon->gun.ammo--;
     }
 	if (bullet_hit(weapon, game->player, game->map))
