@@ -45,6 +45,10 @@ SRCS        = src/main.c \
 			  src/initializer/init_game.c \
 			  src/initializer/load_weapons.c \
 			  src/weapons/draw_weapons.c \
+			  src/weapons/shoot.c \
+			  src/weapons/cut.c \
+			  src/weapons/reload.c \
+			  src/game/actions.c
 
 OBJS        = $(SRCS:.c=.o)
 

@@ -44,14 +44,9 @@ int	handle_key(int keycode, void *param)
 			play_background_music(&data->game);
 			data->game.state = STATE_PLAY;
 		}
-		else if (data->game.state == STATE_PLAY)
-		{
-			data->game.state = STATE_MENU;
-			stop_background_music(&data->game);
-		}
 	}
-	if (data->game.state == STATE_PLAY && keycode == KEY_SPACE)
-		return(swap_weapon(&data->game));
+	if (data->game.state == STATE_PLAY)
+		make_action(data, keycode);
 	move_player(&data->game, keycode);
 	rotate_player(data, keycode);
 	return (0);

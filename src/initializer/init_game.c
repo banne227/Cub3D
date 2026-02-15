@@ -1,8 +1,8 @@
 #include "../../includes/cub3d.h"
 
-t_player	init_player(void)
+t_player init_player(void)
 {
-	t_player	player;
+	t_player player;
 
 	player.pos_x = 0.0;
 	player.pos_y = 0.0;
@@ -13,9 +13,9 @@ t_player	init_player(void)
 	return (player);
 }
 
-t_map	init_map(void)
+t_map init_map(void)
 {
-	t_map	map;
+	t_map map;
 
 	map.map = NULL;
 	map.width = 0;
@@ -23,33 +23,31 @@ t_map	init_map(void)
 	return (map);
 }
 
-t_weapon	init_weapon(void *mlx)
+t_weapon init_weapon(void *mlx)
 {
-    t_weapon	weapon;
-    int i = 0;
+	t_weapon weapon;
+	int i = 0;
 
 	weapon.attack = 0;
+	weapon.frame = 0;
 	weapon.hit = 0;
-    weapon.type = 0;
-    weapon.knife.damage = 10;
-    weapon.knife.range = 1;
-    weapon.knife.img[0] = NULL;
-    weapon.knife.img[1] = NULL;
-    weapon.gun.damage = 20;
-    weapon.gun.range = 5;
-    weapon.gun.img = NULL;
-    while (i < 6)
-        weapon.gun.shoot[i++] = NULL;
-    i = 0;
-    while (i < 4)
-        weapon.gun.reload[i++] = NULL;
-    load_weapons(&weapon, mlx);
-    return (weapon);
+	weapon.type = 0;
+	weapon.knife.img[0] = NULL;
+	weapon.knife.img[1] = NULL;
+	weapon.gun.img = NULL;
+	weapon.img = NULL;
+	while (i < 6)
+		weapon.gun.shoot[i++] = NULL;
+	i = 0;
+	while (i < 4)
+		weapon.gun.reload[i++] = NULL;
+	load_weapons(&weapon, mlx);
+	return (weapon);
 }
 
-t_game	init_game(void)
+t_game init_game(void)
 {
-	t_game	game;
+	t_game game;
 
 	game.mlx = NULL;
 	game.win = NULL;
@@ -64,8 +62,9 @@ t_game	init_game(void)
 	game.last_key = 0;
 	game.menu_option = 0;
 	game.music_pid = 0;
-    game.weapon = init_weapon(game.mlx);
 	if (!init_mlx(&game))
 		printf("Error\nFailed to initialize game graphics\n");
+	else
+		game.weapon = init_weapon(game.mlx);
 	return (game);
 }

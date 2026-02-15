@@ -12,21 +12,24 @@
 
 #include "../../includes/cub3d.h"
 
-void	draw_weapon(t_game *game)
+void draw_weapon(t_game *game)
 {
     int x = (game->win_w - 64) / 2;
     int y = game->win_h - 128;
 
-    if (game->weapon.type == 0)
-        mlx_put_image_to_window(game->mlx, game->win, game->weapon.knife.img[0], x, y);
-    else if (game->weapon.type == 1)
-        mlx_put_image_to_window(game->mlx, game->win, game->weapon.gun.img, x, y);
+    if (!game->weapon.img)
+        return;
+    mlx_put_image_to_window(game->mlx, game->win, game->weapon.img, x, y);
     y = (game->win_h - 64) / 2;
     if (game->weapon.hit == 0)
-        mlx_put_image_to_window(game->mlx, game->win, game->weapon.crosshair[0],x, y);
+    {
+        if (game->weapon.crosshair[0])
+            mlx_put_image_to_window(game->mlx, game->win, game->weapon.crosshair[0], x, y);
+    }
     else
     {
-        mlx_put_image_to_window(game->mlx, game->win, game->weapon.crosshair[1],x, y);
+        if (game->weapon.crosshair[1])
+            mlx_put_image_to_window(game->mlx, game->win, game->weapon.crosshair[1], x, y);
         game->weapon.hit += 1;
         if (game->weapon.hit > 2)
             game->weapon.hit = 0;

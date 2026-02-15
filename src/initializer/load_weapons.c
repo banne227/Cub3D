@@ -26,10 +26,13 @@ static void	*load_weapon_textures(void *mlx, char *path)
     return (img);
 }
 
-void load_weapons(t_weapon *weapon, void *mlx)
+void load_gun(t_weapon *weapon, void *mlx)
 {
-    weapon->knife.img[0] = load_weapon_textures(mlx, "textures/weapons/knife/knife1.xpm");
-    weapon->knife.img[1] = load_weapon_textures(mlx, "textures/weapons/knife/knife2.xpm");
+    weapon->gun.damage = 20;
+    weapon->gun.range = 8;
+    weapon->gun.freload = 0;
+	weapon->gun.fshoot = 0;
+	weapon->gun.ammo = 8;
     weapon->gun.img = load_weapon_textures(mlx, "textures/weapons/gun/gun.xpm");
     weapon->gun.shoot[0] = load_weapon_textures(mlx, "textures/weapons/gun/gunshoot1.xpm");
     weapon->gun.shoot[1] = load_weapon_textures(mlx, "textures/weapons/gun/gunshoot2.xpm");
@@ -41,6 +44,24 @@ void load_weapons(t_weapon *weapon, void *mlx)
     weapon->gun.reload[1] = load_weapon_textures(mlx, "textures/weapons/gun/gunreload2.xpm");
     weapon->gun.reload[2] = load_weapon_textures(mlx, "textures/weapons/gun/gunreload3.xpm");
     weapon->gun.reload[3] = load_weapon_textures(mlx, "textures/weapons/gun/gunreload4.xpm");
-    weapon->crosshair[0] = load_weapon_textures(mlx, "textures/weapons/crosshair/crosshair.xpm");
-    weapon->crosshair[1] = load_weapon_textures(mlx, "textures/weapons/crosshair/crosshairhit.xpm");
+}
+
+void load_knife(t_weapon *weapon, void *mlx)
+{
+    weapon->knife.damage = 10;
+    weapon->knife.range = 1;
+    weapon->knife.img[0] = load_weapon_textures(mlx, "textures/weapons/knife/knife1.xpm");
+    weapon->knife.img[1] = load_weapon_textures(mlx, "textures/weapons/knife/knife2.xpm");
+}
+
+void load_weapons(t_weapon *weapon, void *mlx)
+{
+    load_knife(weapon, mlx);
+    load_gun(weapon, mlx);
+    weapon->crosshair[0] = load_weapon_textures(mlx, "textures/weapons/crosshair.xpm");
+    weapon->crosshair[1] = load_weapon_textures(mlx, "textures/weapons/crosshairhit.xpm");
+    if (weapon->knife.img[0])
+        weapon->img = weapon->knife.img[0];
+    else if (weapon->gun.img)
+        weapon->img = weapon->gun.img;
 }

@@ -45,6 +45,11 @@
 # define KEY_S 115 // s
 # define KEY_D 100 // d
 # define KEY_M 109 // m
+# define KEY_R 114 // r
+
+/* mouse click*/
+# define MOUSE_LEFT 1
+# define MOUSE_RIGHT 2
 
 /* Arrows */
 # define KEY_LEFT 65361
@@ -104,6 +109,9 @@ typedef struct s_gun
 	int	damage;
 	int	range;
 	void *img;
+	int freload;
+	int fshoot;
+	int ammo;
 	void *shoot[6];
 	void *reload[4];
 }					t_gun;
@@ -111,8 +119,10 @@ typedef struct s_gun
 typedef struct s_weapon
 {
 	int	type;
+	void *img;
 	int attack;
 	int hit;
+	int frame;
 	void *crosshair[2];
 	t_knife	knife;
 	t_gun	gun;
@@ -211,4 +221,10 @@ t_game				init_game(void);
 t_map				init_map(void);
 int					swap_weapon(t_game *game);
 void				draw_weapon(t_game *game);
+void				shoot(t_weapon *weapon, t_game *game);
+int					bullet_hit(t_weapon *weapon, t_player player, t_map map);
+void				cut(t_weapon *weapon, t_game *game);
+int					hit(t_weapon *weapon, t_player player, t_map map);
+void				reload(t_weapon *weapon);
+void				make_action(t_data *data, int keycode);
 #endif

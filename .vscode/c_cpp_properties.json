@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/includes",
+                "${workspaceFolder}/includes/minilibx-linux",
+                "${workspaceFolder}/src/libft",
+                "${workspaceFolder}/src/libft/ft_printf",
+                "${workspaceFolder}/src/libft/gnl",
+                "${workspaceFolder}/src",
+                "C:/MinGW/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c99",
+            "cppStandard": "c++17",
+            "intelliSenseEngine": "default",
+            "compilerPath": "C:/MinGW/bin/gcc.exe"
+        }
+    ],
+    "version": 4
+}

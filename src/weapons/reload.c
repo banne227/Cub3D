@@ -10,3 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/cub3d.h"
+
+void reload(t_weapon *weapon)
+{
+    if (weapon->type == 0 || weapon->gun.ammo == 8)
+        return ;
+    weapon->gun.freload++;
+    if (weapon->gun.freload % 2 == 0)
+        weapon->img = weapon->gun.reload[weapon->gun.freload / 2];
+    if (weapon->gun.freload >= 8)
+    {
+        weapon->img = weapon->gun.img;
+        weapon->gun.freload = 0;
+        weapon->gun.ammo = 8;
+    }
+}
