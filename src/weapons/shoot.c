@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shoot.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:11:01 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/14 19:11:02 by codespace        ###   ########.fr       */
+/*   Updated: 2026/02/16 08:30:12 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void shoot(t_weapon *weapon, t_game *game)
 	if (weapon->type == 0 || weapon->attack == 0 || weapon->gun.ammo == 0 || weapon->gun.freload > 0)
 		return;
 	weapon->gun.fshoot++;
-	if (weapon->gun.fshoot % 3 == 0 && weapon->gun.fshoot / 3 < 6)
-		weapon->img = weapon->gun.shoot[weapon->gun.fshoot / 3];
-	if (weapon->gun.fshoot >= 18)
+	if (weapon->gun.fshoot % 15 == 0 && weapon->gun.fshoot / 15 < 6)
+		weapon->img = weapon->gun.shoot[weapon->gun.fshoot / 15];
+	if (weapon->gun.fshoot >= 90)
 	{
 		weapon->img = weapon->gun.img;
 		weapon->attack = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_weapons.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:48:26 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/14 18:49:22 by codespace        ###   ########.fr       */
+/*   Updated: 2026/02/16 09:42:38 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,15 @@ void load_weapons(t_weapon *weapon, void *mlx)
     load_gun(weapon, mlx);
     weapon->crosshair[0] = load_weapon_textures(mlx, "textures/weapons/crosshair/crosshair.xpm");
     weapon->crosshair[1] = load_weapon_textures(mlx, "textures/weapons/crosshair/crosshairhit.xpm");
+    weapon->ammo[0] = load_weapon_textures(mlx, "textures/weapons/ammo/ammo1.xpm");
+    weapon->ammo[1] = load_weapon_textures(mlx, "textures/weapons/ammo/ammo2.xpm");
+    
+    // Debug: afficher les erreurs de chargement
+    if (!weapon->ammo[0])
+        ft_printf("Error: Failed to load ammo1.xpm\n");
+    if (!weapon->ammo[1])
+        ft_printf("Error: Failed to load ammo2.xpm\n");
+    
     if (weapon->knife.img[0])
         weapon->img = weapon->knife.img[0];
     else if (weapon->gun.img)

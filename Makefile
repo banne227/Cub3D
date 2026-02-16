@@ -6,7 +6,7 @@
 #    By: banne <banne@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 15:02:14 by banne             #+#    #+#              #
-#    Updated: 2026/02/13 17:17:35 by banne            ###   ########.fr        #
+#    Updated: 2026/02/16 09:47:46 by banne            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,34 +21,7 @@ LIBFT       = $(LIBFT_DIR)/libft.a
 MLX_DIR     = includes/minilibx-linux
 MLX         = $(MLX_DIR)/libmlx.a
 
-SRCS        = src/main.c \
-              src/initializer/init_data.c \
-              src/initializer/init_mlx.c \
-              src/parsing/parsing.c \
-              src/parsing/file_checker.c \
-              src/parsing/get_data.c \
-              src/parsing/get_map.c \
-              src/parsing/get_value.c \
-              src/parsing/verif_map.c \
-			  src/parsing/verif_data.c \
-			  src/utils/copy.c \
-			  src/utils/free.c \
-			  src/render/minimap/minimap.c \
-			  src/render/render.c \
-			  src/game/needed.c \
-			  src/game/mouvement.c \
-			  src/render/menu/menu.c \
-			  src/render/menu/enter.c \
-			  src/utils/time.c \
-			  src/audio/audio.c \
-			  src/initializer/player_pos.c \
-			  src/initializer/init_game.c \
-			  src/initializer/load_weapons.c \
-			  src/weapons/draw_weapons.c \
-			  src/weapons/shoot.c \
-			  src/weapons/cut.c \
-			  src/weapons/reload.c \
-			  src/game/actions.c
+SRCS        = $(shell cat srcs)
 
 OBJS        = $(SRCS:.c=.o)
 

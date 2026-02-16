@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/14 19:00:21 by codespace        ###   ########.fr       */
+/*   Updated: 2026/02/16 09:44:33 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// modif menu2.xpm avant 2 = #B7B7B1
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -39,6 +38,7 @@
 # define WALL_COLOR 0xFFFFFF
 # define FLOOR_COLOR 0x777777
 
+# define MAX_AMMO 8
 /* Movement */
 # define KEY_W 119 // w
 # define KEY_A 97  // a
@@ -126,6 +126,7 @@ typedef struct s_weapon
 	void *crosshair[2];
 	t_knife	knife;
 	t_gun	gun;
+	void	*ammo[2];
 } 					t_weapon;
 
 typedef struct s_game
@@ -227,4 +228,5 @@ void				cut(t_weapon *weapon, t_game *game);
 int					hit(t_weapon *weapon, t_player player, t_map map);
 void				reload(t_weapon *weapon);
 void				make_action(t_data *data, int keycode);
+void				display_ammo(t_weapon *weapon, t_game *game);
 #endif

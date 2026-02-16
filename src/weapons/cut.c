@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   cut.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:10:54 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/14 19:10:55 by codespace        ###   ########.fr       */
+/*   Updated: 2026/02/16 08:31:22 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void cut(t_weapon *weapon, t_game *game)
+{
+    if (weapon->type == 1 || weapon->attack == 0)
+        return;
+    weapon->frame++;
+    if (weapon->frame >= 100)
+    {
+        weapon->frame = 0;
+        weapon->img = weapon->knife.img[0];
+        weapon->attack = 0;
+    }
+    else
+        weapon->img = weapon->knife.img[1];
+    if (hit(weapon, game->player, game->map))
+        weapon->hit = 1;
+}
 
 int hit(t_weapon *weapon, t_player player, t_map map)
 {
@@ -38,21 +55,4 @@ int hit(t_weapon *weapon, t_player player, t_map map)
         }
     }
     return 0;
-}
-
-void cut(t_weapon *weapon, t_game *game)
-{
-    if (weapon->type == 1 || weapon->attack == 0)
-        return;
-    weapon->frame++;
-    if (weapon->frame >= 6)
-    {
-        weapon->frame = 0;
-        weapon->img = weapon->knife.img[0];
-        weapon->attack = 0;
-    }
-    else
-        weapon->img = weapon->knife.img[1];
-    if (hit(weapon, game->player, game->map))
-        weapon->hit = 1;
 }

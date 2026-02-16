@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_weapons.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:50:08 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/14 18:52:56 by codespace        ###   ########.fr       */
+/*   Updated: 2026/02/16 09:44:55 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void draw_weapon(t_game *game)
         if (game->weapon.hit > 2)
             game->weapon.hit = 0;
     }
+    display_ammo(&game->weapon, game);
 }
 
 int swap_weapon(t_game *game)
