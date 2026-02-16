@@ -42,6 +42,7 @@ t_weapon init_weapon(void *mlx)
 	while (i < 4)
 		weapon.gun.reload[i++] = NULL;
 	load_weapons(&weapon, mlx);
+	weapon.sound = 0;
 	return (weapon);
 }
 
@@ -49,6 +50,7 @@ t_game init_game(void)
 {
 	t_game game;
 
+	game.background_music = true;
 	game.mlx = NULL;
 	game.win = NULL;
 	game.img = NULL;

@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:10:54 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/16 08:31:22 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/16 14:30:16 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void cut(t_weapon *weapon, t_game *game)
 {
     if (weapon->type == 1 || weapon->attack == 0)
         return;
+    if (weapon->frame == 0 || weapon->frame == 1)
+        weapon->sound = play_sounds(KNIFE_SOUND);
     weapon->frame++;
     if (weapon->frame >= 100)
     {

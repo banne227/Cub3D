@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:09:25 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 17:07:54 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/16 14:11:52 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,34 @@ int handle_mouse(int button, int x, int y, void *param)
 	return (0);
 }
 
+int handle_mouse_move(int x, int y, void *param)
+{
+	t_data	*data;
+	t_mouse_mouv	mouse;
+
+	data = (t_data *)param;
+	mouse.center_x = WIN_W / 2;
+	mouse.center_y = WIN_H / 2;
+	if (data->game.state != STATE_PLAY)
+		return (0);
+	if (x == mouse.center_x && y == mouse.center_y)
+		return (0);
+	mouse.delta_x = x - mouse.center_x;
+	mouse.rot_speed = mouse.delta_x * SENSI;
+	mouse.olddir_x = data->game.player.dir_x;
+	mouse.oldplane_x = data->game.player.plane_x;
+	data->game.player.dir_x = data->game.player.dir_x * cos(mouse.rot_speed)
+		- data->game.player.dir_y * sin(mouse.rot_speed);
+	data->game.player.dir_y = mouse.olddir_x * sin(mouse.rot_speed)
+		+ data->game.player.dir_y * cos(mouse.rot_speed);
+	data->game.player.plane_x = data->game.player.plane_x * cos(mouse.rot_speed)
+		- data->game.player.plane_y * sin(mouse.rot_speed);
+	data->game.player.plane_y = mouse.oldplane_x * sin(mouse.rot_speed)
+		+ data->game.player.plane_y * cos(mouse.rot_speed);
+	mlx_mouse_move(data->game.mlx, data->game.win, mouse.center_x, mouse.center_y);
+	return (0);
+}
+
 int main(int argc, char **argv)
 {
 	t_data data;
@@ -77,9 +105,13 @@ int main(int argc, char **argv)
 	printf("Parsing successful!\n");
 	print_controls();
 	data.game.map = data.map;
+	data.game.background_music = false;
 	mlx_loop_hook(data.game.mlx, render, &data);
+	mlx_mouse_hide(data.game.mlx, data.game.win);
+	mlx_mouse_move(data.game.mlx, data.game.win, WIN_W / 2, WIN_H / 2);
 	mlx_hook(data.game.win, 2, 1L << 0, handle_key, &data);
 	mlx_hook(data.game.win, 4, 1L << 2, handle_mouse, &data);
+	mlx_hook(data.game.win, 6, 1L << 6, handle_mouse_move, &data);
 	mlx_hook(data.game.win, 17, 0, close_game, &data);
 	mlx_loop(data.game.mlx);
 	stop_background_music(&data.game);

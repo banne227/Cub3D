@@ -1,7 +1,7 @@
 /* XPM */
 static char *result[] = {
 /* columns rows colors chars-per-pixel */
-"18 44 76 1 ",
+"18 38 76 1 ",
 "  c #17151B",
 ". c #1F171D",
 "X c #2F1B1B",
@@ -117,11 +117,5 @@ static char *result[] = {
 "E<qZUPK,$.2Dj-ec3E",
 "E>qZUPK:$.2Dj-ec3E",
 "E>qZUPK:$.2Dj-ec3E",
-"E>wZUPK:$.2Dj-ec3E",
-"E>qAUPK:$.2Dj-ec3E",
-"E>qAUPK:$ 2Dj-ec3E",
-"E>qAUPL-$ 2Dj-ec3E",
-"E>9AYUP:$.2Dk-ec3E",
-"E<gAHGA*O.*bd,dj,E",
-"E<gAHGA*O.*bd,dj,E",
+"E>wZUPK:$.2Dj-ec3E"
 };

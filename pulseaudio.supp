@@ -65,3 +65,57 @@
    ...
    obj:*/libpulsecommon*.so*
 }
+{
+   X11_lc_init_still_reachable
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_XlcAddCT
+   fun:_XlcInitCTInfo
+   fun:_XlcCreateLC
+   fun:_XlcUtf8Loader
+   fun:_XOpenLC
+   fun:_XrmInitParseInfo
+   fun:XrmGetStringDatabase
+}
+
+{
+   X11_lc_charset_still_reachable
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:_XlcCreateDefaultCharSet
+   fun:_XlcAddCT
+   fun:_XlcInitCTInfo
+   fun:_XlcCreateLC
+   fun:_XlcUtf8Loader
+   fun:_XOpenLC
+   fun:_XrmInitParseInfo
+   fun:XrmGetStringDatabase
+}
+
+{
+   X11_xrm_quark_still_reachable
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:_XrmInternalStringToQuark
+   fun:XrmInitialize
+   fun:XGetDefault
+   fun:_XcursorGetDisplayInfo
+   fun:XCreatePixmap
+   fun:XCreateBitmapFromData
+}
+
+{
+   X11_xrm_quark_malloc_still_reachable
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_XrmInternalStringToQuark
+   fun:XrmInitialize
+   fun:XGetDefault
+   fun:_XcursorGetDisplayInfo
+   fun:XCreatePixmap
+   fun:XCreateBitmapFromData
+}

@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:10:58 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/16 08:30:00 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/16 14:17:39 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ void reload(t_weapon *weapon)
 {
     if (weapon->type == 0 || weapon->gun.ammo == 8)
         return ;
+    if (weapon->gun.freload == 0 || weapon->gun.freload == 1)
+    {
+        weapon->sound = play_sounds(RELOAD_SOUND);
+    }  
     weapon->gun.freload++;
     if (weapon->gun.freload % 80 == 0 && weapon->gun.freload / 80 < 4)
         weapon->img = weapon->gun.reload[weapon->gun.freload / 80];

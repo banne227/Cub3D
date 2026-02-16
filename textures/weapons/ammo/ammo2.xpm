@@ -1,7 +1,7 @@
 /* XPM */
 static char *result[] = {
 /* columns rows colors chars-per-pixel */
-"18 44 34 1 ",
+"18 38 34 1 ",
 "  c #070707",
 ". c gray9",
 "X c gray10",
@@ -74,11 +74,5 @@ static char *result[] = {
 "t@>7rww&o *r3#<7;t",
 "t%>7rww#o *r3#<7;t",
 "t%>7rwq#o *r3#<7;t",
-"t%>7rwq#o *r4#<7;t",
-"t%>8rwq#o *r4#<7;t",
-"t%>8rwq#o *r4#<7;t",
-"t%>8rwq#o *r4#<7;t",
-"t%>8rwq#o *r4#<7;t",
-"t%;8rrw#o -r4+<7:t",
-"t:38q08O. #81&15&t"
+"t%>7rwq#o *r4#<7;t"
 };

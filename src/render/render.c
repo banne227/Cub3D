@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:57:11 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 16:50:30 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/16 14:16:57 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	render(void *param)
+int render(void *param)
 {
-	t_data	*data;
+	t_data *data;
 
 	data = (t_data *)param;
 	if (data->game.state == STATE_EXIT)
 		return (close_game(data));
 	if (!data->game.img)
 		data->game.img = mlx_new_image(data->game.mlx, data->game.win_w,
-				data->game.win_h);
+									   data->game.win_h);
 	if (data->game.state == STATE_MENU)
 	{
 		render_menu(&data->game, data);
@@ -40,10 +40,12 @@ int	render(void *param)
 			shoot(&data->game.weapon, &data->game);
 	}
 	if (data->game.weapon.gun.freload > 0)
+	{
 		reload(&data->game.weapon);
+	}
 	draw_minimap(&data->game);
 	mlx_put_image_to_window(data->game.mlx, data->game.win, data->game.img, 0,
-		0);
+							0);
 	draw_weapon(&data->game);
 	return (0);
 }

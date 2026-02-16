@@ -1,0 +1,13 @@
+{
+	MLX_any_leak
+	Memcheck:Leak
+	match-leak-kinds: reachable
+	fun:*mlx*
+}
+
+{
+	MLX_any_leak_obj
+	Memcheck:Leak
+	match-leak-kinds: reachable
+	obj:*mlx*
+}

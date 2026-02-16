@@ -6,7 +6,7 @@
 #    By: banne <banne@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 15:02:14 by banne             #+#    #+#              #
-#    Updated: 2026/02/16 09:47:46 by banne            ###   ########.fr        #
+#    Updated: 2026/02/16 14:36:38 by banne            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ $(NAME): $(MLX) $(OBJS) $(LIBFT)
 
 clean:
 	$(RM) $(OBJS)
+	@for dir in src/*/; do $(RM) "$${dir}"*.o; done
 	$(MAKE) -C $(LIBFT_DIR) clean
 	-$(MAKE) -C $(MLX_DIR) clean
 

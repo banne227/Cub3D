@@ -2,3 +2,5 @@
 --trace-children=no
 --leak-check=full
 --show-leak-kinds=all
+--suppressions=/home/banne/git_hub/cub/pulseaudio.supp
+--suppressions=/home/banne/git_hub/cub/mlx.supp 

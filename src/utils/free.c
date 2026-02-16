@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 09:14:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 16:50:36 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/16 10:27:32 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,32 @@ void	destroy_img(void *mlx, void *img)
 	}
 }
 
+void destroy_weapon_images(t_weapon *weapon, void *mlx)
+{
+	int i;
+
+	if (weapon->img)
+		destroy_img(mlx, weapon->img);
+	if (weapon->crosshair[0])
+		destroy_img(mlx, weapon->crosshair[0]);
+	if (weapon->crosshair[1])
+		destroy_img(mlx, weapon->crosshair[1]);
+	i = 0;
+	while (i < 6)
+	{
+		if (weapon->gun.shoot[i])
+			destroy_img(mlx, weapon->gun.shoot[i]);
+		i++;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		if (weapon->gun.reload[i])
+			destroy_img(mlx, weapon->gun.reload[i]);
+		i++;
+	}
+}
+
 int	close_game(void *param)
 {
 	t_data *data;
@@ -64,6 +90,7 @@ int	close_game(void *param)
 	mlx_clear_window(data->game.mlx, data->game.win);
 	mlx_loop_end(data->game.mlx);
 	stop_background_music(&data->game);
+	destroy_weapon_images(&data->game.weapon, data->game.mlx);
 	free_data(data);
 	exit(0);
 	return (0);

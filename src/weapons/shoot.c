@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:11:01 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/16 08:30:12 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/16 13:54:06 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,16 @@
 
 void shoot(t_weapon *weapon, t_game *game)
 {
+	pid_t sound = 0;
+
 	if (weapon->type == 0 || weapon->attack == 0 || weapon->gun.ammo == 0 || weapon->gun.freload > 0)
 		return;
+	if (weapon->gun.fshoot == 0)
+	{
+		sound = play_sounds(SHOOT_SOUND);
+		if (sound && sound > 0)
+			weapon->sound = sound;
+	}
 	weapon->gun.fshoot++;
 	if (weapon->gun.fshoot % 15 == 0 && weapon->gun.fshoot / 15 < 6)
 		weapon->img = weapon->gun.shoot[weapon->gun.fshoot / 15];
@@ -27,7 +35,9 @@ void shoot(t_weapon *weapon, t_game *game)
 		weapon->gun.ammo--;
 	}
 	if (bullet_hit(weapon, game->player, game->map))
+	{
 		weapon->hit = 1;
+	}
 }
 
 int bullet_hit(t_weapon *weapon, t_player player, t_map map)
