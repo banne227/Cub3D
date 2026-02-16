@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/16 15:20:44 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/16 16:00:38 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ typedef struct s_text
 	void *c;
 } t_text;
 
+typedef struct s_pos
+{
+	int x;
+	int y;
+}	t_pos;
 typedef struct s_map
 {
 	char **map;
@@ -96,10 +101,10 @@ typedef struct s_map
 
 typedef struct s_ennemy
 {
-	double pos_x;
-	double pos_y;
+	t_pos pos;
 	int health;
-	void *img[2];
+	void *img[4];
+	bool alive;
 } t_ennemy;
 
 typedef struct s_mouse_mouv
@@ -277,4 +282,7 @@ void make_action(t_data *data, int keycode);
 void display_ammo(t_weapon *weapon, t_game *game);
 pid_t play_sounds(char *path);
 void stop_sounds(pid_t pid);
+t_ennemy	*init_ennemies(char **map, void *mlx);
+void *load(t_game *game, char *path);
+
 #endif

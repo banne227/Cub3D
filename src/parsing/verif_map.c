@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:17 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 17:04:41 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/16 15:47:17 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static bool	map_is_closed(char **map, int width, int height)
 		while (x < width)
 		{
 			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
-				|| map[y][x] == 'E' || map[y][x] == 'W')
+				|| map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == 'D')
 			{
 				if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
 					return (print_pos_error(x, y));
@@ -61,8 +61,8 @@ static bool	have_valid_chars(char **map)
 		while (map[y][x])
 		{
 			if (map[y][x] != '0' && map[y][x] != '1' && map[y][x] != 'V'
-				&& map[y][x] != 'N' && map[y][x] != 'S' && map[y][x] != 'E'
-				&& map[y][x] != 'W')
+				&& map[y][x] != 'N' && map[y][x] != 'S' && map[y][x] != 'D'
+				&& map[y][x] != 'W' && map[y][x] != 'D')
 				return (false);
 			x++;
 		}

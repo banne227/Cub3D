@@ -3,6 +3,7 @@ src/game/actions.c
 src/game/mouvement.c
 src/game/needed.c
 src/initializer/init_data.c
+src/initializer/init_ennemies.c
 src/initializer/init_game.c
 src/initializer/init_mlx.c
 src/initializer/load_textures.c
@@ -42,7 +43,7 @@ src/libft/ft_split.c
 src/libft/ft_strchr.c
 src/libft/ft_strcmp.c
 src/libft/ft_strcpy.c
-src/libft/ft_strdup.c 
+src/libft/ft_strdup.c
 src/libft/ft_striteri.c
 src/libft/ft_strjoin.c
 src/libft/ft_strlcat.c

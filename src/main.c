@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:09:25 by banne             #+#    #+#             */
-/*   Updated: 2026/02/16 14:11:52 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/16 16:13:21 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ int handle_mouse(int button, int x, int y, void *param)
 
 int handle_mouse_move(int x, int y, void *param)
 {
-	t_data	*data;
-	t_mouse_mouv	mouse;
+	t_data *data;
+	t_mouse_mouv mouse;
 
 	data = (t_data *)param;
 	mouse.center_x = WIN_W / 2;
@@ -80,14 +80,10 @@ int handle_mouse_move(int x, int y, void *param)
 	mouse.rot_speed = mouse.delta_x * SENSI;
 	mouse.olddir_x = data->game.player.dir_x;
 	mouse.oldplane_x = data->game.player.plane_x;
-	data->game.player.dir_x = data->game.player.dir_x * cos(mouse.rot_speed)
-		- data->game.player.dir_y * sin(mouse.rot_speed);
-	data->game.player.dir_y = mouse.olddir_x * sin(mouse.rot_speed)
-		+ data->game.player.dir_y * cos(mouse.rot_speed);
-	data->game.player.plane_x = data->game.player.plane_x * cos(mouse.rot_speed)
-		- data->game.player.plane_y * sin(mouse.rot_speed);
-	data->game.player.plane_y = mouse.oldplane_x * sin(mouse.rot_speed)
-		+ data->game.player.plane_y * cos(mouse.rot_speed);
+	data->game.player.dir_x = data->game.player.dir_x * cos(mouse.rot_speed) - data->game.player.dir_y * sin(mouse.rot_speed);
+	data->game.player.dir_y = mouse.olddir_x * sin(mouse.rot_speed) + data->game.player.dir_y * cos(mouse.rot_speed);
+	data->game.player.plane_x = data->game.player.plane_x * cos(mouse.rot_speed) - data->game.player.plane_y * sin(mouse.rot_speed);
+	data->game.player.plane_y = mouse.oldplane_x * sin(mouse.rot_speed) + data->game.player.plane_y * cos(mouse.rot_speed);
 	mlx_mouse_move(data->game.mlx, data->game.win, mouse.center_x, mouse.center_y);
 	return (0);
 }
