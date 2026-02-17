@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/02/16 14:12:00 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/17 18:10:04 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_text	init_text(void)
+t_text init_text(void)
 {
-	t_text	text;
+	t_text text;
 
 	text.no = NULL;
 	text.so = NULL;
@@ -25,10 +25,10 @@ t_text	init_text(void)
 	return (text);
 }
 
-t_data	init_data(void)
+t_data init_data(void)
 {
-	t_data	data;
-	int		i;
+	t_data data;
+	int i;
 
 	i = 0;
 	while (i < 6)
@@ -42,6 +42,9 @@ t_data	init_data(void)
 	data.game = init_game();
 	data.start_map_index = -1;
 	data.error = false;
+	data.screen = (t_img *)malloc(sizeof(t_img));
+	if (!data.screen)
+		data.error = true;
 	if (!data.game.mlx || !data.game.win)
 		data.error = true;
 	return (data);

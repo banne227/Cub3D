@@ -81,3 +81,4 @@ src/weapons/cut.c
 src/weapons/draw_weapons.c
 src/weapons/reload.c
 src/weapons/shoot.c
+src/raycasting/sky_n_floor.c

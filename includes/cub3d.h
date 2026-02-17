@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/16 16:00:38 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/17 17:55:08 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,8 @@ typedef struct s_data
 	int enter_frame;
 	long last_frame_time;
 	t_anim anim;
-	t_img *img;
+	t_img *screen;
+	t_img *textures[4];
 } t_data;
 
 bool extension_check(char *filename);
@@ -284,5 +285,9 @@ pid_t play_sounds(char *path);
 void stop_sounds(pid_t pid);
 t_ennemy	*init_ennemies(char **map, void *mlx);
 void *load(t_game *game, char *path);
+
+// raycasting
+void my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void print_sky_n_floor(t_data *data);
 
 #endif

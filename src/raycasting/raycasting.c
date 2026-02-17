@@ -1,16 +1,16 @@
-///* ************************************************************************** */
-///*                                                                            */
-///*                                                        :::      ::::::::   */
-///*   raycasting.c                                       :+:      :+:    :+:   */
-///*                                                    +:+ +:+         +:+     */
-///*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
-///*                                                +#+#+#+#+#+   +#+           */
-///*   Created: 2026/02/13 11:00:27 by jhauvill          #+#    #+#             */
-///*   Updated: 2026/02/16 15:10:46 by jhauvill         ###   ########.fr       */
-///*                                                                            */
-///* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/13 11:00:27 by jhauvill          #+#    #+#             */
+/*   Updated: 2026/02/17 17:49:51 by jhauvill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//#include "../../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 //void raycasting(t_game *game)
 //{
@@ -113,7 +113,7 @@
 //	}
 //}
 
-//void load_textures(t_data *data)
+//void load_textures_raycast(t_data *data)
 //{
 //	data->img[0].img = data->tex.so;
 //	data->img[0].addr = mlx_get_data_addr(data->img[0].img,
@@ -143,12 +143,21 @@
 //	return (*(unsigned int *)dst);
 //}
 
+void my_mlx_pixel_put(t_img *img, int x, int y, int color)
+{
+	char *dst;
+
+	dst = img->addr + (y * img->line_length) + (x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
 //void draw_textured_line(t_data *data, int x, int draw_start, int draw_end, t_img *img)
 //{
 //	int line_height;
 //	int step;
 //	int img_pos;
-//	int	img_y;
+//	int img_y;
+//	int color;
 
 //	line_height = draw_start - draw_end;
 //	step = img->height / line_height;
@@ -156,6 +165,8 @@
 //	while (draw_start < draw_end)
 //	{
 //		img_y = (int)img_pos % img->height;
-//		color
+//		color = get_texture_color(img, x, img_y);
+//		my_mlx_pixel_put(img, x, img_y, color);
+//		img_pos += step;
 //	}
 //}

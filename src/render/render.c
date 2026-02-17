@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:57:11 by banne             #+#    #+#             */
-/*   Updated: 2026/02/16 14:16:57 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/17 18:11:05 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ int render(void *param)
 	mlx_put_image_to_window(data->game.mlx, data->game.win, data->game.img, 0,
 							0);
 	draw_weapon(&data->game);
+	//print_sky_n_floor(data); 			segfault
 	return (0);
 }
