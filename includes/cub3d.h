@@ -41,10 +41,10 @@
 
 #define MAX_AMMO 8
 
-# define RELOAD_SOUND "/home/banne/git_hub/cub/sounds/gun_reload.wav"
-# define SHOOT_SOUND "/home/banne/git_hub/cub/sounds/gun_sound.wav"
-# define BACKGROUND_SOUND "/home/banne/git_hub/cub/sounds/Mortal_Kombat.wav"
-# define KNIFE_SOUND "/home/banne/git_hub/cub/sounds/knife_attack.wav"
+#define RELOAD_SOUND "/home/banne/git_hub/cub/sounds/gun_reload.wav"
+#define SHOOT_SOUND "/home/banne/git_hub/cub/sounds/gun_sound.wav"
+#define BACKGROUND_SOUND "/home/banne/git_hub/cub/sounds/Mortal_Kombat.wav"
+#define KNIFE_SOUND "/home/banne/git_hub/cub/sounds/knife_attack.wav"
 
 /* Movement */
 #define KEY_W 119 // w
@@ -91,7 +91,7 @@ typedef struct s_pos
 {
 	int x;
 	int y;
-}	t_pos;
+} t_pos;
 typedef struct s_map
 {
 	char **map;
@@ -196,16 +196,16 @@ typedef enum e_direction
 	C
 } t_direction;
 
-typedef struct	s_img
+typedef struct s_img
 {
-	void    *img;
-    char    *addr;
-    int     width;
-    int     height;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-}					t_img;
+	void *img;
+	char *addr;
+	int width;
+	int height;
+	int bits_per_pixel;
+	int line_length;
+	int endian;
+} t_img;
 
 typedef struct s_anim
 {
@@ -283,11 +283,14 @@ void make_action(t_data *data, int keycode);
 void display_ammo(t_weapon *weapon, t_game *game);
 pid_t play_sounds(char *path);
 void stop_sounds(pid_t pid);
-t_ennemy	*init_ennemies(char **map, void *mlx);
+t_ennemy *init_ennemies(char **map, void *mlx);
 void *load(t_game *game, char *path);
 
 // raycasting
 void my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void print_sky_n_floor(t_data *data);
+
+// color utils
+int rgb_to_int(char *rgb_str);
 
 #endif

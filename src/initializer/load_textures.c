@@ -46,8 +46,6 @@ int load_textures(t_data *data)
 				  &data->tex.so);
 	check_loading(data, load(&data->game, data->text_path[WEST]), &data->tex.we);
 	check_loading(data, load(&data->game, data->text_path[EAST]), &data->tex.ea);
-	check_loading(data, load(&data->game, data->text_path[F]), &data->tex.f);
-	check_loading(data, load(&data->game, data->text_path[C]), &data->tex.c);
 	if (data->error)
 	{
 		// free_textures(data);

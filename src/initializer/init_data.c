@@ -25,6 +25,23 @@ t_text init_text(void)
 	return (text);
 }
 
+void init_screen(t_data *data)
+{
+	data->screen = (t_img *)malloc(sizeof(t_img));
+	if (!data->screen)
+		data->error = true;
+	else
+	{
+		data->screen->img = NULL;
+		data->screen->addr = NULL;
+		data->screen->width = 0;
+		data->screen->height = 0;
+		data->screen->bits_per_pixel = 0;
+		data->screen->line_length = 0;
+		data->screen->endian = 0;
+	}
+}
+
 t_data init_data(void)
 {
 	t_data data;
@@ -42,9 +59,7 @@ t_data init_data(void)
 	data.game = init_game();
 	data.start_map_index = -1;
 	data.error = false;
-	data.screen = (t_img *)malloc(sizeof(t_img));
-	if (!data.screen)
-		data.error = true;
+	init_screen(&data);
 	if (!data.game.mlx || !data.game.win)
 		data.error = true;
 	return (data);

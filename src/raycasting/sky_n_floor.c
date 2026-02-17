@@ -24,12 +24,13 @@ void print_sky_n_floor(t_data *data)
                                        &data->screen->bits_per_pixel,
                                        &data->screen->line_length,
                                        &data->screen->endian);
+	y = 0;
 	while (y < data->game.win_h / 2)
 	{
 		x = 0;
 		while (x < data->game.win_w)
 		{
-			my_mlx_pixel_put(data->screen->img, x, y, data->game.ceiling_color);
+			my_mlx_pixel_put(data->screen, x, y, data->game.ceiling_color);
 			x++;
 		}
 		y++;
@@ -40,7 +41,7 @@ void print_sky_n_floor(t_data *data)
 		x = 0;
 		while (x < data->game.win_w)
 		{
-			my_mlx_pixel_put(data->screen->img, x, y, data->game.floor_color);
+			my_mlx_pixel_put(data->screen, x, y, data->game.floor_color);
 			x++;
 		}
 		y++;

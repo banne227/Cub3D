@@ -60,7 +60,7 @@ t_game init_game(void)
 	game.player = init_player();
 	game.floor_color = 0;
 	game.ceiling_color = 0;
-	game.state = STATE_MENU;
+	game.state = STATE_PLAY;
 	game.last_key = 0;
 	game.menu_option = 0;
 	game.music_pid = 0;

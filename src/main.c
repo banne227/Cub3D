@@ -101,6 +101,8 @@ int main(int argc, char **argv)
 	printf("Parsing successful!\n");
 	print_controls();
 	data.game.map = data.map;
+	data.game.floor_color = rgb_to_int(data.text_path[F]);
+	data.game.ceiling_color = rgb_to_int(data.text_path[C]);
 	data.game.background_music = false;
 	mlx_loop_hook(data.game.mlx, render, &data);
 	mlx_mouse_hide(data.game.mlx, data.game.win);

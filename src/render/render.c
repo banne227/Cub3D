@@ -43,10 +43,10 @@ int render(void *param)
 	{
 		reload(&data->game.weapon);
 	}
+	print_sky_n_floor(data);
 	draw_minimap(&data->game);
 	mlx_put_image_to_window(data->game.mlx, data->game.win, data->game.img, 0,
 							0);
-	draw_weapon(&data->game);
-	//print_sky_n_floor(data); 			segfault
+	// draw_weapon(&data->game);
 	return (0);
 }

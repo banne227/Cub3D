@@ -77,7 +77,8 @@ void draw_minimap(t_game *game)
 		x = 0;
 		while (x < game->map.width * MINI_TILE)
 		{
-			if (game->map.map[y / MINI_TILE][x / MINI_TILE] == '1')
+			if (game->map.map[y / MINI_TILE][x / MINI_TILE] == '1'
+				|| game->map.map[y / MINI_TILE][x / MINI_TILE] == 'D')
 				color = WALL_COLOR;
 			else
 				color = FLOOR_COLOR;

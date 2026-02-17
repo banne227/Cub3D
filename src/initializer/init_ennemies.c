@@ -28,7 +28,7 @@ int count_ennemies(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'E')
+			if (map[y][x] == 'M')
 				count++;
 			x++;
 		}
@@ -53,7 +53,7 @@ t_pos get_ennemy_pos(char **map, int index)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'E')
+			if (map[y][x] == 'M')
 			{
 				if (count == index)
 					return ((t_pos){x, y});

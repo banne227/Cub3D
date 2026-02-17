@@ -61,6 +61,7 @@ src/libft/gnl/get_next_line.c
 src/libft/gnl/get_next_line_utils.c
 src/libft/is_isspace.c
 src/main.c
+src/parsing/color_utils.c
 src/parsing/file_checker.c
 src/parsing/get_data.c
 src/parsing/get_map.c
