@@ -6,7 +6,7 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 11:00:27 by jhauvill          #+#    #+#             */
-/*   Updated: 2026/02/18 15:28:15 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/18 15:35:52 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void load_textures_raycast(t_data *data)
 {
-	data->game.textures[0]->img = data->tex.so;
+	data->game.textures[0]->img = data->tex.no;
 	data->game.textures[0]->addr = mlx_get_data_addr(data->game.textures[0]->img,
 										  &data->game.textures[0]->bits_per_pixel,
 										  &data->game.textures[0]->line_length, &data->game.textures[0]->endian);
-	data->game.textures[1]->img = data->tex.no;
+	data->game.textures[1]->img = data->tex.so;
 	data->game.textures[1]->addr = mlx_get_data_addr(data->game.textures[1]->img,
 										  &data->game.textures[1]->bits_per_pixel,
 										  &data->game.textures[1]->line_length, &data->game.textures[1]->endian);
@@ -191,6 +191,7 @@ void raycasting(t_game *game)
 		if (side == 1 && ray_dir_y < 0)
 			img_x = img->width - img_x - 1;
 		draw_textured_line(game, x, draw_start, draw_end, img, img_x);
+		x++;
 	}
 }
 

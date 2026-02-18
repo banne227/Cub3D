@@ -6,7 +6,7 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:57:11 by banne             #+#    #+#             */
-/*   Updated: 2026/02/18 15:26:10 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:00:30 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int render(void *param)
 	{
 		reload(&data->game.weapon);
 	}
-	//print_sky_n_floor(data);
+	print_sky_n_floor(data);
 	//raycasting(&data->game);
 	draw_minimap(&data->game);
 	mlx_put_image_to_window(data->game.mlx, data->game.win, data->game.img, 0,
