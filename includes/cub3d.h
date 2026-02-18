@@ -6,7 +6,7 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/17 17:55:08 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/18 15:23:20 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,11 +160,27 @@ typedef struct s_weapon
 	pid_t sound;
 } t_weapon;
 
+typedef struct s_img
+{
+	void *img;
+	char *addr;
+	int width;
+	int height;
+	int bits_per_pixel;
+	int line_length;
+	int endian;
+} t_img;
+
 typedef struct s_game
 {
 	void *mlx;
 	void *win;
 	void *img;
+	char *addr;
+	int bits_per_pixel;
+	int line_length;
+	int endian;
+	t_img *textures[4];
 	t_map map;
 	int win_w;
 	int win_h;
@@ -196,16 +212,6 @@ typedef enum e_direction
 	C
 } t_direction;
 
-typedef struct s_img
-{
-	void *img;
-	char *addr;
-	int width;
-	int height;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
-} t_img;
 
 typedef struct s_anim
 {
@@ -287,8 +293,11 @@ t_ennemy *init_ennemies(char **map, void *mlx);
 void *load(t_game *game, char *path);
 
 // raycasting
-void my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void print_sky_n_floor(t_data *data);
+void load_textures_raycast(t_data *data);
+void raycasting(t_game *game);
+
 
 // color utils
 int rgb_to_int(char *rgb_str);

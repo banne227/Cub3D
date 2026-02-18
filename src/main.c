@@ -6,7 +6,7 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:09:25 by banne             #+#    #+#             */
-/*   Updated: 2026/02/17 18:00:19 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/18 15:17:32 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int main(int argc, char **argv)
 	data.game.floor_color = rgb_to_int(data.text_path[F]);
 	data.game.ceiling_color = rgb_to_int(data.text_path[C]);
 	data.game.background_music = false;
+	load_textures_raycast(&data);
 	mlx_loop_hook(data.game.mlx, render, &data);
 	mlx_mouse_hide(data.game.mlx, data.game.win);
 	mlx_mouse_move(data.game.mlx, data.game.win, WIN_W / 2, WIN_H / 2);
