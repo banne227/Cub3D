@@ -33,4 +33,3 @@ void display_ammo(t_weapon *weapon, t_game *game)
 		count++;
 	}
 }
-	

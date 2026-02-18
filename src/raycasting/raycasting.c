@@ -73,173 +73,173 @@ void draw_textured_line(t_game *game, int x, int draw_start, int draw_end, t_img
 	}
 }
 
-void raycasting(t_game *game)
-{
-	int x;
-	double camera_x;
-	double ray_dir_x;
-	double ray_dir_y;
-	int map_x;
-	int map_y;
-	double delta_dist_x;
-	double delta_dist_y;
-	int step_x;
-	int step_y;
-	double side_dist_x;
-	double side_dist_y;
-	int hit;
-	double perp_wall_dist;
-	int side;
-	int line_height;
-	int draw_start;
-	int draw_end;
+// void raycasting(t_game *game)
+// {
+// 	int x;
+// 	double camera_x;
+// 	double ray_dir_x;
+// 	double ray_dir_y;
+// 	int map_x;
+// 	int map_y;
+// 	double delta_dist_x;
+// 	double delta_dist_y;
+// 	int step_x;
+// 	int step_y;
+// 	double side_dist_x;
+// 	double side_dist_y;
+// 	int hit;
+// 	double perp_wall_dist;
+// 	int side;
+// 	int line_height;
+// 	int draw_start;
+// 	int draw_end;
 
-	x = 0;
-	hit = 0;
-	while (x < game->win_w)
-	{
-		// 1. calcul direction rayon
-		camera_x = 2 * x / (double)game->win_w - 1;
-		ray_dir_x = game->player.dir_x + game->player.plane_x * camera_x;
-		ray_dir_y = game->player.dir_y + game->player.plane_y * camera_x;
-		// 2. dans quelle case de la map on est
-		map_x = (int)game->player.pos_x;
-		map_y = (int)game->player.pos_y;
-		// 3. distance parcourue par le rayon pour aller d'une ligne x a la suivante
-		delta_dist_x = fabs(1 / ray_dir_x);
-		delta_dist_y = fabs(1 / ray_dir_y);
-		// 4. DDA (Digital Differential Analysis) pour trouver le mur
-		// Calculer step_x, step_y et side_dist_x,	side_dist_y initial
-		if (ray_dir_x < 0)
-		{
-			step_x = -1;
-			side_dist_x = (game->player.pos_x - map_x) * delta_dist_x;
-		}
-		else
-		{
-			step_x = 1;
-			side_dist_x = (map_x + 1 - game->player.pos_x) * delta_dist_x;
-		}
-		if (ray_dir_y < 0)
-		{
-			step_y = -1;
-			side_dist_y = (game->player.pos_y - map_y) * delta_dist_y;
-		}
-		else
-		{
-			step_y = 1;
-			side_dist_y = (map_y + 1 - game->player.pos_y) * delta_dist_y;
-		}
-		// Boucle jusqu'à toucher un mur
-		while (hit == 0)
-		{
-			if (side_dist_x < side_dist_y)
-			{
-				side_dist_x += delta_dist_x;
-				map_x += step_x;
-				side = 0;
-			}
-			else
-			{
-				side_dist_y += delta_dist_y;
-				map_y += step_y;
-				side = 1;
-			}
-			if (game->map.map[map_y][map_x] > 0)
-				hit = 1;
-		}
-		// Calculate distance of perpendicular ray (Euclidean distance would give fisheye effect!)
-		 if (side == 0)
-			perp_wall_dist = side_dist_x - delta_dist_x;
-		 else
-			perp_wall_dist = side_dist_y - delta_dist_y;
-		// Calculate height of line to draw on screen
-		line_height = (int)(game->win_h / perp_wall_dist);
-		// calculate lowest and highest pixel to fill in current stripe
-		draw_start = -line_height / 2 + game->win_h / 2;
-		draw_end = line_height / 2 + game->win_h / 2;
-		if (draw_start < 0)
-    		draw_start = 0;
-		if (draw_end >= game->win_h)
-    		draw_end = game->win_h - 1;
-		//	calcul ou le rayon touche le wall
-		double wall_x;
-		if (side == 0)
-			wall_x = game->player.pos_y + perp_wall_dist * ray_dir_y;
-		else
-			wall_x = game->player.pos_x + perp_wall_dist * ray_dir_x;
-		wall_x -= floor(wall_x); // garder partie decimale
-		t_img *img;
-		// convert en coords x de texture
-		if (side == 0)
-		{
-			if (ray_dir_x > 0)
-				img = game->textures[2];
-			else
-				img = game->textures[3];
-		}
-		else
-		{
-			if (ray_dir_y > 0)
-				img = game->textures[0];
-			else
-				img = game->textures[1];
-		}
-		int img_x = (int)(wall_x * (double)img->width);
-		if (side == 0 && ray_dir_x > 0)
-			img_x = img->width - img_x - 1;
-		if (side == 1 && ray_dir_y < 0)
-			img_x = img->width - img_x - 1;
-		draw_textured_line(game, x, draw_start, draw_end, img, img_x);
-		x++;
-	}
-}
+// 	x = 0;
+// 	hit = 0;
+// 	while (x < game->win_w)
+// 	{
+// 		// 1. calcul direction rayon
+// 		camera_x = 2 * x / (double)game->win_w - 1;
+// 		ray_dir_x = game->player.dir_x + game->player.plane_x * camera_x;
+// 		ray_dir_y = game->player.dir_y + game->player.plane_y * camera_x;
+// 		// 2. dans quelle case de la map on est
+// 		map_x = (int)game->player.pos_x;
+// 		map_y = (int)game->player.pos_y;
+// 		// 3. distance parcourue par le rayon pour aller d'une ligne x a la suivante
+// 		delta_dist_x = fabs(1 / ray_dir_x);
+// 		delta_dist_y = fabs(1 / ray_dir_y);
+// 		// 4. DDA (Digital Differential Analysis) pour trouver le mur
+// 		// Calculer step_x, step_y et side_dist_x,	side_dist_y initial
+// 		if (ray_dir_x < 0)
+// 		{
+// 			step_x = -1;
+// 			side_dist_x = (game->player.pos_x - map_x) * delta_dist_x;
+// 		}
+// 		else
+// 		{
+// 			step_x = 1;
+// 			side_dist_x = (map_x + 1 - game->player.pos_x) * delta_dist_x;
+// 		}
+// 		if (ray_dir_y < 0)
+// 		{
+// 			step_y = -1;
+// 			side_dist_y = (game->player.pos_y - map_y) * delta_dist_y;
+// 		}
+// 		else
+// 		{
+// 			step_y = 1;
+// 			side_dist_y = (map_y + 1 - game->player.pos_y) * delta_dist_y;
+// 		}
+// 		// Boucle jusqu'à toucher un mur
+// 		while (hit == 0)
+// 		{
+// 			if (side_dist_x < side_dist_y)
+// 			{
+// 				side_dist_x += delta_dist_x;
+// 				map_x += step_x;
+// 				side = 0;
+// 			}
+// 			else
+// 			{
+// 				side_dist_y += delta_dist_y;
+// 				map_y += step_y;
+// 				side = 1;
+// 			}
+// 			if (game->map.map[map_y][map_x] > 0)
+// 				hit = 1;
+// 		}
+// 		// Calculate distance of perpendicular ray (Euclidean distance would give fisheye effect!)
+// 		 if (side == 0)
+// 			perp_wall_dist = side_dist_x - delta_dist_x;
+// 		 else
+// 			perp_wall_dist = side_dist_y - delta_dist_y;
+// 		// Calculate height of line to draw on screen
+// 		line_height = (int)(game->win_h / perp_wall_dist);
+// 		// calculate lowest and highest pixel to fill in current stripe
+// 		draw_start = -line_height / 2 + game->win_h / 2;
+// 		draw_end = line_height / 2 + game->win_h / 2;
+// 		if (draw_start < 0)
+//     		draw_start = 0;
+// 		if (draw_end >= game->win_h)
+//     		draw_end = game->win_h - 1;
+// 		//	calcul ou le rayon touche le wall
+// 		double wall_x;
+// 		if (side == 0)
+// 			wall_x = game->player.pos_y + perp_wall_dist * ray_dir_y;
+// 		else
+// 			wall_x = game->player.pos_x + perp_wall_dist * ray_dir_x;
+// 		wall_x -= floor(wall_x); // garder partie decimale
+// 		t_img *img;
+// 		// convert en coords x de texture
+// 		if (side == 0)
+// 		{
+// 			if (ray_dir_x > 0)
+// 				img = game->textures[2];
+// 			else
+// 				img = game->textures[3];
+// 		}
+// 		else
+// 		{
+// 			if (ray_dir_y > 0)
+// 				img = game->textures[0];
+// 			else
+// 				img = game->textures[1];
+// 		}
+// 		int img_x = (int)(wall_x * (double)img->width);
+// 		if (side == 0 && ray_dir_x > 0)
+// 			img_x = img->width - img_x - 1;
+// 		if (side == 1 && ray_dir_y < 0)
+// 			img_x = img->width - img_x - 1;
+// 		draw_textured_line(game, x, draw_start, draw_end, img, img_x);
+// 		x++;
+// 	}
+// }
 
-void	dda(t_game *game, int ray_dir_x, int ray_dir_y, int map_x, int map_y, int delta_dist_x, int delta_dist_y, int step_x, int step_y, int side_dist_x, int side_dist_y)
-{
-		int	side;
-		int	hit;
+// void	dda(t_game *game, int ray_dir_x, int ray_dir_y, int map_x, int map_y, int delta_dist_x, int delta_dist_y, int step_x, int step_y, int side_dist_x, int side_dist_y)
+// {
+// 	int	side;
+// 	int	hit;
 
-		hit = 0;
-		// 4. DDA (Digital Differential Analysis) pour trouver le mur
-		// Calculer step_x, step_y et side_dist_x,	side_dist_y initial
-		if (ray_dir_x < 0)
-		{
-			step_x = -1;
-			side_dist_x = (game->player.pos_x - map_x) * delta_dist_x;
-		}
-		else
-		{
-			step_x = 1;
-			side_dist_x = (map_x + 1 - game->player.pos_x) * delta_dist_x;
-		}
-		if (ray_dir_y < 0)
-		{
-			step_y = -1;
-			side_dist_y = (game->player.pos_y - map_y) * delta_dist_y;
-		}
-		else
-		{
-			step_y = 1;
-			side_dist_y = (map_y + 1 - game->player.pos_y) * delta_dist_y;
-		}
-		// Boucle jusqu'à toucher un mur
-		while (hit == 0)
-		{
-			if (side_dist_x < side_dist_y)
-			{
-				side_dist_x += delta_dist_x;
-				map_x += step_x;
-				side = 0;
-			}
-			else
-			{
-				side_dist_y += delta_dist_y;
-				map_y += step_y;
-				side = 1;
-			}
-			if (game->map.map[map_y][map_x] > 0)
-				hit = 1;
-		}
-}
+// 	hit = 0;
+// 	// 4. DDA (Digital Differential Analysis) pour trouver le mur
+// 	// Calculer step_x, step_y et side_dist_x,	side_dist_y initial
+// 	if (ray_dir_x < 0)
+// 	{
+// 		step_x = -1;
+// 		side_dist_x = (game->player.pos_x - map_x) * delta_dist_x;
+// 	}
+// 	else
+// 	{
+// 		step_x = 1;
+// 		side_dist_x = (map_x + 1 - game->player.pos_x) * delta_dist_x;
+// 	}
+// 	if (ray_dir_y < 0)
+// 	{
+// 		step_y = -1;
+// 		side_dist_y = (game->player.pos_y - map_y) * delta_dist_y;
+// 	}
+// 	else
+// 	{
+// 		step_y = 1;
+// 		side_dist_y = (map_y + 1 - game->player.pos_y) * delta_dist_y;
+// 	}
+// 	// Boucle jusqu'à toucher un mur
+// 	while (hit == 0)
+// 	{
+// 		if (side_dist_x < side_dist_y)
+// 		{
+// 			side_dist_x += delta_dist_x;
+// 			map_x += step_x;
+// 			side = 0;
+// 		}
+// 		else
+// 		{
+// 			side_dist_y += delta_dist_y;
+// 			map_y += step_y;
+// 			side = 1;
+// 		}
+// 		if (game->map.map[map_y][map_x] > 0)
+// 			hit = 1;
+// 	}
+// }
 

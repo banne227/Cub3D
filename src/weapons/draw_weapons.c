@@ -20,7 +20,8 @@ void draw_weapon(t_game *game)
     if (!game->weapon.img)
         return;
     mlx_put_image_to_window(game->mlx, game->win, game->weapon.img, x, y);
-    y = (game->win_h - 64) / 2;
+    x = (game->win_w - 16) / 2;
+    y = (game->win_h - 16) / 2;
     if (game->weapon.hit == 0)
     {
         if (game->weapon.crosshair[0])

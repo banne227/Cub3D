@@ -103,8 +103,10 @@ typedef struct s_ennemy
 {
 	t_pos pos;
 	int health;
+	void *display;
 	void *img[4];
 	bool alive;
+	int frame;
 } t_ennemy;
 
 typedef struct s_mouse_mouv
@@ -212,7 +214,6 @@ typedef enum e_direction
 	C
 } t_direction;
 
-
 typedef struct s_anim
 {
 	void *last_img;
@@ -297,7 +298,6 @@ void my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void print_sky_n_floor(t_data *data);
 void load_textures_raycast(t_data *data);
 void raycasting(t_game *game);
-
 
 // color utils
 int rgb_to_int(char *rgb_str);

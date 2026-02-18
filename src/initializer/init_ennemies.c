@@ -93,6 +93,8 @@ t_ennemy *init_ennemies(char **map, void *mlx)
 		ennemies[i].health = 100;
 		ennemies[i].alive = true;
 		upload_ennemy_texture(mlx, ennemies[i].img);
+		ennemies[i].display = ennemies[i].img[1];
+		ennemies[i].frame = 0;
 		i++;
 	}
 	return (ennemies);
