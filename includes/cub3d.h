@@ -6,7 +6,7 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 17:07:19 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:09:00 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,38 @@ typedef struct s_text
 	void *f;
 	void *c;
 } t_text;
+
+typedef struct s_img
+{
+	void *img;
+	char *addr;
+	int width;
+	int height;
+	int bits_per_pixel;
+	int line_length;
+	int endian;
+} t_img;
+
+typedef struct s_raycasting_utils
+{
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int	map_x;
+	int	map_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int	step_x;
+	int	step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	int	hit;
+	t_img *img;
+	int side;
+	int	perp_wall_dist;
+	int	draw_start;
+	int	draw_end;
+}	t_raycasting_utils;
 
 typedef struct s_pos
 {
@@ -179,16 +211,6 @@ typedef struct s_weapon
 	pid_t sound;
 } t_weapon;
 
-typedef struct s_img
-{
-	void *img;
-	char *addr;
-	int width;
-	int height;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
-} t_img;
 
 typedef struct s_game
 {
@@ -328,6 +350,14 @@ void my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void print_sky_n_floor(t_data *data);
 void	load_wall_textures(t_data *data);
 void raycasting(t_game *game);
+
+//raycasting_utils
+void dda(t_raycasting_utils *utils, t_game *game);
+void	touch_wall(t_raycasting_utils *utils, t_game *game);
+int	convert_coords_textures(t_raycasting_utils *utils, t_game *game);
+int	pixel_to_fill(t_raycasting_utils *utils, t_game *game);
+void	calculate_ray_dir(t_raycasting_utils *utils, t_game *game, int x);
+
 
 // color utils
 int rgb_to_int(char *rgb_str);
