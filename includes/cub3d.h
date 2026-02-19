@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 12:36:51 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 12:49:25 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,7 +279,7 @@ t_data init_data_with_weapons(t_data *data);
 bool init_mlx(t_game *game);
 void copy_without_space(char *dest, const char *src);
 void update_player_data(t_data *data, char d);
-bool is_wall(t_game *game, int x, int y);
+bool is_wall(t_map *map, double x, double y);
 int close_game(void *param);
 int load_textures(t_data *data);
 void free_data(t_data *data);
