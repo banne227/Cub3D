@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   enter.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/19 17:49:53 by banne             #+#    #+#             */
+/*   Updated: 2026/02/19 17:51:54 by banne            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 void	fade_display_img(t_data *data, void *img, int opacity)
 {
 	char			*addr;
 	unsigned int	pixel;
+	int				x, y, bits, line_len, endian;
 
-	int x, y, bits, line_len, endian;
 	if (!img || !data->game.mlx || !data->game.win)
 		return ;
 	addr = mlx_get_data_addr(img, &bits, &line_len, &endian);
@@ -46,7 +58,9 @@ void	display_img(t_data *data, void *img)
 
 void	load_enter(void *mlx, t_anim *enter)
 {
-	int w, h;
+	int	w;
+	int	h;
+
 	w = 0;
 	h = 0;
 	enter->ent[0] = mlx_xpm_file_to_image(mlx, "textures/menu/enter/enter0.xpm",
@@ -100,7 +114,6 @@ void	display_enter(t_data *data)
 		destroy_enter(data);
 		data->game.state = STATE_PLAY;
 		data->game.menu_option = 0;
-		//play_background_music(&data->game);
 		return ;
 	}
 	elapsed = timestamp() - data->anim.last_frame_time;

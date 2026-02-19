@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:17 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 10:58:30 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 17:47:57 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	map_is_closed(char **map, int width, int height)
 	while (y < height)
 	{
 		x = 0;
-		while (x < width)
+		while (x++ < width)
 		{
 			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
 				|| map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == 'D'
@@ -41,7 +41,6 @@ static bool	map_is_closed(char **map, int width, int height)
 					- 1] == 'V' || map[y][x + 1] == 'V')
 					return (print_pos_error(x, y));
 			}
-			x++;
 		}
 		y++;
 	}
@@ -85,7 +84,7 @@ static bool	only_one_player(char **map, t_data *data)
 	while (map[y])
 	{
 		x = 0;
-		while (map[y][x])
+		while (map[y][x++])
 		{
 			if (map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'E'
 				|| map[y][x] == 'W')
@@ -95,7 +94,6 @@ static bool	only_one_player(char **map, t_data *data)
 				update_player_data(data, map[y][x]);
 				player_count++;
 			}
-			x++;
 		}
 		y++;
 	}
@@ -120,7 +118,7 @@ bool	map_valid(t_data *data)
 	}
 	if (!only_one_player(data->map.map, data))
 	{
-		ft_printf("Error\nMap must contain exactly one player start position\n");
+		ft_printf("Error\nMap must contain one player start position\n");
 		return (false);
 	}
 	return (true);

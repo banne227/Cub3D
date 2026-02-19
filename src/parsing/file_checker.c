@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:32 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 16:50:03 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 17:41:41 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	extension_check(char *filename)
 		return (false);
 	}
 	if (filename[len - 4] != '.' || filename[len - 3] != 'c' || filename[len
-		- 2] != 'u' || filename[len - 1] != 'b')
+			- 2] != 'u' || filename[len - 1] != 'b')
 	{
 		printf("Error\nInvalid file extension. Expected .cub\n");
 		return (false);
@@ -35,7 +35,7 @@ bool	extension_check(char *filename)
 
 bool	file_check(char *filename)
 {
-	int fd;
+	int	fd;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)

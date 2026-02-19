@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 14:00:09 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 15:58:54 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 17:39:37 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ t_weapon	init_weapon(void *mlx)
 	return (weapon);
 }
 
-void init_keys(t_game *game)
+void	init_keys(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 65536)

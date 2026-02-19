@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:31:00 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 15:40:15 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 17:45:31 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	print_data(t_data *data)
 {
+	int	i;
+
+	i = 0;
 	ft_printf("NO: %s\n", data->text_path[NORTH]);
 	ft_printf("SO: %s\n", data->text_path[SOUTH]);
 	ft_printf("WE: %s\n", data->text_path[WEST]);
@@ -22,9 +25,10 @@ void	print_data(t_data *data)
 	ft_printf("C: %s\n", data->text_path[C]);
 	ft_printf("Map (width: %d, height: %d):\n", data->map.width,
 		data->map.height);
-	for (int i = 0; i < data->map.height; i++)
+	while (i < data->map.height)
 	{
 		ft_printf("%s\n", data->map.map[i]);
+		i++;
 	}
 }
 

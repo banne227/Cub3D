@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:40 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 16:50:08 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 17:44:03 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ char	*trim_spaces(char *line, int size)
 
 	trimmed = malloc(sizeof(char) * (size + 2));
 	i = 0;
+	if (!trimmed)
+		return (NULL);
 	while (line[i])
 	{
 		if (line[i] != ' ')
@@ -100,14 +102,9 @@ char	**get_map(char **file, t_data *data)
 	while (i < map_size)
 	{
 		trimmed_line = trim_endf(ft_strdup(file[start_index + i]));
-		if (!trimmed_line)
-			return (NULL);
 		trimmed_line = trim_spaces(trimmed_line, max_len(file, start_index,
 					map_size));
-		if (!trimmed_line)
-			return (NULL);
-		map[i] = trimmed_line;
-		i++;
+		map[i++] = trimmed_line;
 	}
 	data->map.map = map;
 	data->map.width = max_len(file, start_index, map_size) + 1;

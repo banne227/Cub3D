@@ -6,9 +6,11 @@
 #    By: banne <banne@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/09 15:02:14 by banne             #+#    #+#              #
-#    Updated: 2026/02/19 15:50:38 by banne            ###   ########.fr        #
+#    Updated: 2026/02/19 18:19:55 by banne            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+include srcs.mk
 
 NAME        = cub3d
 CC          = cc
@@ -20,8 +22,6 @@ LIBFT_DIR   = src/libft
 LIBFT       = $(LIBFT_DIR)/libft.a
 MLX_DIR     = includes/minilibx-linux
 MLX         = $(MLX_DIR)/libmlx.a
-
-SRCS        = $(shell cat srcs)
 
 OBJS        = $(SRCS:.c=.o)
 

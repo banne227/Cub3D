@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:47 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 10:17:11 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 17:45:45 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ bool	have_double(char **file)
 
 int	get_value(char **file, t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (have_double(file))

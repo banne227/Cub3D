@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 18:09:00 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:21:44 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,7 +330,7 @@ pid_t play_sounds(char *path);
 void stop_sounds(pid_t pid);
 t_ennemy *init_ennemies(char **map, void *mlx);
 void *load(t_game *game, char *path);
-void take_damage(int damage, int pos_x, int pos_y,
+int take_damage(int damage, double pos_x, double pos_y,
 				 t_ennemy *ennemies);
 void open_door(t_map *map, int x, int y);
 int verif_open_door(t_map *map, int x, int y);

@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 08:21:06 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 08:21:06 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 18:05:43 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,17 @@ t_ennemy	*get_ennemy_at(int pos_x, int pos_y, t_ennemy *ennemies)
 	return (NULL);
 }
 
-void	take_damage(int damage, int pos_x, int pos_y, t_ennemy *ennemies)
+int	take_damage(int damage, double pos_x, double pos_y, t_ennemy *ennemies)
 {
-	t_ennemy *ennemy;
+	t_ennemy	*ennemy;
+	int			x;
+	int			y;
 
+	x = (int)pos_x;
+	y = (int)pos_y;
 	ennemy = get_ennemy_at(pos_x, pos_y, ennemies);
 	if (!ennemy)
-		return ;
+		return (0);
 	ennemy->display = ennemy->img[2];
 	if (ennemy->alive)
 	{
@@ -43,4 +47,5 @@ void	take_damage(int damage, int pos_x, int pos_y, t_ennemy *ennemies)
 		else
 			play_sounds(BLOOD_SOUND);
 	}
+	return (1);
 }

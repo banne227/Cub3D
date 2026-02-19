@@ -6,15 +6,15 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 15:43:41 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 17:39:23 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_text init_text(void)
+t_text	init_text(void)
 {
-	t_text text;
+	t_text	text;
 
 	text.no = NULL;
 	text.so = NULL;
@@ -25,7 +25,7 @@ t_text init_text(void)
 	return (text);
 }
 
-void init_screen(t_data *data)
+void	init_screen(t_data *data)
 {
 	data->screen = (t_img *)malloc(sizeof(t_img));
 	if (!data->screen)
@@ -42,10 +42,10 @@ void init_screen(t_data *data)
 	}
 }
 
-t_data init_data(void)
+t_data	init_data(void)
 {
-	t_data data;
-	int i;
+	t_data	data;
+	int		i;
 
 	i = 0;
 	while (i < 6)
@@ -71,9 +71,9 @@ t_data init_data(void)
 	return (data);
 }
 
-t_data init_data_with_weapons(t_data *data)
+t_data	init_data_with_weapons(t_data *data)
 {
-	t_player parsed_player;
+	t_player	parsed_player;
 
 	parsed_player = data->game.player;
 	data->game = init_game();

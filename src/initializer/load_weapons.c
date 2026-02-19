@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:48:26 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/19 13:57:44 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 17:40:42 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,6 @@ void	load_gun_shoot(t_weapon *weapon, void *mlx)
 			"textures/weapons/gun/gunshot4.xpm", weapon->gun.dim_shoot[3].width,
 			weapon->gun.dim_shoot[3].height);
 	weapon->gun.dim_shoot[4] = get_dim("textures/weapons/gun/gunshot5.xpm");
-	weapon->gun.shoot[4] = load_weapon_textures(mlx,
-			"textures/weapons/gun/gunshot5.xpm", weapon->gun.dim_shoot[4].width,
-			weapon->gun.dim_shoot[4].height);
-	weapon->gun.dim_shoot[5] = get_dim("textures/weapons/gun/gunshot6.xpm");
-	weapon->gun.shoot[5] = load_weapon_textures(mlx,
-			"textures/weapons/gun/gunshot6.xpm", weapon->gun.dim_shoot[5].width,
-			weapon->gun.dim_shoot[5].height);
 }
 
 void	load_gun_reload(t_weapon *weapon, void *mlx)
@@ -78,6 +71,13 @@ void	load_gun_reload(t_weapon *weapon, void *mlx)
 	weapon->gun.reload[3] = load_weapon_textures(mlx,
 			"textures/weapons/gun/gunreload4.xpm",
 			weapon->gun.dim_reload[3].width, weapon->gun.dim_reload[3].height);
+	weapon->gun.shoot[4] = load_weapon_textures(mlx,
+			"textures/weapons/gun/gunshot5.xpm", weapon->gun.dim_shoot[4].width,
+			weapon->gun.dim_shoot[4].height);
+	weapon->gun.dim_shoot[5] = get_dim("textures/weapons/gun/gunshot6.xpm");
+	weapon->gun.shoot[5] = load_weapon_textures(mlx,
+			"textures/weapons/gun/gunshot6.xpm", weapon->gun.dim_shoot[5].width,
+			weapon->gun.dim_shoot[5].height);
 }
 
 void	load_knife(t_weapon *weapon, void *mlx)

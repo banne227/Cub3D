@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:43:27 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 10:11:05 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 17:47:15 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ bool	verif_color_values(char *color)
 		while (color[i] == ' ')
 			i++;
 		while (color[i] && color[i] != ',')
-		{
-			value = value * 10 + (color[i] - '0');
-			i++;
-		}
+			value = value * 10 + (color[i++] - '0');
 		if (value < 0 || value > 255)
 		{
 			ft_printf("Error\nColor value %d out of range (0-255)\n", value);
@@ -62,7 +59,7 @@ bool	valid_color(char *color)
 	}
 	if (comma_count != 2)
 	{
-		ft_printf("Error\nColor must contain exactly two commas and three numbers\n");
+		ft_printf("Error\nColor must contain two commas and three numbers\n");
 		return (false);
 	}
 	return (verif_color_values(color));

@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 09:14:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 08:57:09 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 18:03:15 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void	destroy_weapon_images(t_weapon *weapon, void *mlx)
 
 int	close_game(void *param)
 {
-	t_data *data;
-	static int closing = 0;
+	t_data		*data;
+	static int	closing = 0;
 
 	if (closing)
 		return (0);

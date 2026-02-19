@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_keys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:59:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 18:20:05 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:21:56 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	handle_key_press(int keycode, void *param)
 	data->game.last_key = keycode;
 	if (keycode == KEY_ESC || data->game.state == STATE_EXIT)
 		return (close_game(data));
-	if	(case_keycode_m(data, keycode))
+	if (case_keycode_m(data, keycode))
 		return (0);
 	if (data->game.state == STATE_PLAY)
 	{
@@ -55,7 +55,7 @@ int	handle_key_press(int keycode, void *param)
 	return (0);
 }
 
-int handle_keys_release(int keycode, void *param)
+int	handle_keys_release(int keycode, void *param)
 {
 	t_data	*data;
 
