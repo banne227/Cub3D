@@ -6,7 +6,7 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 11:00:27 by jhauvill          #+#    #+#             */
-/*   Updated: 2026/02/19 11:28:33 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 11:48:16 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,30 @@
 
 void load_textures_raycast(t_data *data)
 {
+	printf("MLX pointer: %p\n", data->game.mlx);
+    printf("Loading NORTH: %s\n", data->text_path[NORTH]);
 	data->game.textures[0].img = mlx_xpm_file_to_image(data->game.mlx, data->text_path[NORTH], &data->game.textures[0].width, &data->game.textures[0].height);
+	if (!data->game.textures[0].img)
+    {
+		printf("ERROR: Failed to load NORTH texture\n");
+        printf("Path was: %s\n", data->text_path[NORTH]);
+        exit(1);
+    }
 	data->game.textures[0].addr = mlx_get_data_addr(data->game.textures[0].img,
 										  &data->game.textures[0].bits_per_pixel,
-										  &data->game.textures[0]->line_length, &data->game.textures[0]->endian);
-	data->game.textures[1]->img = mlx_xpm_file_to_image(data->game.mlx, data->text_path[SOUTH], &data->game.textures[1]->width, &data->game.textures[1]->height);
-	data->game.textures[1]->addr = mlx_get_data_addr(data->game.textures[1]->img,
-										  &data->game.textures[1]->bits_per_pixel,
-										  &data->game.textures[1]->line_length, &data->game.textures[1]->endian);
-	data->game.textures[2]->img = mlx_xpm_file_to_image(data->game.mlx, data->text_path[EAST], &data->game.textures[2]->width, &data->game.textures[2]->height);
-	data->game.textures[2]->addr = mlx_get_data_addr(data->game.textures[2]->img,
-										  &data->game.textures[2]->bits_per_pixel,
-										  &data->game.textures[2]->line_length, &data->game.textures[2]->endian);
-	data->game.textures[3]->img = mlx_xpm_file_to_image(data->game.mlx, data->text_path[WEST], &data->game.textures[3]->width, &data->game.textures[3]->height);
-	data->game.textures[3]->addr = mlx_get_data_addr(data->game.textures[3]->img,
-										  &data->game.textures[3]->bits_per_pixel,
-										  &data->game.textures[3]->line_length, &data->game.textures[3]->endian);
+										  &data->game.textures[0].line_length, &data->game.textures[0].endian);
+	data->game.textures[1].img = mlx_xpm_file_to_image(data->game.mlx, data->text_path[SOUTH], &data->game.textures[1].width, &data->game.textures[1].height);
+	data->game.textures[1].addr = mlx_get_data_addr(data->game.textures[1].img,
+										  &data->game.textures[1].bits_per_pixel,
+										  &data->game.textures[1].line_length, &data->game.textures[1].endian);
+	data->game.textures[2].img = mlx_xpm_file_to_image(data->game.mlx, data->text_path[EAST], &data->game.textures[2].width, &data->game.textures[2].height);
+	data->game.textures[2].addr = mlx_get_data_addr(data->game.textures[2].img,
+										  &data->game.textures[2].bits_per_pixel,
+										  &data->game.textures[2].line_length, &data->game.textures[2].endian);
+	data->game.textures[3].img = mlx_xpm_file_to_image(data->game.mlx, data->text_path[WEST], &data->game.textures[3].width, &data->game.textures[3].height);
+	data->game.textures[3].addr = mlx_get_data_addr(data->game.textures[3].img,
+										  &data->game.textures[3].bits_per_pixel,
+										  &data->game.textures[3].line_length, &data->game.textures[3].endian);
 }
 
 int get_texture_color(t_img *img, int x, int y)
@@ -175,16 +183,16 @@ void draw_textured_line(t_game *game, int x, int draw_start, int draw_end, t_img
  		if (side == 0)
  		{
  			if (ray_dir_x > 0)
- 				img = game->textures[2];
+ 				img = &game->textures[2];
  			else
- 				img = game->textures[3];
+ 				img = &game->textures[3];
  		}
  		else
  		{
  			if (ray_dir_y > 0)
- 				img = game->textures[0];
+ 				img = &game->textures[0];
  			else
- 				img = game->textures[1];
+ 				img = &game->textures[1];
  		}
  		int img_x = (int)(wall_x * (double)img->width);
  		if (side == 0 && ray_dir_x > 0)

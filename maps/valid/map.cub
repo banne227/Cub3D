@@ -1,7 +1,7 @@
-NO ./textures/NO.xpm
-SO ./textures/south.xpm
-WE ./textures/west.xpm
-EA ./textures/east.xpm
+NO ./textures/block/block.xpm
+SO ./textures/block/command.xpm
+WE ./textures/block/composter.xpm
+EA ./textures/block/deadtube.xpm
 
 F 153, 133, 129
 C 88, 173, 224
