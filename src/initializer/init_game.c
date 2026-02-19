@@ -42,8 +42,8 @@ t_weapon init_weapon(void *mlx)
 	while (i < 4)
 		weapon.gun.reload[i++] = NULL;
 	load_weapons(&weapon, mlx);
-	weapon.img_height = weapon.knife.height1; ;
-	weapon.img_width = weapon.knife.width1;
+	weapon.height = weapon.knife.height1; ;
+	weapon.width = weapon.knife.width1;
 	weapon.sound = 0;
 	return (weapon);
 }

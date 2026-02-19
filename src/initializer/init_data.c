@@ -56,11 +56,25 @@ t_data init_data(void)
 	data.anim.enter_frame = 0;
 	data.tex = init_text();
 	data.map = init_map();
-	data.game = init_game();
 	data.start_map_index = -1;
 	data.error = false;
 	init_screen(&data);
-	if (!data.game.mlx || !data.game.win)
+	data.game.mlx = mlx_init();
+	if (!data.game.mlx)
+	{
+		data.error = true;
+		return (data);
+	}
+	data.game.win = mlx_new_window(data.game.mlx, WIN_W, WIN_H, "CUB3D");
+	if (!data.game.win)
 		data.error = true;
 	return (data);
+}
+
+t_data init_data_with_weapons(t_data *data)
+{
+	data->game = init_game();
+	if (!data->game.mlx || !data->game.win)
+		data->error = true;
+	return (*data);
 }

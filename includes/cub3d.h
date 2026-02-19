@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 09:56:20 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 11:13:58 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,11 @@ typedef struct s_player
 	double plane_y;
 } t_player;
 
+typedef struct s_dimentions
+{
+	int width;
+	int height;
+} t_dimensions;
 typedef struct s_knife
 {
 	int damage;
@@ -148,26 +153,21 @@ typedef struct s_gun
 	int damage;
 	int range;
 	void *img;
-	int height;
-	int width;
+	t_dimensions dim;
+	t_dimensions dim_shoot[6];
+	t_dimensions dim_reload[4];
 	int freload;
 	int fshoot;
 	int ammo;
 	void *shoot[6];
 	void *reload[4];
 } t_gun;
-
-typedef struct s_dimentions
-{
-	int width;
-	int height;
-} t_dimensions;
 typedef struct s_weapon
 {
 	int type;
 	void *img;
-	int img_width;
-	int img_height;
+	int width;
+	int height;
 	int attack;
 	int hit;
 	int frame;
@@ -274,6 +274,7 @@ int parse(int argc, char **argv, t_data *data);
 bool map_valid(t_data *data);
 bool data_valid(t_data *data);
 t_data init_data(void);
+t_data init_data_with_weapons(t_data *data);
 bool init_mlx(t_game *game);
 void copy_without_space(char *dest, const char *src);
 void update_player_data(t_data *data, char d);

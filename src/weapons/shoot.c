@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:11:01 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/19 08:42:30 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 11:15:31 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,19 @@ void shoot(t_weapon *weapon, t_game *game)
 	}
 	weapon->gun.fshoot++;
 	if (weapon->gun.fshoot % 15 == 0 && weapon->gun.fshoot / 15 < 6)
+	{
 		weapon->img = weapon->gun.shoot[weapon->gun.fshoot / 15];
+		weapon->height = weapon->gun.dim_shoot[weapon->gun.fshoot / 15].height;
+		weapon->width = weapon->gun.dim_shoot[weapon->gun.fshoot / 15].width;
+	}
 	if (weapon->gun.fshoot >= 90)
 	{
 		weapon->img = weapon->gun.img;
 		weapon->attack = 0;
 		weapon->gun.fshoot = 0;
 		weapon->gun.ammo--;
+		weapon->height = weapon->gun.dim.height;
+		weapon->width = weapon->gun.dim.width;
 	}
 	if (bullet_hit(weapon, game->player, game->map, game->ennemys))
 	{

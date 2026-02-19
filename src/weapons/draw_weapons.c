@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:50:08 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/19 09:33:09 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 11:24:09 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 void draw_weapon(t_game *game)
 {
-    int x = (game->win_w - 64) / 2;
+    int x = (game->win_w - 60) / 2;
     int y = game->win_h - 128;
 
     if (!game->weapon.img)
+    {
+        ft_printf("DEBUG: weapon.img is NULL\n");
         return;
-    // Utilisez draw_image_transparent avec dimensions fixes pour l'arme
-    draw_image_transparent(game, game->weapon.img, 128, 128, x, y);
+    }
+    ft_printf("DEBUG draw_weapon: type=%d, width=%d, height=%d, img=%p\n",
+              game->weapon.type, game->weapon.width, game->weapon.height, game->weapon.img);
+    draw_image_transparent(game, game->weapon.img, game->weapon.width, game->weapon.height, x, y);
 
     x = (game->win_w - 16) / 2;
     y = (game->win_h - 16) / 2;
@@ -46,11 +50,15 @@ int swap_weapon(t_game *game)
     {
         game->weapon.type = 1;
         game->weapon.img = game->weapon.gun.img;
+        game->weapon.height = game->weapon.gun.dim.height;
+        game->weapon.width = game->weapon.gun.dim.width;
     }
     else
     {
         game->weapon.type = 0;
         game->weapon.img = game->weapon.knife.img[0];
+        game->weapon.height = game->weapon.knife.height1;
+        game->weapon.width = game->weapon.knife.width1;
     }
     game->weapon.attack = 0;
     game->weapon.frame = 0;

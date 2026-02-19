@@ -6,16 +6,16 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:47 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 10:02:33 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 10:17:11 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-char	*get_direction_texture(char *line)
+char *get_direction_texture(char *line)
 {
-	char	*no;
-	int		i;
+	char *no;
+	int i;
 
 	i = 2;
 	while (line[i] == ' ')
@@ -28,10 +28,10 @@ char	*get_direction_texture(char *line)
 	return (no);
 }
 
-char	*get_color_value(char *line)
+char *get_color_value(char *line)
 {
-	char	*color;
-	size_t	len;
+	char *color;
+	size_t len;
 
 	len = ft_strlen(line);
 	if (len < 2)
@@ -44,10 +44,10 @@ char	*get_color_value(char *line)
 	return (color);
 }
 
-bool	have_double(char **file)
+bool have_double(char **file)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = 0;
 	while (file[i])
@@ -56,7 +56,7 @@ bool	have_double(char **file)
 		while (file[j])
 		{
 			if ((ft_isalpha(file[i][0])) && (ft_strncmp(file[i], file[j],
-						2) == 0))
+														2) == 0))
 				return (true);
 			j++;
 		}
@@ -65,7 +65,7 @@ bool	have_double(char **file)
 	return (false);
 }
 
-int	get_value(char **file, t_data *data)
+int get_value(char **file, t_data *data)
 {
 	int i;
 
