@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 11:54:30 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 12:36:51 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 #define KEY_D 100 // d
 #define KEY_M 109 // m
 #define KEY_R 114 // r
+#define KEY_E 101 // e
 
 /* mouse click*/
 #define MOUSE_LEFT 1
@@ -278,7 +279,7 @@ t_data init_data_with_weapons(t_data *data);
 bool init_mlx(t_game *game);
 void copy_without_space(char *dest, const char *src);
 void update_player_data(t_data *data, char d);
-bool is_wall(t_map *map, int x, int y);
+bool is_wall(t_game *game, int x, int y);
 int close_game(void *param);
 int load_textures(t_data *data);
 void free_data(t_data *data);

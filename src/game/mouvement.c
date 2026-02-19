@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 12:07:09 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 17:14:03 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 12:30:04 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void	move_player(t_game *game, int keycode)
 	}
 	if (newpos_x < 0 || newpos_y < 0)
 		return ;
-	if (!is_wall(&game->map, (int)newpos_x, (int)game->player.pos_y))
+	if (!is_wall(game, (int)newpos_x, (int)game->player.pos_y))
 	{
 		game->player.pos_x = newpos_x;
 	}
-	if (!is_wall(&game->map, (int)game->player.pos_x, (int)newpos_y))
+	if (!is_wall(game, (int)game->player.pos_x, (int)newpos_y))
 	{
 		game->player.pos_y = newpos_y;
 	}
