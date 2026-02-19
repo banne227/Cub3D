@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 11:13:58 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 11:30:16 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ typedef struct s_game
 	int bits_per_pixel;
 	int line_length; // cree nouvelle struct pour le screen
 	int endian;		 // pas oublier de init tt se que tu met dans la structure
-	t_img *textures[4];
+	t_img textures[4];
 	t_map map;
 	int win_w;
 	int win_h;
