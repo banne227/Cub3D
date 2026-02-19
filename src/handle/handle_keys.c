@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:59:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 16:12:59 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 17:34:51 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	case_keycode_m(t_data *data, int keycode)
 	{
 		if (data->game.state == STATE_MENU)
 		{
-			play_background_music(&data->game);
 			data->game.state = STATE_PLAY;
 		}
 		else if (data->game.state == STATE_PLAY)

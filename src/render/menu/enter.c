@@ -100,7 +100,7 @@ void	display_enter(t_data *data)
 		destroy_enter(data);
 		data->game.state = STATE_PLAY;
 		data->game.menu_option = 0;
-		play_background_music(&data->game);
+		//play_background_music(&data->game);
 		return ;
 	}
 	elapsed = timestamp() - data->anim.last_frame_time;
