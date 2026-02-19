@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 12:07:09 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 16:20:52 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 16:22:44 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	other_move(t_game *game, double *pos_x, double *pos_y)
 	}
 	if (game->keys[KEY_A])
 	{
-		*pos_x = game->player.pos_x - game->player.plane_x * MOVE_SPEED;
-		*pos_y = game->player.pos_y - game->player.plane_y * MOVE_SPEED;
+		*pos_x = game->player.pos_x - game->player.plane_x * MOVE_SPEED / 2;
+		*pos_y = game->player.pos_y - game->player.plane_y * MOVE_SPEED / 2;
 	}
 	if (game->keys[KEY_D])
 	{
-		*pos_x = game->player.pos_x + game->player.plane_x * MOVE_SPEED;
-		*pos_y = game->player.pos_y + game->player.plane_y * MOVE_SPEED;
+		*pos_x = game->player.pos_x + game->player.plane_x * MOVE_SPEED / 2;
+		*pos_y = game->player.pos_y + game->player.plane_y * MOVE_SPEED / 2;
 	}
 }
 
