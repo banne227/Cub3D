@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 11:50:39 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:04:59 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,11 @@ t_data init_data(void)
 
 t_data init_data_with_weapons(t_data *data)
 {
+	t_player parsed_player;
+
+	parsed_player = data->game.player;
 	data->game = init_game();
+	data->game.player = parsed_player;
 	if (!data->game.mlx || !data->game.win)
 		data->error = true;
 	return (*data);
