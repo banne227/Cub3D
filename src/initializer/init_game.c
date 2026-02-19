@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 14:00:09 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 14:00:19 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 15:45:46 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_game	init_game(void)
 	t_game	game;
 
 	game.minimap = false;
-	game.background_music = false;
+	game.background_music = true;
 	game.mlx = NULL;
 	game.win = NULL;
 	game.img = NULL;

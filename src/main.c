@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:09:25 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 11:58:29 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 15:39:30 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,6 @@ int	main(int argc, char **argv)
 	printf("Parsing successful!\n");
 	print_controls();
 	data.game.map = data.map;
-	data.game.floor_color = rgb_to_int(data.text_path[F]);
-	data.game.ceiling_color = rgb_to_int(data.text_path[C]);
 	load_textures_raycast(&data);
 	mlx_loop_hook(data.game.mlx, render, &data);
 	mlx_mouse_hide(data.game.mlx, data.game.win);

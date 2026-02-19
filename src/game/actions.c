@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 13:48:10 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 13:49:03 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 15:37:11 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,6 @@ void	make_action(t_data *data, int keycode)
 		data->game.state = STATE_MENU;
 		stop_background_music(&data->game);
 	}
+	else
+		make_action2(data, keycode);
 }

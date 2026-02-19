@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 08:32:01 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 12:51:30 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 15:38:17 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ bool	is_door(t_map *map, int x, int y)
 int	mround(double value)
 {
 	if (value < 0)
-		return ((int)(value - 0.6));
+		return ((int)(value - 0.9));
 	else
-		return ((int)(value + 0.6));
+		return ((int)(value + 0.9));
 }
 
 bool	is_wall(t_map *map, double x, double y)

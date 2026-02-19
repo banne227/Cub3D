@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 13:52:44 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 15:44:14 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,6 +316,7 @@ void draw_image_transparent(t_game *game, void *img_src,
 							int img_width, int img_height, int pos_x, int pos_y);
 t_dimensions get_dim(char *path);
 t_dimensions get_image_dimensions(void *mlx, char *path);
+t_weapon init_weapon(void *mlx);
 
 // raycasting
 void my_mlx_pixel_put(t_game *game, int x, int y, int color);
