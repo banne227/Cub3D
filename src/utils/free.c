@@ -6,19 +6,19 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 09:14:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/16 10:27:32 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 08:57:09 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	free_data(t_data *data)
+void free_data(t_data *data)
 {
-	int		i;
-	t_game	*game;
+	int i;
+	t_game *game;
 
 	if (!data)
-		return ;
+		return;
 	i = 0;
 	while (i < 6)
 	{
@@ -46,7 +46,7 @@ void	free_data(t_data *data)
 	}
 }
 
-void	destroy_img(void *mlx, void *img)
+void destroy_img(void *mlx, void *img)
 {
 	if (img)
 	{
@@ -81,17 +81,26 @@ void destroy_weapon_images(t_weapon *weapon, void *mlx)
 	}
 }
 
-int	close_game(void *param)
+int close_game(void *param)
 {
 	t_data *data;
+	static int closing = 0;
 
+	if (closing)
+		return (0);
+	closing = 1;
 	printf("Exiting game...\n");
 	data = (t_data *)param;
-	mlx_clear_window(data->game.mlx, data->game.win);
-	mlx_loop_end(data->game.mlx);
-	stop_background_music(&data->game);
-	destroy_weapon_images(&data->game.weapon, data->game.mlx);
-	free_data(data);
+	if (data && data->game.mlx && data->game.win)
+		mlx_clear_window(data->game.mlx, data->game.win);
+	if (data && data->game.mlx)
+		mlx_loop_end(data->game.mlx);
+	if (data)
+		stop_background_music(&data->game);
+	if (data && data->game.mlx)
+		destroy_weapon_images(&data->game.weapon, data->game.mlx);
+	if (data)
+		free_data(data);
 	exit(0);
 	return (0);
 }

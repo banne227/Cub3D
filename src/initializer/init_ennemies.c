@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 15:48:03 by banne             #+#    #+#             */
-/*   Updated: 2026/02/16 16:13:00 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 08:17:52 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,10 @@ t_ennemy *init_ennemies(char **map, void *mlx)
 		upload_ennemy_texture(mlx, ennemies[i].img);
 		ennemies[i].display = ennemies[i].img[1];
 		ennemies[i].frame = 0;
+		if (i < count - 1)
+			ennemies[i].next = &ennemies[i + 1];
+		else
+			ennemies[i].next = NULL;
 		i++;
 	}
 	return (ennemies);

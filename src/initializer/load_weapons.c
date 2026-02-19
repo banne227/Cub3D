@@ -6,23 +6,26 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:48:26 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/16 09:42:38 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 09:54:14 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	*load_weapon_textures(void *mlx, char *path)
+static void *load_weapon_textures(void *mlx, char *path)
 {
-    void	*img;
-    int		h;
-    int		w;
+    void *img;
+    int h;
+    int w;
+    t_dimensions dim;
 
     h = 0;
     w = 0;
     img = mlx_xpm_file_to_image(mlx, path, &h, &w);
     if (!img)
         ft_printf("Error\nFailed to load weapon texture: %s\n", path);
+    dim = get_weapon_dimensions(path);
+    
     return (img);
 }
 
@@ -31,8 +34,10 @@ void load_gun(t_weapon *weapon, void *mlx)
     weapon->gun.damage = 20;
     weapon->gun.range = 8;
     weapon->gun.freload = 0;
-	weapon->gun.fshoot = 0;
-	weapon->gun.ammo = 8;
+    weapon->gun.fshoot = 0;
+    weapon->gun.ammo = 8;
+    weapon->gun.height = get_weapon_dimensions("textures/weapons/gun/gun.xpm").height;
+    weapon->gun.width = get_weapon_dimensions("textures/weapons/gun/gun.xpm").width;
     weapon->gun.img = load_weapon_textures(mlx, "textures/weapons/gun/gun.xpm");
     weapon->gun.shoot[0] = load_weapon_textures(mlx, "textures/weapons/gun/gunshot1.xpm");
     weapon->gun.shoot[1] = load_weapon_textures(mlx, "textures/weapons/gun/gunshot2.xpm");
@@ -51,7 +56,11 @@ void load_knife(t_weapon *weapon, void *mlx)
     weapon->knife.damage = 10;
     weapon->knife.range = 1;
     weapon->knife.img[0] = load_weapon_textures(mlx, "textures/weapons/knife/knife1.xpm");
+    weapon->knife.height1 = get_weapon_dimensions("textures/weapons/knife/knife1.xpm").height;
+    weapon->knife.width1 = get_weapon_dimensions("textures/weapons/knife/knife1.xpm").width;
     weapon->knife.img[1] = load_weapon_textures(mlx, "textures/weapons/knife/knife2.xpm");
+    weapon->knife.height2 = get_weapon_dimensions("textures/weapons/knife/knife2.xpm").height;
+    weapon->knife.width2 = get_weapon_dimensions("textures/weapons/knife/knife2.xpm").width;
 }
 
 void load_weapons(t_weapon *weapon, void *mlx)
@@ -62,13 +71,12 @@ void load_weapons(t_weapon *weapon, void *mlx)
     weapon->crosshair[1] = load_weapon_textures(mlx, "textures/weapons/crosshair/crosshairhit.xpm");
     weapon->ammo[0] = load_weapon_textures(mlx, "textures/weapons/ammo/ammo1.xpm");
     weapon->ammo[1] = load_weapon_textures(mlx, "textures/weapons/ammo/ammo2.xpm");
-    
-    // Debug: afficher les erreurs de chargement
+
     if (!weapon->ammo[0])
         ft_printf("Error: Failed to load ammo1.xpm\n");
     if (!weapon->ammo[1])
         ft_printf("Error: Failed to load ammo2.xpm\n");
-    
+
     if (weapon->knife.img[0])
         weapon->img = weapon->knife.img[0];
     else if (weapon->gun.img)

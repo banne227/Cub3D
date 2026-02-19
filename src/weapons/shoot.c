@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:11:01 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/16 13:54:06 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 08:42:30 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ void shoot(t_weapon *weapon, t_game *game)
 		weapon->gun.fshoot = 0;
 		weapon->gun.ammo--;
 	}
-	if (bullet_hit(weapon, game->player, game->map))
+	if (bullet_hit(weapon, game->player, game->map, game->ennemys))
 	{
 		weapon->hit = 1;
 	}
 }
 
-int bullet_hit(t_weapon *weapon, t_player player, t_map map)
+int bullet_hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
 {
 	double bullet_x = player.pos_x;
 	double bullet_y = player.pos_y;
@@ -61,7 +61,7 @@ int bullet_hit(t_weapon *weapon, t_player player, t_map map)
 
 		if (map.map[(int)bullet_y][(int)bullet_x] == 'E')
 		{
-			// take_damage(weapon->gun.damage, (int)bullet_x, (int)bullet_y);
+			take_damage(weapon->gun.damage, (int)bullet_x, (int)bullet_y, ennemies);
 			return 1;
 		}
 	}

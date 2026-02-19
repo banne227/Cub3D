@@ -18,6 +18,7 @@ int rgb_to_int(char *rgb_str)
     int g;
     int b;
     char **colors;
+    int i;
 
     if (!rgb_str)
         return (0);
@@ -26,7 +27,7 @@ int rgb_to_int(char *rgb_str)
     {
         if (colors)
         {
-            int i = 0;
+            i = 0;
             while (colors[i])
                 free(colors[i++]);
             free(colors);
@@ -36,7 +37,7 @@ int rgb_to_int(char *rgb_str)
     r = ft_atoi(colors[0]);
     g = ft_atoi(colors[1]);
     b = ft_atoi(colors[2]);
-    int i = 0;
+    i = 0;
     while (colors[i])
         free(colors[i++]);
     free(colors);

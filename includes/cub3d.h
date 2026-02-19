@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/18 15:23:20 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 09:56:20 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 #define SHOOT_SOUND "/home/banne/git_hub/cub/sounds/gun_sound.wav"
 #define BACKGROUND_SOUND "/home/banne/git_hub/cub/sounds/Mortal_Kombat.wav"
 #define KNIFE_SOUND "/home/banne/git_hub/cub/sounds/knife_attack.wav"
+#define BLOOD_SOUND "/home/banne/git_hub/cub/sounds/blood_sound.wav"
+#define DEATH_SOUND "/home/banne/git_hub/cub/sounds/death_sound.wav"
 
 /* Movement */
 #define KEY_W 119 // w
@@ -107,6 +109,7 @@ typedef struct s_ennemy
 	void *img[4];
 	bool alive;
 	int frame;
+	struct s_ennemy *next;
 } t_ennemy;
 
 typedef struct s_mouse_mouv
@@ -134,6 +137,10 @@ typedef struct s_knife
 	int damage;
 	int range;
 	void *img[2];
+	int height1;
+	int width1;
+	int height2;
+	int width2;
 } t_knife;
 
 typedef struct s_gun
@@ -141,6 +148,8 @@ typedef struct s_gun
 	int damage;
 	int range;
 	void *img;
+	int height;
+	int width;
 	int freload;
 	int fshoot;
 	int ammo;
@@ -148,10 +157,17 @@ typedef struct s_gun
 	void *reload[4];
 } t_gun;
 
+typedef struct s_dimentions
+{
+	int width;
+	int height;
+} t_dimensions;
 typedef struct s_weapon
 {
 	int type;
 	void *img;
+	int img_width;
+	int img_height;
 	int attack;
 	int hit;
 	int frame;
@@ -180,8 +196,8 @@ typedef struct s_game
 	void *img;
 	char *addr;
 	int bits_per_pixel;
-	int line_length;
-	int endian;
+	int line_length; // cree nouvelle struct pour le screen
+	int endian;		 // pas oublier de init tt se que tu met dans la structure
 	t_img *textures[4];
 	t_map map;
 	int win_w;
@@ -194,6 +210,7 @@ typedef struct s_game
 	int menu_option;
 	pid_t music_pid;
 	t_weapon weapon;
+	bool minimap;
 	bool key_w;
 	bool key_a;
 	bool key_s;
@@ -282,9 +299,9 @@ t_map init_map(void);
 int swap_weapon(t_game *game);
 void draw_weapon(t_game *game);
 void shoot(t_weapon *weapon, t_game *game);
-int bullet_hit(t_weapon *weapon, t_player player, t_map map);
+int bullet_hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies);
 void cut(t_weapon *weapon, t_game *game);
-int hit(t_weapon *weapon, t_player player, t_map map);
+int hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies);
 void reload(t_weapon *weapon);
 void make_action(t_data *data, int keycode);
 void display_ammo(t_weapon *weapon, t_game *game);
@@ -292,6 +309,13 @@ pid_t play_sounds(char *path);
 void stop_sounds(pid_t pid);
 t_ennemy *init_ennemies(char **map, void *mlx);
 void *load(t_game *game, char *path);
+void take_damage(int damage, int pos_x, int pos_y, t_ennemy *ennemies);
+void open_door(t_map *map, int x, int y);
+int verif_open_door(t_map *map, int x, int y);
+bool is_door(t_map *map, int x, int y);
+void draw_image_transparent(t_game *game, void *img_src, int img_width, int img_height, int pos_x, int pos_y);
+t_dimensions get_weapon_dimensions(char *path);
+t_dimensions get_image_dimensions(void *mlx, char *path);
 
 // raycasting
 void my_mlx_pixel_put(t_game *game, int x, int y, int color);

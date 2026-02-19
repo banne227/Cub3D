@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:10:54 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/16 14:30:16 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 09:57:03 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@ void cut(t_weapon *weapon, t_game *game)
     {
         weapon->frame = 0;
         weapon->img = weapon->knife.img[0];
+        weapon->img_height = weapon->knife.height2;
+        weapon->img_width = weapon->knife.width2;
         weapon->attack = 0;
     }
     else
         weapon->img = weapon->knife.img[1];
-    if (hit(weapon, game->player, game->map))
+    if (hit(weapon, game->player, game->map, game->ennemys))
         weapon->hit = 1;
 }
 
-int hit(t_weapon *weapon, t_player player, t_map map)
+int hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
 {
     double hit_x = player.pos_x;
     double hit_y = player.pos_y;
@@ -52,7 +54,7 @@ int hit(t_weapon *weapon, t_player player, t_map map)
 
         if (map.map[(int)hit_y][(int)hit_x] == 'E')
         {
-            // take_damage(weapon->knife.damage, (int)hit_x, (int)hit_y);
+            take_damage(weapon->knife.damage, (int)hit_x, (int)hit_y, ennemies);
             return 1;
         }
     }

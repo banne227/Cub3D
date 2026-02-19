@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 09:06:37 by banne             #+#    #+#             */
-/*   Updated: 2026/02/16 11:14:52 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 09:32:23 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void display_ammo(t_weapon *weapon, t_game *game)
 	while (count < MAX_AMMO)
 	{
 		if (count < weapon->gun.ammo)
-			mlx_put_image_to_window(game->mlx, game->win, weapon->ammo[0], x, y);
+			draw_image_transparent(game, weapon->ammo[0], 18, 38, x, y);
 		else
-			mlx_put_image_to_window(game->mlx, game->win, weapon->ammo[1], x, y);
+			draw_image_transparent(game, weapon->ammo[1], 18, 38, x, y);
 		x += 18;
 		count++;
 	}

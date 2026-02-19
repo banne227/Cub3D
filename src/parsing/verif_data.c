@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:43:27 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 16:50:16 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 09:58:54 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ bool	valid_color(char *color)
 bool	data_valid(t_data *data)
 {
 	if (!data->text_path[NORTH] || !data->text_path[SOUTH]
-		|| !data->text_path[WEST] || !data->text_path[EAST]
-		|| !data->text_path[F] || !data->text_path[C])
+		|| !data->text_path[WEST] || !data->text_path[EAST])
 	{
 		ft_printf("Error\nMissing texture or color information\n");
 		return (false);

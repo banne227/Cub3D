@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:50:08 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/16 09:44:55 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 09:33:09 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,20 @@ void draw_weapon(t_game *game)
 
     if (!game->weapon.img)
         return;
-    mlx_put_image_to_window(game->mlx, game->win, game->weapon.img, x, y);
+    // Utilisez draw_image_transparent avec dimensions fixes pour l'arme
+    draw_image_transparent(game, game->weapon.img, 128, 128, x, y);
+
     x = (game->win_w - 16) / 2;
     y = (game->win_h - 16) / 2;
     if (game->weapon.hit == 0)
     {
         if (game->weapon.crosshair[0])
-            mlx_put_image_to_window(game->mlx, game->win, game->weapon.crosshair[0], x, y);
+            draw_image_transparent(game, game->weapon.crosshair[0], 16, 16, x, y);
     }
     else
     {
         if (game->weapon.crosshair[1])
-            mlx_put_image_to_window(game->mlx, game->win, game->weapon.crosshair[1], x, y);
+            draw_image_transparent(game, game->weapon.crosshair[1], 16, 16, x, y);
         game->weapon.hit += 1;
         if (game->weapon.hit > 2)
             game->weapon.hit = 0;
