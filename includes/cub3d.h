@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 16:20:13 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 17:07:19 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,7 +326,7 @@ int	handle_keys_release(int keycode, void *param);
 // raycasting
 void my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void print_sky_n_floor(t_data *data);
-void load_textures_raycast(t_data *data);
+void	load_wall_textures(t_data *data);
 void raycasting(t_game *game);
 
 // color utils

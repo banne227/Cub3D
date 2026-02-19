@@ -6,25 +6,14 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 11:00:27 by jhauvill          #+#    #+#             */
-/*   Updated: 2026/02/19 15:01:20 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 17:26:10 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-void	load_textures_raycast(t_data *data)
+void	load_wall_textures(t_data *data)
 {
-	printf("MLX pointer: %p\n", data->game.mlx);
-	printf("Loading NORTH: %s\n", data->text_path[NORTH]);
-	data->game.textures[0].img = mlx_xpm_file_to_image(data->game.mlx,
-			data->text_path[NORTH], &data->game.textures[0].width,
-			&data->game.textures[0].height);
-	if (!data->game.textures[0].img)
-	{
-		printf("ERROR: Failed to load NORTH texture\n");
-		printf("Path was: %s\n", data->text_path[NORTH]);
-		exit(1);
-	}
 	data->game.textures[0].addr = mlx_get_data_addr(data->game.textures[0].img,
 			&data->game.textures[0].bits_per_pixel,
 			&data->game.textures[0].line_length,
@@ -113,7 +102,6 @@ void	raycasting(t_game *game)
 	double	side_dist_y;
 	int		hit;
 	double	perp_wall_dist;
-	int		side;
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
@@ -158,23 +146,7 @@ void	raycasting(t_game *game)
 			side_dist_y = (map_y + 1.0 - game->player.pos_y) * delta_dist_y;
 		}
 		// Boucle jusqu'à toucher un mur
-		while (hit == 0)
-		{
-			if (side_dist_x < side_dist_y)
-			{
-				side_dist_x += delta_dist_x;
-				map_x += step_x;
-				side = 0;
-			}
-			else
-			{
-				side_dist_y += delta_dist_y;
-				map_y += step_y;
-				side = 1;
-			}
-			if (game->map.map[map_y][map_x] == '1' || game->map.map[map_y][map_x] == 'D')
-				hit = 1;
-		}
+
 		// Calculate distance of perpendicular ray (Euclidean distance would give fisheye effect!)
 		if (side == 0)
 			perp_wall_dist = side_dist_x - delta_dist_x;
@@ -196,23 +168,6 @@ void	raycasting(t_game *game)
 			wall_x = game->player.pos_x + perp_wall_dist * ray_dir_x;
 		wall_x -= floor(wall_x); // garder partie decimale
 		// convert en coords x de texture
-		//char wall_type = game->map.map[map_y][map_x];
-		//if (wall_type == 'D')
-		//	img = &game->door; // door texture
-		if (side == 0)
-		{
-			if (ray_dir_x > 0)
-				img = &game->textures[3];
-			else
-				img = &game->textures[2];
-		}
-		else
-		{
-			if (ray_dir_y > 0)
-				img = &game->textures[1];
-			else
-				img = &game->textures[0];
-		}
 		img_x = (int)(wall_x * (double)img->width);
 		if (img_x >= img->width)
 			img_x = img->width - 1;
@@ -224,6 +179,29 @@ void	raycasting(t_game *game)
 			img_x = img->width - img_x - 1;
 		draw_textured_line(game, x, draw_start, draw_end, img, img_x, line_height);
 		x++;
+	}
+}
+
+void	get_texture(t_game *game, int map_x, int map_y, int side, t_img *img, int ray_dir_x, int ray_dir_y)
+{
+	char wall_type;
+
+	wall_type = game->map.map[map_y][map_x];
+	if (wall_type == 'D')
+		img = &game->door; // door texture
+	if (side == 0)
+	{
+		if (ray_dir_x > 0)
+			img = &game->textures[3];
+		else
+			img = &game->textures[2];
+	}
+	else
+	{
+		if (ray_dir_y > 0)
+			img = &game->textures[1];
+		else
+			img = &game->textures[0];
 	}
 }
 
