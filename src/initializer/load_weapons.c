@@ -15,12 +15,12 @@
 static void	*load_weapon_textures(void *mlx, char *path, int w, int h)
 {
 	void			*img;
-	t_dimensions	dim;
+	// t_dimensions	dim;
 
+	// dim = get_dim(path);
 	img = mlx_xpm_file_to_image(mlx, path, &h, &w);
 	if (!img)
 		ft_printf("Error\nFailed to load weapon texture: %s\n", path);
-	dim = get_dim(path);
 	return (img);
 }
 

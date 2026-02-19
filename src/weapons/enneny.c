@@ -31,7 +31,7 @@ int	take_damage(int damage, double pos_x, double pos_y, t_ennemy *ennemies)
 
 	x = (int)pos_x;
 	y = (int)pos_y;
-	ennemy = get_ennemy_at(pos_x, pos_y, ennemies);
+	ennemy = get_ennemy_at(x, y, ennemies);
 	if (!ennemy)
 		return (0);
 	ennemy->display = ennemy->img[2];

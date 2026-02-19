@@ -12,10 +12,11 @@
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void ft_putnbr_fd(int n, int fd)
 {
-	int	div;
-	int	mod;
+	int div;
+	int mod;
+	int ret;
 
 	div = 0;
 	mod = 0;
@@ -23,7 +24,7 @@ void	ft_putnbr_fd(int n, int fd)
 	{
 		if (n < 0)
 		{
-			write(fd, "-", 1);
+			ret = write(fd, "-", 1);
 			n *= -1;
 		}
 		div = n;
@@ -33,10 +34,11 @@ void	ft_putnbr_fd(int n, int fd)
 			ft_putnbr_fd(div, fd);
 		}
 		mod = n % 10 + '0';
-		write(fd, &mod, 1);
+		ret = write(fd, &mod, 1);
 	}
 	else
-		write(fd, "-2147483648", 11);
+		ret = write(fd, "-2147483648", 11);
+	(void)ret;
 }
 
 // int main(void)

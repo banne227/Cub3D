@@ -26,9 +26,9 @@ void	make_action2(t_data *data, int keycode)
 
 void	make_action(t_data *data, int keycode)
 {
-	t_player	player;
+	// t_player	player;
 
-	player = data->game.player;
+	// player = data->game.player;
 	if (keycode == MOUSE_LEFT)
 	{
 		if (data->game.weapon.type == 0)

@@ -31,11 +31,11 @@ void	draw_player_direction(t_game *game, int *img_data, int line_len, int x,
 	int		i;
 	t_pos	pos;
 
-	pos.x = x + (int)(game->player.dir_x * i);
-	pos.y = y + (int)(game->player.dir_y * i);
 	i = 0;
 	while (i < 8)
 	{
+		pos.x = x + (int)(game->player.dir_x * i);
+		pos.y = y + (int)(game->player.dir_y * i);
 		put_pixel_to_img(game, img_data, line_len, pos, 0x00FF00);
 		i++;
 	}

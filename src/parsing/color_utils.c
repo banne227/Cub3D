@@ -12,11 +12,11 @@
 
 #include "../../includes/cub3d.h"
 
-void	fill_rgd(char **rgb, int r, int g, int b)
+void	fill_rgd(char **rgb, int *r, int *g, int *b)
 {
-	r = ft_atoi(rgb[0]);
-	g = ft_atoi(rgb[1]);
-	b = ft_atoi(rgb[2]);
+	*r = ft_atoi(rgb[0]);
+	*g = ft_atoi(rgb[1]);
+	*b = ft_atoi(rgb[2]);
 }
 
 int	rgb_to_int(char *rgb_str)
@@ -45,7 +45,7 @@ int	rgb_to_int(char *rgb_str)
 		}
 		return (0);
 	}
-	fill_rgd(colors, r, g, b);
+	fill_rgd(colors, &r, &g, &b);
 	while (colors[i])
 		free(colors[i++]);
 	free(colors);
