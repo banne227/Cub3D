@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 15:44:14 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 16:20:13 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 #define WIN_W 1280
 #define WIN_H 720
-#define MOVE_SPEED 0.1
+#define MOVE_SPEED 0.01
 #define ROT_SPEED 0.03
 #define SENSI 0.003
 
@@ -214,6 +214,7 @@ typedef struct s_game
 	bool minimap;
 	t_ennemy *ennemys;
 	bool background_music;
+	bool keys[65536];
 } t_game;
 
 typedef enum e_direction
@@ -280,8 +281,8 @@ void free_data(t_data *data);
 void draw_minimap(t_game *game);
 void print_player_pos(t_game *game, int *img_data, int line_len);
 int render(void *param);
-void move_player(t_game *game, int keycode);
-void rotate_player(t_data *data, int keycode);
+void move_player(t_game *game);
+void rotate_player(t_data *data);
 void render_menu(t_game *game, t_data *data);
 long timestamp(void);
 void display_enter(t_data *data);
@@ -317,6 +318,10 @@ void draw_image_transparent(t_game *game, void *img_src,
 t_dimensions get_dim(char *path);
 t_dimensions get_image_dimensions(void *mlx, char *path);
 t_weapon init_weapon(void *mlx);
+int	handle_mouse(int button, int x, int y, void *param);
+int	handle_mouse_move(int x, int y, void *param);
+int	handle_key_press(int keycode, void *param);
+int	handle_keys_release(int keycode, void *param);
 
 // raycasting
 void my_mlx_pixel_put(t_game *game, int x, int y, int color);

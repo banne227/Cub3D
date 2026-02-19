@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:57:11 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 11:58:45 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 16:17:03 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ int	render(void *param)
 	mlx_put_image_to_window(data->game.mlx, data->game.win, data->game.img, 0,
 		0);
 	draw_weapon(&data->game);
+	move_player(&data->game);
+	rotate_player(data);
 	return (0);
 }

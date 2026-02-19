@@ -5,4 +5,5 @@ ROOT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
 
 find "$ROOT_DIR" -type f -name '*.c' -printf '%P\n' \
   | sort \
+  | tail -n +36 \
   > "$ROOT_DIR/srcs"

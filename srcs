@@ -2,6 +2,8 @@ src/audio/audio.c
 src/game/actions.c
 src/game/mouvement.c
 src/game/needed.c
+src/handle/handle_keys.c
+src/handle/handle_mouse.c
 src/initializer/get_img_dim.c
 src/initializer/init_data.c
 src/initializer/init_ennemies.c

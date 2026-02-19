@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 14:00:09 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 15:45:46 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 15:58:54 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,15 @@ t_weapon	init_weapon(void *mlx)
 	return (weapon);
 }
 
+void init_keys(t_game *game)
+{
+	int i;
+
+	i = 0;
+	while (i < 65536)
+		game->keys[i++] = false;
+}
+
 t_game	init_game(void)
 {
 	t_game	game;
@@ -80,6 +89,7 @@ t_game	init_game(void)
 	game.last_key = 0;
 	game.menu_option = 0;
 	game.music_pid = 0;
+	init_keys(&game);
 	game.ennemys = init_ennemies(game.map.map, game.mlx);
 	if (!init_mlx(&game))
 		printf("Error\nFailed to initialize game graphics\n");
