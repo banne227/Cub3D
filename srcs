@@ -1,5 +1,4 @@
 src/audio/audio.c
-src/doors/open_doors.c
 src/game/actions.c
 src/game/mouvement.c
 src/game/needed.c

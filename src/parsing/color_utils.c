@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 18:30:00 by jhauvill          #+#    #+#             */
-/*   Updated: 2026/02/19 14:04:36 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 14:08:56 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ int	rgb_to_int(char *rgb_str)
 	char	**colors;
 	int		i;
 
+	r = 0;
+	g = 0;
+	b = 0;
+	i = 0;
 	if (!rgb_str)
 		return (0);
 	colors = ft_split(rgb_str, ',');

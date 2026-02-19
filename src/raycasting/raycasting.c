@@ -6,7 +6,7 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 11:00:27 by jhauvill          #+#    #+#             */
-/*   Updated: 2026/02/19 13:32:35 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 15:01:20 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,14 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
 }
 
 void	draw_textured_line(t_game *game, int x, int draw_start, int draw_end,
-		t_img *img, int img_x)
+		t_img *img, int img_x, int line_height)
 {
 	int		y;
 	double	step;
 	double	tex_pos;
 	int		img_y;
 	int		color;
-	int		line_height;
 
-	line_height = draw_end - draw_start;
 	step = (double)img->height / line_height;
 	tex_pos = (draw_start - game->win_h / 2 + line_height / 2) * step;
 	y = draw_start;
@@ -135,8 +133,8 @@ void	raycasting(t_game *game)
 		map_x = (int)game->player.pos_x;
 		map_y = (int)game->player.pos_y;
 		// 3. distance parcourue par le rayon pour aller d'une ligne x a la suivante
-		delta_dist_x = (ray_dir_x == 0) ? 1e30 : fabs(1 / ray_dir_x);
-		delta_dist_y = (ray_dir_y == 0) ? 1e30 : fabs(1 / ray_dir_y);
+		delta_dist_x = fabs(1 / ray_dir_x); //1e30
+		delta_dist_y = fabs(1 / ray_dir_y);
 		// 4. DDA (Digital Differential Analysis) pour trouver le mur
 		// Calculer step_x, step_y et side_dist_x,	side_dist_y initial
 		if (ray_dir_x < 0)
@@ -174,7 +172,7 @@ void	raycasting(t_game *game)
 				map_y += step_y;
 				side = 1;
 			}
-			if (game->map.map[map_y][map_x] == '1')
+			if (game->map.map[map_y][map_x] == '1' || game->map.map[map_y][map_x] == 'D')
 				hit = 1;
 		}
 		// Calculate distance of perpendicular ray (Euclidean distance would give fisheye effect!)
@@ -198,6 +196,9 @@ void	raycasting(t_game *game)
 			wall_x = game->player.pos_x + perp_wall_dist * ray_dir_x;
 		wall_x -= floor(wall_x); // garder partie decimale
 		// convert en coords x de texture
+		//char wall_type = game->map.map[map_y][map_x];
+		//if (wall_type == 'D')
+		//	img = &game->door; // door texture
 		if (side == 0)
 		{
 			if (ray_dir_x > 0)
@@ -221,7 +222,7 @@ void	raycasting(t_game *game)
 			img_x = img->width - img_x - 1;
 		if (side == 1 && ray_dir_y > 0)
 			img_x = img->width - img_x - 1;
-		draw_textured_line(game, x, draw_start, draw_end, img, img_x);
+		draw_textured_line(game, x, draw_start, draw_end, img, img_x, line_height);
 		x++;
 	}
 }
