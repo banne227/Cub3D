@@ -21,19 +21,19 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (ptr[i] == (char) c)
-			return ((void *) &ptr[i]);
+		if (ptr[i] == (char)c)
+			return ((void *)&ptr[i]);
 		i++;
 	}
 	return (NULL);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	const char *s = "abcdes";
 //	int c = 'b';
 //	size_t n = 6;
 //	char *str = ft_memchr(s,c,n);
 //	printf("%s", str);
-//	return 0;
+//	return (0);
 //}

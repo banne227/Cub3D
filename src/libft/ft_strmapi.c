@@ -30,14 +30,14 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	return (str);
 }
 
-//char f(unsigned int i, char c)
+// char f(unsigned int i, char c)
 //{
 //	return (i + c);
 //}
 
-//int main(void)
+// int main(void)
 //{
 //	char *s = "abcdef";
 //	printf("%s", ft_strmapi(s, f));
-//	return 0;
+//	return (0);
 //}

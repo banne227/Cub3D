@@ -17,10 +17,10 @@
 #  define BUFFER_SIZE 7
 # endif
 
+# include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
 
 size_t	ft_strlen_gnl(const char *s);
 char	*ft_strdup_gnl(const char *s);
@@ -29,7 +29,7 @@ void	*ft_memcpy_gnl(void *dest, const void *src, size_t n);
 char	*ft_strchr_gnl(const char *s, int c);
 char	*ft_check(char *tmp, char *buffer);
 void	ft_exchange(char **ptr);
-char	*ft_extract_line(char	**ptr_tmp, char **ptr_buffer, ssize_t b);
+char	*ft_extract_line(char **ptr_tmp, char **ptr_buffer, ssize_t b);
 char	*get_next_line(int fd);
 
 #endif

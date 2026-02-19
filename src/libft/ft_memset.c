@@ -27,7 +27,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	return (s);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	int i = 0;
 //	char *str;
@@ -39,5 +39,5 @@ void	*ft_memset(void *s, int c, size_t n)
 //	}
 //	ft_memset(str,33,2);
 //	printf("%s", str);
-//	return 0;
+//	return (0);
 //}

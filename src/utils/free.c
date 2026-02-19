@@ -12,13 +12,13 @@
 
 #include "../../includes/cub3d.h"
 
-void free_data(t_data *data)
+void	free_data(t_data *data)
 {
-	int i;
-	t_game *game;
+	int		i;
+	t_game	*game;
 
 	if (!data)
-		return;
+		return ;
 	i = 0;
 	while (i < 6)
 	{
@@ -46,7 +46,7 @@ void free_data(t_data *data)
 	}
 }
 
-void destroy_img(void *mlx, void *img)
+void	destroy_img(void *mlx, void *img)
 {
 	if (img)
 	{
@@ -55,9 +55,9 @@ void destroy_img(void *mlx, void *img)
 	}
 }
 
-void destroy_weapon_images(t_weapon *weapon, void *mlx)
+void	destroy_weapon_images(t_weapon *weapon, void *mlx)
 {
-	int i;
+	int	i;
 
 	if (weapon->img)
 		destroy_img(mlx, weapon->img);
@@ -81,7 +81,7 @@ void destroy_weapon_images(t_weapon *weapon, void *mlx)
 	}
 }
 
-int close_game(void *param)
+int	close_game(void *param)
 {
 	t_data *data;
 	static int closing = 0;

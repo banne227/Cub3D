@@ -12,16 +12,16 @@
 
 #include "../../includes/cub3d.h"
 
-int render(void *param)
+int	render(void *param)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = (t_data *)param;
 	if (data->game.state == STATE_EXIT)
 		return (close_game(data));
 	if (!data->game.img)
 		data->game.img = mlx_new_image(data->game.mlx, data->game.win_w,
-									   data->game.win_h);
+				data->game.win_h);
 	if (data->game.state == STATE_MENU)
 	{
 		render_menu(&data->game, data);
@@ -47,7 +47,7 @@ int render(void *param)
 	raycasting(&data->game);
 	draw_minimap(&data->game);
 	mlx_put_image_to_window(data->game.mlx, data->game.win, data->game.img, 0,
-							0);
+		0);
 	draw_weapon(&data->game);
 	return (0);
 }

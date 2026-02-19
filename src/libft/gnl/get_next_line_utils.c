@@ -54,9 +54,9 @@ char	*ft_substr_gnl(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	if (start >= ft_strlen_gnl(s))
 		return (ft_strdup_gnl(""));
-	if (len > ft_strlen_gnl(s) -start)
+	if (len > ft_strlen_gnl(s) - start)
 		len = ft_strlen_gnl(s) - start;
-	substring = (char *) malloc(sizeof(char) * (len + 1));
+	substring = (char *)malloc(sizeof(char) * (len + 1));
 	if (substring == NULL)
 		return (NULL);
 	while (++i < len)
@@ -88,18 +88,18 @@ void	*ft_memcpy_gnl(void *dest, const void *src, size_t n)
 
 char	*ft_strchr_gnl(const char *s, int c)
 {
-	int		i;
+	int	i;
 
 	if (!s)
 		return (NULL);
 	i = 0;
-	while (s[i] && s[i] != (char) c)
+	while (s[i] && s[i] != (char)c)
 	{
 		i++;
 	}
-	if (s[i] == (char) c)
-		return ((char *) &s[i]);
-	else if ((char) c == '\0')
-		return ((char *) &s[i]);
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	else if ((char)c == '\0')
+		return ((char *)&s[i]);
 	return (NULL);
 }

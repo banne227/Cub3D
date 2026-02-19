@@ -23,11 +23,11 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (str);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	size_t nmemb = 1;
 //	size_t	size = 0;
 //	char *str = ft_calloc(nmemb, size);
 //	printf("%s", str);
-//	return 0;
+//	return (0);
 //}

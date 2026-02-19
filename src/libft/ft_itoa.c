@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_len_nb( long int n)
+static int	ft_len_nb(long int n)
 {
 	int	p;
 
@@ -49,11 +49,11 @@ static char	*fill(long int n, int s, char *str, int count)
 
 char	*ft_itoa(int n)
 {
-	long int		nb;
-	char			*str;
-	int				s;
-	long int		count;
-	int				c;
+	long int	nb;
+	char		*str;
+	int			s;
+	long int	count;
+	int			c;
 
 	s = 0;
 	nb = n;
@@ -73,7 +73,7 @@ char	*ft_itoa(int n)
 	str = fill(nb, s, str, count);
 	return (str);
 }
-//int main(void)
+// int main(void)
 //{
 //	int n = 0;
 //	printf("%s", ft_itoa(n));

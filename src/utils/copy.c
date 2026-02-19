@@ -12,8 +12,8 @@
 
 void	copy_without_space(char *dest, const char *src)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;

@@ -29,8 +29,8 @@ char	*ft_check(char *tmp, char *buffer)
 			return (NULL);
 		ft_memcpy_gnl(tmp, keep_tmp, ft_strlen_gnl(keep_tmp) + 1);
 		tmp[ft_strlen_gnl(keep_tmp)] = '\0';
-		ft_memcpy_gnl(ft_strchr_gnl(tmp, '\0'), buffer,
-			ft_strlen_gnl(buffer) + 1);
+		ft_memcpy_gnl(ft_strchr_gnl(tmp, '\0'), buffer, ft_strlen_gnl(buffer)
+			+ 1);
 		tmp[len] = '\0';
 		free(keep_tmp);
 	}
@@ -49,7 +49,7 @@ void	ft_exchange(char **ptr)
 	*ptr = keep_tmp;
 }
 
-char	*ft_extract_line(char	**ptr_tmp, char **ptr_buffer, ssize_t b)
+char	*ft_extract_line(char **ptr_tmp, char **ptr_buffer, ssize_t b)
 {
 	char	*line;
 
@@ -105,7 +105,7 @@ char	*get_next_line(int fd)
 	return (ft_extract_line(&tmp, &buffer, byte));
 }
 
-//int	main(void)
+// int	main(void)
 //{
 //	int		fd;
 //	char	*line;

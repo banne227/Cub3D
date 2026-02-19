@@ -12,11 +12,11 @@
 
 #include "../../includes/cub3d.h"
 
-t_dimensions extract_dim(char *line)
+t_dimensions	extract_dim(char *line)
 {
-	t_dimensions dim;
-	char **parts;
-	char *trimmed;
+	t_dimensions	dim;
+	char			**parts;
+	char			*trimmed;
 
 	if (!line)
 		return ((t_dimensions){0, 0});
@@ -39,12 +39,12 @@ t_dimensions extract_dim(char *line)
 	return (dim);
 }
 
-t_dimensions get_weapon_dimensions(char *path)
+t_dimensions	get_weapon_dimensions(char *path)
 {
-	t_dimensions dim;
-	char *line;
-	int fd;
-	int i;
+	t_dimensions	dim;
+	char			*line;
+	int				fd;
+	int				i;
 
 	if (!path)
 		return ((t_dimensions){0, 0});

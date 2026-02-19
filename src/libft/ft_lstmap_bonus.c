@@ -37,11 +37,11 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	return (newlist);
 }
 
-//void print_content(void *content)
+// void print_content(void *content)
 //{
 //    printf("%s\n", (char *)content);
 //}
-//void *duplicate_upper(void *content)
+// void *duplicate_upper(void *content)
 //{
 //    char *str = (char *)content;
 //    char *dup = ft_strdup(str);
@@ -52,21 +52,21 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 //            dup[i] -= 32;
 //        i++;
 //    }
-//    return dup;
+//    return (dup);
 //}
-//void del(void *content)
+// void del(void *content)
 //{
 //    free(content);
 //}
-//int main(void)
+// int main(void)
 //{
 //    t_list *list = NULL;
-//    t_list *new_list;  
+//    t_list *new_list;
 //    ft_lstadd_back(&list, ft_lstnew("un"));
 //    ft_lstadd_back(&list, ft_lstnew("deux"));
-//    ft_lstadd_back(&list, ft_lstnew("trois"));  
-//    new_list = ft_lstmap(list, duplicate_upper, del); 
+//    ft_lstadd_back(&list, ft_lstnew("trois"));
+//    new_list = ft_lstmap(list, duplicate_upper, del);
 //    printf("Liste mappee:\n");
-//    ft_lstiter(new_list, print_content);    
-//    return 0;
+//    ft_lstiter(new_list, print_content);
+//    return (0);
 //}

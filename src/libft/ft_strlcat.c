@@ -36,7 +36,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	return (dst_len + src_len);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	char	dest[6] = "hello";
 //	const char *src = "abcde";

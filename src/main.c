@@ -13,7 +13,7 @@
 #include "../includes/color.h"
 #include "../includes/cub3d.h"
 
-static void print_controls(void)
+static void	print_controls(void)
 {
 	printf(CYAN "\n");
 	printf("░█▀▀░█░█░█▀▄░▀▀█░█▀▄░░░█▀▀░█▀█░█▀█░▀█▀░█▀▄░█▀█░█░░░█▀▀\n");
@@ -29,9 +29,9 @@ static void print_controls(void)
 	printf("\n");
 }
 
-int handle_key(int keycode, void *param)
+int	handle_key(int keycode, void *param)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = (t_data *)param;
 	data->game.last_key = keycode;
@@ -52,9 +52,9 @@ int handle_key(int keycode, void *param)
 	return (0);
 }
 
-int handle_mouse(int button, int x, int y, void *param)
+int	handle_mouse(int button, int x, int y, void *param)
 {
-	t_data *data;
+	t_data	*data;
 
 	(void)x;
 	(void)y;
@@ -64,10 +64,10 @@ int handle_mouse(int button, int x, int y, void *param)
 	return (0);
 }
 
-int handle_mouse_move(int x, int y, void *param)
+int	handle_mouse_move(int x, int y, void *param)
 {
-	t_data *data;
-	t_mouse_mouv mouse;
+	t_data			*data;
+	t_mouse_mouv	mouse;
 
 	data = (t_data *)param;
 	mouse.center_x = WIN_W / 2;
@@ -80,17 +80,22 @@ int handle_mouse_move(int x, int y, void *param)
 	mouse.rot_speed = mouse.delta_x * SENSI;
 	mouse.olddir_x = data->game.player.dir_x;
 	mouse.oldplane_x = data->game.player.plane_x;
-	data->game.player.dir_x = data->game.player.dir_x * cos(mouse.rot_speed) - data->game.player.dir_y * sin(mouse.rot_speed);
-	data->game.player.dir_y = mouse.olddir_x * sin(mouse.rot_speed) + data->game.player.dir_y * cos(mouse.rot_speed);
-	data->game.player.plane_x = data->game.player.plane_x * cos(mouse.rot_speed) - data->game.player.plane_y * sin(mouse.rot_speed);
-	data->game.player.plane_y = mouse.oldplane_x * sin(mouse.rot_speed) + data->game.player.plane_y * cos(mouse.rot_speed);
-	mlx_mouse_move(data->game.mlx, data->game.win, mouse.center_x, mouse.center_y);
+	data->game.player.dir_x = data->game.player.dir_x * cos(mouse.rot_speed)
+		- data->game.player.dir_y * sin(mouse.rot_speed);
+	data->game.player.dir_y = mouse.olddir_x * sin(mouse.rot_speed)
+		+ data->game.player.dir_y * cos(mouse.rot_speed);
+	data->game.player.plane_x = data->game.player.plane_x * cos(mouse.rot_speed)
+		- data->game.player.plane_y * sin(mouse.rot_speed);
+	data->game.player.plane_y = mouse.oldplane_x * sin(mouse.rot_speed)
+		+ data->game.player.plane_y * cos(mouse.rot_speed);
+	mlx_mouse_move(data->game.mlx, data->game.win, mouse.center_x,
+		mouse.center_y);
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data data;
+	t_data	data;
 
 	data = init_data();
 	if (data.error || parse(argc, argv, &data) != 0)

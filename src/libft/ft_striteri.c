@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	int	i;
 
@@ -24,13 +24,13 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	}
 }
 
-//void to_upper(unsigned int i, char *c)
+// void to_upper(unsigned int i, char *c)
 //{
 //	(void)    i;
 //	*c = ft_toupper(*c);
 //}
 
-//int main()
+// int main()
 //{
 //    char s[]= "abc";
 //    ft_striteri(s, to_upper);

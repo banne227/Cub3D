@@ -1,8 +1,8 @@
 #include "../../includes/cub3d.h"
 
-t_player init_player(void)
+t_player	init_player(void)
 {
-	t_player player;
+	t_player	player;
 
 	player.pos_x = 0.0;
 	player.pos_y = 0.0;
@@ -13,9 +13,9 @@ t_player init_player(void)
 	return (player);
 }
 
-t_map init_map(void)
+t_map	init_map(void)
 {
-	t_map map;
+	t_map	map;
 
 	map.map = NULL;
 	map.width = 0;
@@ -23,11 +23,12 @@ t_map init_map(void)
 	return (map);
 }
 
-t_weapon init_weapon(void *mlx)
+t_weapon	init_weapon(void *mlx)
 {
-	t_weapon weapon;
-	int i = 0;
+	t_weapon	weapon;
+	int			i;
 
+	i = 0;
 	weapon.attack = 0;
 	weapon.frame = 0;
 	weapon.hit = 0;
@@ -42,15 +43,16 @@ t_weapon init_weapon(void *mlx)
 	while (i < 4)
 		weapon.gun.reload[i++] = NULL;
 	load_weapons(&weapon, mlx);
-	weapon.height = weapon.knife.height1; ;
+	weapon.height = weapon.knife.height1;
+	;
 	weapon.width = weapon.knife.width1;
 	weapon.sound = 0;
 	return (weapon);
 }
 
-t_game init_game(void)
+t_game	init_game(void)
 {
-	t_game game;
+	t_game	game;
 
 	game.minimap = false;
 	game.background_music = false;

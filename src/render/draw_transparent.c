@@ -12,15 +12,17 @@
 
 #include "../../includes/cub3d.h"
 
-int get_pixel_color(char *addr, int line_length, int bits_per_pixel, int x, int y)
+int	get_pixel_color(char *addr, int line_length, int bits_per_pixel, int x,
+		int y)
 {
-	char *dst;
+	char	*dst;
 
 	dst = addr + (y * line_length + x * (bits_per_pixel / 8));
 	return (*(unsigned int *)dst);
 }
 
-void draw_image_transparent(t_game *game, void *img_src, int img_width, int img_height, int pos_x, int pos_y)
+void	draw_image_transparent(t_game *game, void *img_src, int img_width,
+		int img_height, int pos_x, int pos_y)
 {
 	char *src_addr;
 	int bpp;
@@ -43,7 +45,8 @@ void draw_image_transparent(t_game *game, void *img_src, int img_width, int img_
 			screen_x = pos_x + x;
 			screen_y = pos_y + y;
 			// Vérifier que le pixel est dans les limites de l'écran
-			if (screen_x >= 0 && screen_x < game->win_w && screen_y >= 0 && screen_y < game->win_h)
+			if (screen_x >= 0 && screen_x < game->win_w && screen_y >= 0
+				&& screen_y < game->win_h)
 			{
 				color = get_pixel_color(src_addr, src_line_len, bpp, x, y);
 				// Si le pixel n'est pas noir, on le dessine

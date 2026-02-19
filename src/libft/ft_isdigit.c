@@ -19,9 +19,9 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	int c = '1';
 //	printf("%d", ft_isdigit(c));
-//	return 0;
+//	return (0);
 //}

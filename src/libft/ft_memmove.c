@@ -31,12 +31,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	char dest[4];
 //	char *src = "1234";
 //	size_t n = 4;
 //	ft_memmove(dest,src,n);
 //	printf("%s", dest);
-//	return 0;
+//	return (0);
 //}

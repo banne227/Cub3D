@@ -33,7 +33,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	return (i);
 }
 
-//int main (void)
+// int main (void)
 //{
 //	char	dest[5];
 //	const char *src = "abcde";

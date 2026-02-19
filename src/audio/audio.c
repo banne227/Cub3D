@@ -12,9 +12,9 @@
 
 #include "../../includes/cub3d.h"
 
-pid_t play_sounds(char *path)
+pid_t	play_sounds(char *path)
 {
-	pid_t pid;
+	pid_t	pid;
 
 	pid = fork();
 	if (pid == 0)
@@ -30,7 +30,7 @@ pid_t play_sounds(char *path)
 	return (pid);
 }
 
-void stop_sounds(pid_t pid)
+void	stop_sounds(pid_t pid)
 {
 	if (pid > 0)
 	{
@@ -39,12 +39,12 @@ void stop_sounds(pid_t pid)
 	}
 }
 
-void play_background_music(t_game *game)
+void	play_background_music(t_game *game)
 {
-	pid_t pid;
+	pid_t	pid;
 
 	if (!game->background_music)
-		return;
+		return ;
 	pid = fork();
 	if (pid == 0)
 	{
@@ -62,10 +62,10 @@ void play_background_music(t_game *game)
 	}
 }
 
-void stop_background_music(t_game *game)
+void	stop_background_music(t_game *game)
 {
 	if (!game->background_music)
-		return;
+		return ;
 	if (game->music_pid > 0)
 	{
 		kill(game->music_pid, SIGTERM);

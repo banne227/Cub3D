@@ -60,7 +60,7 @@ static char	*ft_splitdup(const char *s, char c)
 
 void	free_tab(char **tab)
 {
-	int size;
+	int	size;
 
 	if (!tab)
 		return ;

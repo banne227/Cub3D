@@ -30,11 +30,11 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	return (d1[i] - d2[i]);
 }
 
-//int main (void)
+// int main (void)
 //{
 //	const char *s1 = "\xff\xaa\xde\x12";
 //	const char *s2 = "\xff\xaa\xde\x12MACOSAAAAA";
 //	size_t n = 4;
 //	printf("%d", ft_memcmp(s1, s2, n));
-//	return 0;
+//	return (0);
 //}

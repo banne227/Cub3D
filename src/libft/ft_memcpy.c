@@ -31,12 +31,12 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	char dest[3];
 //	char src[] = "abc";
 //	size_t n = 2;
 //	ft_memcpy(dest, src, n);
 //	printf("%s", dest);
-//	return 0;
+//	return (0);
 //}

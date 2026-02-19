@@ -14,24 +14,24 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	while (s[i] && s[i] != (char) c)
+	while (s[i] && s[i] != (char)c)
 	{
 		i++;
 	}
-	if (s[i] == (char) c)
-		return ((char *) &s[i]);
-	else if ((char) c == '\0')
-		return ((char *) &s[i]);
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	else if ((char)c == '\0')
+		return ((char *)&s[i]);
 	return (NULL);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	char *str = "abcde";
 //	int c = 'd';
 //	printf("%s", ft_strchr(str,c));
-//	return 0;
+//	return (0);
 //}

@@ -12,14 +12,14 @@
 
 #include "../../includes/cub3d.h"
 
-void display_ammo(t_weapon *weapon, t_game *game)
+void	display_ammo(t_weapon *weapon, t_game *game)
 {
-	int x;
-	int y;
-	int count;
+	int	x;
+	int	y;
+	int	count;
 
 	if (weapon->type == 0)
-		return;
+		return ;
 	x = 5;
 	y = 675;
 	count = 0;

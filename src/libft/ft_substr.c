@@ -20,9 +20,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = -1;
 	if (start >= ft_strlen(s))
 		return (ft_strdup(""));
-	if (len > ft_strlen(s) -start)
+	if (len > ft_strlen(s) - start)
 		len = ft_strlen(s) - start;
-	substring = (char *) malloc(sizeof(char) * (len + 1));
+	substring = (char *)malloc(sizeof(char) * (len + 1));
 	if (substring == NULL)
 		return (NULL);
 	while (++i < len)
@@ -33,11 +33,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (substring);
 }
 
-//int main (void)
+// int main (void)
 //{
 //	char * s = "abcdefghijk";
 //	unsigned int start = 3;
 //	size_t len = 3;
 //	printf("%s", ft_substr(s,start,len));
-//	return 0;
+//	return (0);
 //}

@@ -12,11 +12,11 @@
 
 #include "../../includes/cub3d.h"
 
-int count_ennemies(char **map)
+int	count_ennemies(char **map)
 {
-	int count;
-	int x;
-	int y;
+	int	count;
+	int	x;
+	int	y;
 
 	if (!map)
 		return (0);
@@ -37,11 +37,11 @@ int count_ennemies(char **map)
 	return (count);
 }
 
-t_pos get_ennemy_pos(char **map, int index)
+t_pos	get_ennemy_pos(char **map, int index)
 {
-	int count;
-	int x;
-	int y;
+	int	count;
+	int	x;
+	int	y;
 
 	if (!map)
 		return ((t_pos){-1, -1});
@@ -66,7 +66,7 @@ t_pos get_ennemy_pos(char **map, int index)
 	return ((t_pos){-1, -1});
 }
 
-void upload_ennemy_texture(void *mlx, void *img[4])
+void	upload_ennemy_texture(void *mlx, void *img[4])
 {
 	img[0] = load(mlx, "textures/ennemies/walk.xpm");
 	img[1] = load(mlx, "textures/ennemies/shoot.xpm");
@@ -74,11 +74,11 @@ void upload_ennemy_texture(void *mlx, void *img[4])
 	img[3] = load(mlx, "textures/ennemies/dead.xpm");
 }
 
-t_ennemy *init_ennemies(char **map, void *mlx)
+t_ennemy	*init_ennemies(char **map, void *mlx)
 {
-	t_ennemy *ennemies;
-	int count;
-	int i;
+	t_ennemy	*ennemies;
+	int			count;
+	int			i;
 
 	count = count_ennemies(map);
 	if (count == 0)

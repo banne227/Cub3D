@@ -18,7 +18,7 @@ void	ft_bzero(void *s, size_t n)
 	unsigned char	*ptr;
 
 	i = 0;
-	ptr = (unsigned char *) s;
+	ptr = (unsigned char *)s;
 	while (i < n)
 	{
 		ptr[i] = '\0';
@@ -26,7 +26,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-//int main (void)
+// int main (void)
 //{
 //	int i = 0;
 //	char *str;
@@ -44,5 +44,5 @@ void	ft_bzero(void *s, size_t n)
 //		write(1,&str[i],1);
 //		i++;
 //	}
-//	return 0;
+//	return (0);
 //}

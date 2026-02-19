@@ -64,7 +64,7 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	char *str = "abcde";
 //	int n = 65;
@@ -106,7 +106,7 @@ int	ft_printf(const char *format, ...)
 //	printf("\nTest %%u : \n");
 //	printf("\n%d\n\n", ft_printf("%u", nb));
 //	printf("\n%d\n\n", printf("%u", nb));
-//	printf("Fin du test");	
+//	printf("Fin du test");
 //	printf("\nTest pour tout : \n");
 //	printf("\n%d\n\n", ft_printf("%p, %s, %d, %c, %x, %X, %u",
 // ptr, str, n, c, hex, hex, nb));

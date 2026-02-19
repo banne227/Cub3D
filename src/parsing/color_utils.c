@@ -12,34 +12,34 @@
 
 #include "../../includes/cub3d.h"
 
-int rgb_to_int(char *rgb_str)
+int	rgb_to_int(char *rgb_str)
 {
-    int r;
-    int g;
-    int b;
-    char **colors;
-    int i;
+	int		r;
+	int		g;
+	int		b;
+	char	**colors;
+	int		i;
 
-    if (!rgb_str)
-        return (0);
-    colors = ft_split(rgb_str, ',');
-    if (!colors || !colors[0] || !colors[1] || !colors[2])
-    {
-        if (colors)
-        {
-            i = 0;
-            while (colors[i])
-                free(colors[i++]);
-            free(colors);
-        }
-        return (0);
-    }
-    r = ft_atoi(colors[0]);
-    g = ft_atoi(colors[1]);
-    b = ft_atoi(colors[2]);
-    i = 0;
-    while (colors[i])
-        free(colors[i++]);
-    free(colors);
-    return ((r << 16) | (g << 8) | b);
+	if (!rgb_str)
+		return (0);
+	colors = ft_split(rgb_str, ',');
+	if (!colors || !colors[0] || !colors[1] || !colors[2])
+	{
+		if (colors)
+		{
+			i = 0;
+			while (colors[i])
+				free(colors[i++]);
+			free(colors);
+		}
+		return (0);
+	}
+	r = ft_atoi(colors[0]);
+	g = ft_atoi(colors[1]);
+	b = ft_atoi(colors[2]);
+	i = 0;
+	while (colors[i])
+		free(colors[i++]);
+	free(colors);
+	return ((r << 16) | (g << 8) | b);
 }

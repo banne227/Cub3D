@@ -19,9 +19,9 @@ int	ft_isalnum(int c)
 	return (0);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	int c = '|';
 //	printf("%d", ft_isalnum(c));
-//	return 0;
+//	return (0);
 //}

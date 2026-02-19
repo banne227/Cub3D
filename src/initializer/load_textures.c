@@ -12,9 +12,9 @@
 
 #include "../../includes/cub3d.h"
 
-void *load(t_game *game, char *path)
+void	*load(t_game *game, char *path)
 {
-	void *img;
+	void	*img;
 
 	img = mlx_xpm_file_to_image(game->mlx, path, &game->win_w, &game->win_h);
 	if (!img)
@@ -25,7 +25,7 @@ void *load(t_game *game, char *path)
 	return (img);
 }
 
-bool check_loading(t_data *data, void *img, void **texture)
+bool	check_loading(t_data *data, void *img, void **texture)
 {
 	if (!img)
 	{
@@ -38,14 +38,16 @@ bool check_loading(t_data *data, void *img, void **texture)
 	return (true);
 }
 
-int load_textures(t_data *data)
+int	load_textures(t_data *data)
 {
 	check_loading(data, load(&data->game, data->text_path[NORTH]),
-				  &data->tex.no);
+		&data->tex.no);
 	check_loading(data, load(&data->game, data->text_path[SOUTH]),
-				  &data->tex.so);
-	check_loading(data, load(&data->game, data->text_path[WEST]), &data->tex.we);
-	check_loading(data, load(&data->game, data->text_path[EAST]), &data->tex.ea);
+		&data->tex.so);
+	check_loading(data, load(&data->game, data->text_path[WEST]),
+		&data->tex.we);
+	check_loading(data, load(&data->game, data->text_path[EAST]),
+		&data->tex.ea);
 	if (data->error)
 	{
 		// free_textures(data);

@@ -32,8 +32,8 @@ static bool	map_is_closed(char **map, int width, int height)
 		while (x < width)
 		{
 			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
-				|| map[y][x] == 'E' || map[y][x] == 'W'
-				|| map[y][x] == 'D' || map[y][x] == 'M')
+				|| map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == 'D'
+				|| map[y][x] == 'M')
 			{
 				if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
 					return (print_pos_error(x, y));

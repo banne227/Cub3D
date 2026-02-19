@@ -19,9 +19,9 @@ int	ft_isprint(int c)
 	return (0);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	int c = 'a';
 //	printf("%d", ft_isprint(c));
-//	return 0;
+//	return (0);
 //}

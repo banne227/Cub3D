@@ -12,14 +12,14 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include <unistd.h>
+# include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <stdarg.h>
+# include <unistd.h>
 
 int	ft_putnbr(int n);
 int	ft_putstr(char *s);
-int	ft_len_nbr( long int n);
+int	ft_len_nbr(long int n);
 int	ft_strlen_printf(char *str);
 int	ft_putchar(char c);
 int	ft_puthexlow(unsigned int n);

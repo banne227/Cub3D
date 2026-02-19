@@ -49,7 +49,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (str);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	char *s1 = "lorem \n ipsum \t dolor \n sit \t amet";
 //	char *set = " l";

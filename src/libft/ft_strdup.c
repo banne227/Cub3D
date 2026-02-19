@@ -30,7 +30,7 @@ char	*ft_strdup(const char *s)
 	return (d);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	char *s = "\0";
 //	printf("%s", ft_strdup(s));

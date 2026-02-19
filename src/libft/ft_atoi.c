@@ -89,10 +89,10 @@ int	ft_atoi(const char *nptr)
 	return (res * s);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	const char	*nptr = "  12387223232323232327332233233";
 //	printf("%d\n", ft_atoi(nptr));
 //	printf("%d", atoi(nptr));
-//	return 0;
+//	return (0);
 //}

@@ -24,9 +24,9 @@ t_list	*ft_lstnew(void *content)
 	return (newnode);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	struct s_list *mylist = ft_lstnew("test");
 //	puts(mylist->content);
-//	return 0;
+//	return (0);
 //}

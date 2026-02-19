@@ -39,8 +39,8 @@ void	ft_putnbr_fd(int n, int fd)
 		write(fd, "-2147483648", 11);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	ft_putnbr_fd(2147483647,1);
-//	return 0;
+//	return (0);
 //}

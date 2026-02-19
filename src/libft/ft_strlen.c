@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	char *str = "";
 //	printf("%zu", ft_strlen(str));

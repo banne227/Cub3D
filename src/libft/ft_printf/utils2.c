@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_len_nbr( long int n)
+int	ft_len_nbr(long int n)
 {
 	int	p;
 

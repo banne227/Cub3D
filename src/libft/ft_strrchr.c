@@ -21,19 +21,19 @@ char	*ft_strrchr(const char *s, int c)
 	ptr = NULL;
 	while (s[i])
 	{
-		if (s[i] == (char) c)
-			ptr = (char *) &s[i];
+		if (s[i] == (char)c)
+			ptr = (char *)&s[i];
 		i++;
 	}
 	if ((char)c == '\0')
-		return ((char *) &s[i]);
+		return ((char *)&s[i]);
 	return (ptr);
 }
 
-//int main(void)
+// int main(void)
 //{
 //	char *s = "abbcd";
 //	int c = 'b';
 //	printf("%s", ft_strrchr(s,c));
-//	return 0;
+//	return (0);
 //}
