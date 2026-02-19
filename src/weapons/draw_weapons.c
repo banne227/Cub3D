@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:50:08 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/19 11:24:09 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 11:47:41 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ void draw_weapon(t_game *game)
         ft_printf("DEBUG: weapon.img is NULL\n");
         return;
     }
-    ft_printf("DEBUG draw_weapon: type=%d, width=%d, height=%d, img=%p\n",
-              game->weapon.type, game->weapon.width, game->weapon.height, game->weapon.img);
     draw_image_transparent(game, game->weapon.img, game->weapon.width, game->weapon.height, x, y);
-
     x = (game->win_w - 16) / 2;
     y = (game->win_h - 16) / 2;
     if (game->weapon.hit == 0)

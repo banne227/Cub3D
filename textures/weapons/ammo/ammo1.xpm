@@ -77,7 +77,7 @@ static char *result[] = {
 "Y c #FFFEE5",
 "T c #F4F1EA",
 "R c #FFFFFE",
-"E c None",
+"E c black",
 /* pixels */
 "EEEEEEEEEEEEEEEEEE",
 "EEEEEEEEEEEEEEEEEE",

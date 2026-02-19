@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:48:26 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/19 11:18:42 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 11:57:58 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void load_knife(t_weapon *weapon, void *mlx)
     weapon->knife.range = 1;
     weapon->knife.height1 = get_weapon_dimensions("textures/weapons/knife/knife1.xpm").height;
     weapon->knife.width1 = get_weapon_dimensions("textures/weapons/knife/knife1.xpm").width;
-    ft_printf("DEBUG load_knife: knife1 height=%d, width=%d\n", weapon->knife.height1, weapon->knife.width1);
     h1 = weapon->knife.height1;
     w1 = weapon->knife.width1;
     weapon->knife.img[0] = load_weapon_textures(mlx, "textures/weapons/knife/knife1.xpm", w1, h1);
