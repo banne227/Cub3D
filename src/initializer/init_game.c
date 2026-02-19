@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_game.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/19 14:00:09 by banne             #+#    #+#             */
+/*   Updated: 2026/02/19 14:00:19 by banne            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 t_player	init_player(void)
@@ -44,7 +56,6 @@ t_weapon	init_weapon(void *mlx)
 		weapon.gun.reload[i++] = NULL;
 	load_weapons(&weapon, mlx);
 	weapon.height = weapon.knife.height1;
-	;
 	weapon.width = weapon.knife.width1;
 	weapon.sound = 0;
 	return (weapon);

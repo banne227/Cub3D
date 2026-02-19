@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 08:29:55 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 17:18:25 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 14:00:49 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	load_textures(t_data *data)
 		&data->tex.ea);
 	if (data->error)
 	{
-		// free_textures(data);
+		//free_textures(data);
 		return (1);
 	}
 	return (0);

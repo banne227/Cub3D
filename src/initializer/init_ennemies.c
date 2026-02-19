@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 15:48:03 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 08:17:52 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 13:59:46 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_ennemy	*init_ennemies(char **map, void *mlx)
 	if (!ennemies)
 		return (NULL);
 	i = 0;
-	while (i < count)
+	while (i++ < count)
 	{
 		ennemies[i].pos = get_ennemy_pos(map, i);
 		ennemies[i].health = 100;
@@ -99,7 +99,6 @@ t_ennemy	*init_ennemies(char **map, void *mlx)
 			ennemies[i].next = &ennemies[i + 1];
 		else
 			ennemies[i].next = NULL;
-		i++;
 	}
 	return (ennemies);
 }

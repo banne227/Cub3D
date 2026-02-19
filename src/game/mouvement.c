@@ -6,11 +6,30 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 12:07:09 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 12:49:14 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 13:47:38 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	other_move(t_game *game, int keycode, double *pos_x, double *pos_y)
+{
+	if (keycode == KEY_S)
+	{
+		*pos_x = game->player.pos_x - game->player.dir_x * MOVE_SPEED;
+		*pos_y = game->player.pos_y - game->player.dir_y * MOVE_SPEED;
+	}
+	else if (keycode == KEY_A)
+	{
+		*pos_x = game->player.pos_x - game->player.plane_x * MOVE_SPEED;
+		*pos_y = game->player.pos_y - game->player.plane_y * MOVE_SPEED;
+	}
+	else if (keycode == KEY_D)
+	{
+		*pos_x = game->player.pos_x + game->player.plane_x * MOVE_SPEED;
+		*pos_y = game->player.pos_y + game->player.plane_y * MOVE_SPEED;
+	}
+}
 
 void	move_player(t_game *game, int keycode)
 {
@@ -26,21 +45,8 @@ void	move_player(t_game *game, int keycode)
 		newpos_x = game->player.pos_x + game->player.dir_x * MOVE_SPEED;
 		newpos_y = game->player.pos_y + game->player.dir_y * MOVE_SPEED;
 	}
-	else if (keycode == KEY_S)
-	{
-		newpos_x = game->player.pos_x - game->player.dir_x * MOVE_SPEED;
-		newpos_y = game->player.pos_y - game->player.dir_y * MOVE_SPEED;
-	}
-	else if (keycode == KEY_A)
-	{
-		newpos_x = game->player.pos_x + game->player.dir_y * MOVE_SPEED;
-		newpos_y = game->player.pos_y - game->player.dir_x * MOVE_SPEED;
-	}
-	else if (keycode == KEY_D)
-	{
-		newpos_x = game->player.pos_x - game->player.dir_y * MOVE_SPEED;
-		newpos_y = game->player.pos_y + game->player.dir_x * MOVE_SPEED;
-	}
+	else
+		other_move(game, keycode, &newpos_x, &newpos_y);
 	if (newpos_x < 0 || newpos_y < 0)
 		return ;
 	if (!is_wall(&game->map, (int)newpos_x, (int)game->player.pos_y))

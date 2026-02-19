@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 18:30:00 by jhauvill          #+#    #+#             */
-/*   Updated: 2026/02/17 18:30:00 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/19 14:04:36 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	fill_rgd(char **rgb, int r, int g, int b)
+{
+	r = ft_atoi(rgb[0]);
+	g = ft_atoi(rgb[1]);
+	b = ft_atoi(rgb[2]);
+}
 
 int	rgb_to_int(char *rgb_str)
 {
@@ -34,10 +41,7 @@ int	rgb_to_int(char *rgb_str)
 		}
 		return (0);
 	}
-	r = ft_atoi(colors[0]);
-	g = ft_atoi(colors[1]);
-	b = ft_atoi(colors[2]);
-	i = 0;
+	fill_rgd(colors, r, g, b);
 	while (colors[i])
 		free(colors[i++]);
 	free(colors);

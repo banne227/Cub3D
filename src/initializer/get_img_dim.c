@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 09:43:01 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 11:57:29 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 13:59:06 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_dimensions	extract_dim(char *line)
 	return (dim);
 }
 
-t_dimensions	get_weapon_dimensions(char *path)
+t_dimensions	get_dim(char *path)
 {
 	t_dimensions	dim;
 	char			*line;

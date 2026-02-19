@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:50:21 by banne             #+#    #+#             */
-/*   Updated: 2026/02/13 17:05:05 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 13:42:15 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void	draw_player_direction(t_game *game, int *img_data, int line_len, int x,
 	}
 }
 
-void	print_player_pos(t_game *game, int *img_data, int line_len, int x,
-		int y)
+void	print_player_pos(t_game *game, int *img_data, int line_len)
 {
 	int	color;
 	int	i;
@@ -50,12 +49,15 @@ void	print_player_pos(t_game *game, int *img_data, int line_len, int x,
 		j = -size;
 		while (j <= size)
 		{
-			put_pixel_to_img(game, img_data, line_len, x + j, y + i, color);
+			put_pixel_to_img(game, img_data, line_len, (int)(game->player.pos_x
+					* MINI_TILE) + i, (int)(game->player.pos_y * MINI_TILE) + j,
+				color);
 			j++;
 		}
 		i++;
 	}
-	draw_player_direction(game, img_data, line_len, x, y);
+	draw_player_direction(game, img_data, line_len
+		, (int)(game->player.pos_x * MINI_TILE), (int)(game->player.pos_y * MINI_TILE));
 }
 
 void	draw_minimap(t_game *game)
@@ -88,6 +90,5 @@ void	draw_minimap(t_game *game)
 		}
 		y++;
 	}
-	print_player_pos(game, img_data, line_len, (int)(game->player.pos_x
-			* MINI_TILE), (int)(game->player.pos_y * MINI_TILE));
+	print_player_pos(game, img_data, line_len);
 }

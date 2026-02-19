@@ -6,13 +6,13 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:29:27 by banne             #+#    #+#             */
-/*   Updated: 2025/12/29 08:29:45 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/19 14:01:57 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_strcpy(char *dest, const char *src)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (src[i] != '\0')

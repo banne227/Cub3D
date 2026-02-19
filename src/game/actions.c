@@ -1,5 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   actions.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/19 13:48:10 by banne             #+#    #+#             */
+/*   Updated: 2026/02/19 13:49:03 by banne            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	make_action2(t_data *data, int keycode)
+{
+	if (keycode == KEY_SPACE)
+		swap_weapon(&data->game);
+	else if (keycode == KEY_E)
+	{
+		open_door(&data->game.map,
+			(int)(data->game.player.pos_x + data->game.player.dir_x),
+			(int)(data->game.player.pos_y + data->game.player.dir_y));
+	}
+}
 
 void	make_action(t_data *data, int keycode)
 {
@@ -24,12 +47,5 @@ void	make_action(t_data *data, int keycode)
 	{
 		data->game.state = STATE_MENU;
 		stop_background_music(&data->game);
-	}
-	else if (keycode == KEY_SPACE)
-		swap_weapon(&data->game);
-	else if (keycode == KEY_E)
-	{
-		open_door(&data->game.map, (int)(player.pos_x + player.dir_x),
-			(int)(player.pos_y + player.dir_y));
 	}
 }
