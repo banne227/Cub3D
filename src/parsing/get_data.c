@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:26 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 17:42:40 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/20 12:57:47 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*trim_endf(char *line)
 	char	*trimmed;
 
 	len = 0;
-	while (line[len] && line[len] != '\n')
+	while (line && line[len] && line[len] != '\n')
 		len++;
 	if (len == 0)
 		return (line);
@@ -62,7 +62,7 @@ char	**trim_file(char **file)
 	size = 0;
 	i = 0;
 	trimmed = NULL;
-	while (file[i++])
+	while (file[i])
 	{
 		if (ft_strcmp(file[i], "\n") == 0)
 		{
@@ -73,7 +73,7 @@ char	**trim_file(char **file)
 		trimmed = realloc_map(trimmed, size + 1);
 		if (!trimmed)
 			return (NULL);
-		tmp = trim_endf(file[i]);
+		tmp = trim_endf(file[i++]);
 		trimmed[size++] = tmp;
 	}
 	trimmed[size] = NULL;

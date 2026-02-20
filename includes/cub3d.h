@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 18:21:44 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/20 14:33:49 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,10 @@ typedef struct s_raycasting_utils
 	int	hit;
 	t_img *img;
 	int side;
-	int	perp_wall_dist;
+	double	perp_wall_dist;
 	int	draw_start;
 	int	draw_end;
+	int	line_height;
 }	t_raycasting_utils;
 
 typedef struct s_pos

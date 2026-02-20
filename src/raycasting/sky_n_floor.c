@@ -6,24 +6,18 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 17:27:23 by jhauvill          #+#    #+#             */
-/*   Updated: 2026/02/19 13:32:55 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/20 14:35:40 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-void	print_sky_n_floor(t_data *data)
+static void	print_sky(t_data *data)
 {
-	int	x;
 	int	y;
+	int	x;
 
-	// utiliser data->game a la place de data->screen
-	y = 0;
-	// data->screen->img = mlx_new_image(data->game.mlx, data->game.win_w,
-			//data->game.win_h);
-	data->game.addr = mlx_get_data_addr(data->game.img,
-			&data->game.bits_per_pixel, &data->game.line_length,
-			&data->game.endian);
+	x = 0;
 	y = 0;
 	while (y < data->game.win_h / 2)
 	{
@@ -35,7 +29,18 @@ void	print_sky_n_floor(t_data *data)
 		}
 		y++;
 	}
+}
+
+void	print_sky_n_floor(t_data *data)
+{
+	int	x;
+	int	y;
+
 	y = data->game.win_h / 2;
+	data->game.addr = mlx_get_data_addr(data->game.img,
+			&data->game.bits_per_pixel, &data->game.line_length,
+			&data->game.endian);
+	print_sky(data);
 	while (y < data->game.win_h)
 	{
 		x = 0;

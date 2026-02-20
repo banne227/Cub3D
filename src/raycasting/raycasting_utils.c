@@ -6,35 +6,39 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:11:21 by jhauvill          #+#    #+#             */
-/*   Updated: 2026/02/19 18:17:14 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/20 14:38:55 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void dda(t_raycasting_utils *utils, t_game *game)
+void	dda(t_raycasting_utils *utils, t_game *game)
 {
 	// 4. DDA (Digital Differential Analysis) pour trouver le mur
 		// Calculer step_x, step_y et side_dist_x,	side_dist_y initial
 	if (utils->ray_dir_x < 0)
 	{
 		utils->step_x = -1;
-		utils->side_dist_x = (game->player.pos_x - utils->map_x) * utils->delta_dist_x;
+		utils->side_dist_x = (game->player.pos_x - utils->map_x)
+			* utils->delta_dist_x;
 	}
 	else
 	{
 		utils->step_x = 1;
-		utils->side_dist_x = (utils->map_x + 1.0 - game->player.pos_x) * utils->delta_dist_x;
+		utils->side_dist_x = (utils->map_x + 1.0 - game->player.pos_x)
+			* utils->delta_dist_x;
 	}
 	if (utils->ray_dir_y < 0)
 	{
 		utils->step_y = -1;
-		utils->side_dist_y = (game->player.pos_y - utils->map_y) * utils->delta_dist_y;
+		utils->side_dist_y = (game->player.pos_y - utils->map_y)
+			* utils->delta_dist_y;
 	}
 	else
 	{
 		utils->step_y = 1;
-		utils->side_dist_y = (utils->map_y + 1.0 - game->player.pos_y) * utils->delta_dist_y;
+		utils->side_dist_y = (utils->map_y + 1.0 - game->player.pos_y)
+			* utils->delta_dist_y;
 	}
 }
 
@@ -55,14 +59,15 @@ void	touch_wall(t_raycasting_utils *utils, t_game *game)
 			utils->map_y += utils->step_y;
 			utils->side = 1;
 		}
-		if (game->map.map[utils->map_y][utils->map_x] == '1' || game->map.map[utils->map_y][utils->map_x] == 'D')
+		if (game->map.map[utils->map_y][utils->map_x] == '1'
+				|| game->map.map[utils->map_y][utils->map_x] == 'D')
 			utils->hit = 1;
 	}
 }
 
 int	convert_coords_textures(t_raycasting_utils *utils, t_game *game)
 {
-	int	img_x;
+	int		img_x;
 	double	wall_x;
 
 	if (utils->side == 0)
@@ -104,6 +109,8 @@ void	calculate_ray_dir(t_raycasting_utils *utils, t_game *game, int x)
 	utils->hit = 0;
 	// 1. calcul direction rayon
 	utils->camera_x = 2 * x / (double)game->win_w - 1;
-	utils->ray_dir_x = game->player.dir_x + game->player.plane_x * utils->camera_x;
-	utils->ray_dir_y = game->player.dir_y + game->player.plane_y * utils->camera_x;
+	utils->ray_dir_x = game->player.dir_x + game->player.plane_x
+		* utils->camera_x;
+	utils->ray_dir_y = game->player.dir_y + game->player.plane_y
+		* utils->camera_x;
 }

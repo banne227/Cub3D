@@ -1,4 +1,4 @@
-SRCS = src/audio/audio.c \
+SRCS = 	src/audio/audio.c \
 	src/game/actions.c \
 	src/game/mouvement.c \
 	src/game/needed.c \
@@ -36,8 +36,8 @@ SRCS = src/audio/audio.c \
 	src/libft/ft_memmove.c \
 	src/libft/ft_memset.c \
 	src/libft/ft_printf/ft_printf.c \
-	src/libft/ft_printf/utils.c \
 	src/libft/ft_printf/utils2.c \
+	src/libft/ft_printf/utils.c \
 	src/libft/ft_putchar_fd.c \
 	src/libft/ft_putendl_fd.c \
 	src/libft/ft_putnbr_fd.c \
@@ -73,6 +73,7 @@ SRCS = src/audio/audio.c \
 	src/parsing/verif_data.c \
 	src/parsing/verif_map.c \
 	src/raycasting/raycasting.c \
+	src/raycasting/raycasting_init.c \
 	src/raycasting/raycasting_utils.c \
 	src/raycasting/sky_n_floor.c \
 	src/render/draw_transparent.c \
