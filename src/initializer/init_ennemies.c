@@ -87,7 +87,7 @@ t_ennemy	*init_ennemies(char **map, void *mlx)
 	if (!ennemies)
 		return (NULL);
 	i = 0;
-	while (i++ < count)
+	while (i < count)
 	{
 		ennemies[i].pos = get_ennemy_pos(map, i);
 		ennemies[i].health = 100;
@@ -99,6 +99,7 @@ t_ennemy	*init_ennemies(char **map, void *mlx)
 			ennemies[i].next = &ennemies[i + 1];
 		else
 			ennemies[i].next = NULL;
+		i++;
 	}
 	return (ennemies);
 }
