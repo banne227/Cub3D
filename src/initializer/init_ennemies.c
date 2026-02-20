@@ -95,10 +95,9 @@ t_ennemy	*init_ennemies(char **map, void *mlx)
 		upload_ennemy_texture(mlx, ennemies[i].img);
 		ennemies[i].display = ennemies[i].img[1];
 		ennemies[i].frame = 0;
+		ennemies[i].next = NULL;
 		if (i < count - 1)
 			ennemies[i].next = &ennemies[i + 1];
-		else
-			ennemies[i].next = NULL;
 		i++;
 	}
 	return (ennemies);

@@ -89,7 +89,6 @@ char	**get_map(char **file, t_data *data)
 	char	**map;
 	int		start_index;
 	int		i;
-	char	*trimmed_line;
 
 	start_index = get_first_map_index(file);
 	map_size = 0;
@@ -101,10 +100,9 @@ char	**get_map(char **file, t_data *data)
 	i = 0;
 	while (i < map_size)
 	{
-		trimmed_line = trim_endf(ft_strdup(file[start_index + i]));
-		trimmed_line = trim_spaces(trimmed_line, max_len(file, start_index,
-					map_size));
-		map[i++] = trimmed_line;
+		map[i] = trim_spaces(trim_endf(ft_strdup(file[start_index + i])),
+							max_len(file, start_index, map_size));
+		i++;
 	}
 	data->map.map = map;
 	data->map.width = max_len(file, start_index, map_size) + 1;

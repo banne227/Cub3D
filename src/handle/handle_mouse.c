@@ -32,9 +32,8 @@ int	handle_mouse_move(int x, int y, void *param)
 	data = (t_data *)param;
 	mouse.center_x = WIN_W / 2;
 	mouse.center_y = WIN_H / 2;
-	if (data->game.state != STATE_PLAY)
-		return (0);
-	if (x == mouse.center_x && y == mouse.center_y)
+	if (data->game.state != STATE_PLAY ||
+		(x == mouse.center_x && y == mouse.center_y))
 		return (0);
 	mouse.delta_x = x - mouse.center_x;
 	mouse.rot_speed = mouse.delta_x * SENSI;

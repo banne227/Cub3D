@@ -29,6 +29,28 @@ void	*get_menu_image(t_game *game, char *filename)
 	return (menu_img);
 }
 
+static void	help_render_menu(t_data *data, void *menu_enter, void *menu_quit)
+{
+	t_game *game;
+
+	game = &data->game;
+	if (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE)
+	{
+		mlx_clear_window(game->mlx, game->win);
+		mlx_destroy_image(game->mlx, menu_enter);
+		mlx_destroy_image(game->mlx, menu_quit);
+		if (game->menu_option == 0)
+		{
+			init_anim(data);
+			data->game.state = STATE_ANIMATION;
+			return ;
+		}
+		data->game.state = STATE_EXIT;
+		close_game(data);
+		return ;
+	}
+}
+
 void	render_menu(t_game *game, t_data *data)
 {
 	void	*menu_enter;
@@ -47,21 +69,7 @@ void	render_menu(t_game *game, t_data *data)
 		menu = menu_enter;
 	else
 		menu = menu_quit;
-	if (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE)
-	{
-		mlx_clear_window(game->mlx, game->win);
-		mlx_destroy_image(game->mlx, menu_enter);
-		mlx_destroy_image(game->mlx, menu_quit);
-		if (game->menu_option == 0)
-		{
-			init_anim(data);
-			data->game.state = STATE_ANIMATION;
-			return ;
-		}
-		data->game.state = STATE_EXIT;
-		close_game(data);
-		return ;
-	}
+	help_render_menu(data, menu_enter, menu_quit);
 	mlx_clear_window(game->mlx, game->win);
 	mlx_put_image_to_window(game->mlx, game->win, menu, 0, 0);
 	mlx_destroy_image(game->mlx, menu_enter);

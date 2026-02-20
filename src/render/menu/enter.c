@@ -16,23 +16,23 @@ void	fade_display_img(t_data *data, void *img, int opacity)
 {
 	char			*addr;
 	unsigned int	pixel;
-	int				x, y, bits, line_len, endian;
+	t_fade			fade;
 
 	if (!img || !data->game.mlx || !data->game.win)
 		return ;
-	addr = mlx_get_data_addr(img, &bits, &line_len, &endian);
-	y = 0;
-	while (y < 512)
+	addr = mlx_get_data_addr(img, &fade.bits, &fade.line_len, &fade.endian);
+	fade.y = 0;
+	while (fade.y < 512)
 	{
-		x = 0;
-		while (x < 512)
+		fade.x = 0;
+		while (fade.x < 512)
 		{
-			pixel = *(unsigned int *)(addr + y * line_len + x * 4);
+			pixel = *(unsigned int *)(addr + fade.y * fade.line_len + fade.x * 4);
 			pixel = (pixel & 0xFFFFFF) | ((unsigned int)(opacity) << 24);
-			*(unsigned int *)(addr + y * line_len + x * 4) = pixel;
-			x++;
+			*(unsigned int *)(addr + fade.y * fade.line_len + fade.x * 4) = pixel;
+			fade.x++;
 		}
-		y++;
+		fade.y++;
 	}
 	mlx_put_image_to_window(data->game.mlx, data->game.win, img, 0, 0);
 	data->anim.last_img = img;

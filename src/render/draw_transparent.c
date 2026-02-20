@@ -26,7 +26,7 @@ void	draw_image_transparent(t_game *game, void *img_src, int img_width,
 {
 	char			*src_addr;
 	int				bpp;
-	int				src_line_len;
+	int				line_len;
 	int				endian;
 	int				x;
 	int				y;
@@ -34,8 +34,7 @@ void	draw_image_transparent(t_game *game, void *img_src, int img_width,
 	int				screen_y;
 	unsigned int	color;
 
-	src_addr = mlx_get_data_addr(img_src, &bpp, &src_line_len, &endian);
-
+	src_addr = mlx_get_data_addr(img_src, &bpp, &line_len, &endian);
 	y = 0;
 	while (y < img_height)
 	{
@@ -47,7 +46,7 @@ void	draw_image_transparent(t_game *game, void *img_src, int img_width,
 			if (screen_x >= 0 && screen_x < game->win_w && screen_y >= 0
 				&& screen_y < game->win_h)
 			{
-				color = get_pixel_color(src_addr, src_line_len, bpp, x, y);
+				color = get_pixel_color(src_addr, line_len, bpp, x, y);
 				if (color != 0x000000 && color != 0xFF000000)
 					my_mlx_pixel_put(game, screen_x, screen_y, color);
 			}

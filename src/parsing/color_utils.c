@@ -21,33 +21,22 @@ void	fill_rgd(char **rgb, int *r, int *g, int *b)
 
 int	rgb_to_int(char *rgb_str)
 {
-	int		r;
-	int		g;
-	int		b;
+	t_rgb	rgb;
 	char	**colors;
 	int		i;
 
-	r = 0;
-	g = 0;
-	b = 0;
 	i = 0;
 	if (!rgb_str)
 		return (0);
 	colors = ft_split(rgb_str, ',');
 	if (!colors || !colors[0] || !colors[1] || !colors[2])
 	{
-		if (colors)
-		{
-			i = 0;
-			while (colors[i])
-				free(colors[i++]);
-			free(colors);
-		}
+		free_tab(colors);
 		return (0);
 	}
-	fill_rgd(colors, &r, &g, &b);
+	fill_rgd(colors, &rgb.r, &rgb.g, &rgb.b);
 	while (colors[i])
 		free(colors[i++]);
 	free(colors);
-	return ((r << 16) | (g << 8) | b);
+	return ((rgb.r << 16) | (rgb.g << 8) | rgb.b);
 }

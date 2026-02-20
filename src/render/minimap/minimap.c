@@ -70,32 +70,29 @@ void	print_player_pos(t_game *game, int *img_data, int line_len)
 
 void	draw_minimap(t_game *game)
 {
-	int	x;
-	int	y;
+	t_mini mini;
 	int	color;
 	int	*img_data;
-	int	bpp;
-	int	line_len;
-	int	endian;
 
-	img_data = (int *)mlx_get_data_addr(game->img, &bpp, &line_len, &endian);
+	img_data = (int *)mlx_get_data_addr(game->img, &mini.bpp, &mini.line_len, &mini.endian);
 	if (!img_data)
 		return ;
-	y = 0;
-	while (y < game->map.height * MINI_TILE)
+	mini.y = 0;
+	while (mini.y < game->map.height * MINI_TILE)
 	{
-		x = 0;
-		while (x < game->map.width * MINI_TILE)
+		mini.x = 0;
+		while (mini.x < game->map.width * MINI_TILE)
 		{
-			if (game->map.map[y / MINI_TILE][x / MINI_TILE] == '1'
-				|| game->map.map[y / MINI_TILE][x / MINI_TILE] == 'D')
+			if (game->map.map[mini.y / MINI_TILE][mini.x / MINI_TILE] == '1'
+				|| game->map.map[mini.y / MINI_TILE][mini.x / MINI_TILE] == 'D')
 				color = WALL_COLOR;
 			else
 				color = FLOOR_COLOR;
-			put_pixel_to_img(game, img_data, line_len, (t_pos){x, y}, color);
-			x++;
+			put_pixel_to_img(game, img_data, mini.line_len,
+					(t_pos){mini.x, mini.y}, color);
+			mini.x++;
 		}
-		y++;
+		mini.y++;
 	}
-	print_player_pos(game, img_data, line_len);
+	print_player_pos(game, img_data, mini.line_len);
 }

@@ -31,7 +31,7 @@
 
 #define WIN_W 1280
 #define WIN_H 720
-#define MOVE_SPEED 0.01
+#define MOVE_SPEED 0.03
 #define ROT_SPEED 0.03
 #define SENSI 0.003
 
@@ -71,6 +71,31 @@
 #define KEY_ESC 65307
 #define KEY_ENTER 65293
 #define KEY_SPACE 32
+
+typedef struct t_fade
+{
+	int	x;
+	int	y;
+	int	bits;
+	int	line_len;
+	int	endian;
+}	t_fade;
+
+typedef struct t_mini
+{
+	int	x;
+	int	y;
+	int	bpp;
+	int	line_len;
+	int	endian;
+}	t_mini;
+
+typedef struct s_rgb
+{
+	int r;
+	int g;
+	int b;
+} t_rgb;
 
 typedef enum e_game_state
 {
