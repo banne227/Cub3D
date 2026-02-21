@@ -101,11 +101,13 @@ void	raycasting(t_game *game)
 			utils.perp_wall_dist = utils.side_dist_x - utils.delta_dist_x;
 		else
 			utils.perp_wall_dist = utils.side_dist_y - utils.delta_dist_y;
+		if (game->z_buffer)
+			game->z_buffer[x] = utils.perp_wall_dist;
 		utils.line_height = pixel_to_fill(&utils, game);
 		utils.line_height = pixel_to_fill(&utils, game);
 		get_texture(&utils, game);
 		draw_textured_line(game, x, &utils,
-			convert_coords_textures(&utils, game));
+		convert_coords_textures(&utils, game));
 		x++;
 	}
 }

@@ -89,4 +89,5 @@ SRCS = 	src/audio/audio.c \
 	src/weapons/draw_weapons.c \
 	src/weapons/enneny.c \
 	src/weapons/reload.c \
-src/weapons/shoot.c
+	src/weapons/shoot.c \
+	src/render/render_ennemies.c

@@ -48,6 +48,7 @@ int	main(int argc, char **argv)
 	printf("Parsing successful!\n");
 	print_controls();
 	data.game.map = data.map;
+	data.game.ennemys = init_ennemies(data.game.map.map, data.game.mlx);
 	load_wall_textures(&data);
 	mlx_loop_hook(data.game.mlx, render, &data);
 	mlx_mouse_hide(data.game.mlx, data.game.win);

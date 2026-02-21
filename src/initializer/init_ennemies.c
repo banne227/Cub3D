@@ -12,11 +12,11 @@
 
 #include "../../includes/cub3d.h"
 
-int	count_ennemies(char **map)
+int count_ennemies(char **map)
 {
-	int	count;
-	int	x;
-	int	y;
+	int count;
+	int x;
+	int y;
 
 	if (!map)
 		return (0);
@@ -37,11 +37,11 @@ int	count_ennemies(char **map)
 	return (count);
 }
 
-t_pos	get_ennemy_pos(char **map, int index)
+t_pos get_ennemy_pos(char **map, int index)
 {
-	int	count;
-	int	x;
-	int	y;
+	int count;
+	int x;
+	int y;
 
 	if (!map)
 		return ((t_pos){-1, -1});
@@ -66,20 +66,25 @@ t_pos	get_ennemy_pos(char **map, int index)
 	return ((t_pos){-1, -1});
 }
 
-void	upload_ennemy_texture(void *mlx, void *img[4])
+void upload_ennemy_texture(void *mlx, void *img[4])
 {
-	img[0] = load(mlx, "textures/ennemies/walk.xpm");
-	img[1] = load(mlx, "textures/ennemies/shoot.xpm");
-	img[2] = load(mlx, "textures/ennemies/hit.xpm");
-	img[3] = load(mlx, "textures/ennemies/dead.xpm");
+	int x;
+	int y;
+
+	img[0] = mlx_xpm_file_to_image(mlx, "textures/ennemies/walk.xpm", &x, &y);
+	img[1] = mlx_xpm_file_to_image(mlx, "textures/ennemies/shoot1.xpm", &x, &y);
+	img[2] = mlx_xpm_file_to_image(mlx, "textures/ennemies/hit.xpm", &x, &y);
+	img[3] = mlx_xpm_file_to_image(mlx, "textures/ennemies/dead.xpm", &x, &y);
 }
 
-t_ennemy	*init_ennemies(char **map, void *mlx)
+t_ennemy *init_ennemies(char **map, void *mlx)
 {
-	t_ennemy	*ennemies;
-	int			count;
-	int			i;
+	t_ennemy *ennemies;
+	int count;
+	int i;
 
+	if (!map || !mlx)
+		return (NULL);
 	count = count_ennemies(map);
 	if (count == 0)
 		return (NULL);
@@ -94,7 +99,10 @@ t_ennemy	*init_ennemies(char **map, void *mlx)
 		ennemies[i].alive = true;
 		upload_ennemy_texture(mlx, ennemies[i].img);
 		ennemies[i].display = ennemies[i].img[1];
+		if (!ennemies[i].display)
+			ennemies[i].display = ennemies[i].img[0];
 		ennemies[i].frame = 0;
+		ennemies[i].hit_frame = 0;
 		ennemies[i].next = NULL;
 		if (i < count - 1)
 			ennemies[i].next = &ennemies[i + 1];

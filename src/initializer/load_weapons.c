@@ -24,7 +24,7 @@ static void	*load_weapon_textures(void *mlx, char *path, int w, int h)
 
 void	load_gun_shoot(t_weapon *weapon, void *mlx)
 {
-	weapon->gun.damage = 20;
+	weapon->gun.damage = 40;
 	weapon->gun.range = 8;
 	weapon->gun.freload = 0;
 	weapon->gun.fshoot = 0;
@@ -85,7 +85,7 @@ void	load_knife(t_weapon *weapon, void *mlx)
 	int	h2;
 	int	w2;
 
-	weapon->knife.damage = 10;
+	weapon->knife.damage = 25;
 	weapon->knife.range = 1;
 	weapon->knife.height1 = get_dim("textures/weapons/knife/knife1.xpm").height;
 	weapon->knife.width1 = get_dim("textures/weapons/knife/knife1.xpm").width;

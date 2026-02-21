@@ -15,6 +15,7 @@
 int	render(void *param)
 {
 	t_data	*data;
+	int		i;
 
 	data = (t_data *)param;
 	if (data->game.state == STATE_EXIT)
@@ -43,8 +44,12 @@ int	render(void *param)
 	{
 		reload(&data->game.weapon);
 	}
+	i = 0;
+	while (i < data->game.win_w)
+		data->game.z_buffer[i++] = 1e9;
 	print_sky_n_floor(data);
 	raycasting(&data->game);
+	render_ennemies(&data->game);
 	draw_minimap(&data->game);
 	mlx_put_image_to_window(data->game.mlx, data->game.win, data->game.img, 0,
 		0);

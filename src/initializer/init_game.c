@@ -75,7 +75,6 @@ t_game	init_game(void)
 	t_game	game;
 
 	game.minimap = false;
-	game.background_music = true;
 	game.mlx = NULL;
 	game.win = NULL;
 	game.img = NULL;
@@ -89,11 +88,13 @@ t_game	init_game(void)
 	game.last_key = 0;
 	game.menu_option = 0;
 	game.music_pid = 0;
+	game.z_buffer = malloc(sizeof(double) * WIN_W);
+	if (!game.z_buffer)
+	{
+		printf("Error\nFailed to allocate z_buffer\n");
+		return (game);
+	}
 	init_keys(&game);
-	game.ennemys = init_ennemies(game.map.map, game.mlx);
-	if (!init_mlx(&game))
-		printf("Error\nFailed to initialize game graphics\n");
-	else
-		game.weapon = init_weapon(game.mlx);
+	game.ennemys = NULL;
 	return (game);
 }

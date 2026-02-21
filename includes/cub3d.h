@@ -168,6 +168,7 @@ typedef struct s_ennemy
 	void *img[4];
 	bool alive;
 	int frame;
+	int hit_frame;
 	struct s_ennemy *next;
 } t_ennemy;
 
@@ -261,7 +262,7 @@ typedef struct s_game
 	t_weapon weapon;
 	bool minimap;
 	t_ennemy *ennemys;
-	bool background_music;
+	double *z_buffer;
 	bool keys[65536];
 } t_game;
 
@@ -370,6 +371,7 @@ int	handle_mouse(int button, int x, int y, void *param);
 int	handle_mouse_move(int x, int y, void *param);
 int	handle_key_press(int keycode, void *param);
 int	handle_keys_release(int keycode, void *param);
+int	get_texture_color(t_img *img, int x, int y);
 
 // raycasting
 void my_mlx_pixel_put(t_game *game, int x, int y, int color);
@@ -383,6 +385,7 @@ void	touch_wall(t_raycasting_utils *utils, t_game *game);
 int	convert_coords_textures(t_raycasting_utils *utils, t_game *game);
 int	pixel_to_fill(t_raycasting_utils *utils, t_game *game);
 void	calculate_ray_dir(t_raycasting_utils *utils, t_game *game, int x);
+void	render_ennemies(t_game *game);
 
 
 // color utils

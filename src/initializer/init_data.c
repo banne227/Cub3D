@@ -12,9 +12,9 @@
 
 #include "../../includes/cub3d.h"
 
-t_text	init_text(void)
+t_text init_text(void)
 {
-	t_text	text;
+	t_text text;
 
 	text.no = NULL;
 	text.so = NULL;
@@ -25,7 +25,7 @@ t_text	init_text(void)
 	return (text);
 }
 
-void	init_screen(t_data *data)
+void init_screen(t_data *data)
 {
 	data->screen = (t_img *)malloc(sizeof(t_img));
 	if (!data->screen)
@@ -42,10 +42,10 @@ void	init_screen(t_data *data)
 	}
 }
 
-t_data	init_data(void)
+t_data init_data(void)
 {
-	t_data	data;
-	int		i;
+	t_data data;
+	int i;
 
 	i = 0;
 	while (i < 6)
@@ -71,12 +71,18 @@ t_data	init_data(void)
 	return (data);
 }
 
-t_data	init_data_with_weapons(t_data *data)
+t_data init_data_with_weapons(t_data *data)
 {
-	t_player	parsed_player;
+	t_player parsed_player;
+	void *mlx_tmp;
+	void *win_tmp;
 
 	parsed_player = data->game.player;
+	mlx_tmp = data->game.mlx;
+	win_tmp = data->game.win;
 	data->game = init_game();
+	data->game.mlx = mlx_tmp;
+	data->game.win = win_tmp;
 	data->game.floor_color = rgb_to_int(data->text_path[F]);
 	data->game.ceiling_color = rgb_to_int(data->text_path[C]);
 	data->game.player = parsed_player;
@@ -85,7 +91,6 @@ t_data	init_data_with_weapons(t_data *data)
 		data->error = true;
 		return (*data);
 	}
-	init_weapon(data->game.mlx);
-	data->game.ennemys = init_ennemies(data->map.map, data->game.mlx);
+	data->game.weapon = init_weapon(data->game.mlx);
 	return (*data);
 }

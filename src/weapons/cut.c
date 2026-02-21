@@ -12,12 +12,16 @@
 
 #include "../../includes/cub3d.h"
 
-void	cut(t_weapon *weapon, t_game *game)
+void cut(t_weapon *weapon, t_game *game)
 {
 	if (weapon->type == 1 || weapon->attack == 0)
-		return ;
+		return;
 	if (weapon->frame == 0 || weapon->frame == 1)
+	{
 		weapon->sound = play_sounds(KNIFE_SOUND);
+		if (hit(weapon, game->player, game->map, game->ennemys))
+			weapon->hit = 1;
+	}
 	weapon->frame++;
 	if (weapon->frame >= 100)
 	{
@@ -33,16 +37,14 @@ void	cut(t_weapon *weapon, t_game *game)
 		weapon->width = weapon->knife.width2;
 		weapon->img = weapon->knife.img[1];
 	}
-	if (hit(weapon, game->player, game->map, game->ennemys))
-		weapon->hit = 1;
 }
 
-int	hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
+int hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
 {
-	double	hit_x;
-	double	hit_y;
-	double	step_size;
-	double	distance_traveled;
+	double hit_x;
+	double hit_y;
+	double step_size;
+	double distance_traveled;
 
 	hit_x = player.pos_x;
 	hit_y = player.pos_y;
@@ -53,12 +55,11 @@ int	hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
 		hit_x += player.dir_x * step_size;
 		hit_y += player.dir_y * step_size;
 		distance_traveled += step_size;
-		if ((int)hit_x < 0 || (int)hit_x >= map.width || (int)hit_y < 0
-			|| (int)hit_y >= map.height)
-			break ;
+		if ((int)hit_x < 0 || (int)hit_x >= map.width || (int)hit_y < 0 || (int)hit_y >= map.height)
+			break;
 		if (map.map[(int)hit_y][(int)hit_x] == '1')
 			return (0);
-		if (map.map[(int)hit_y][(int)hit_x] == 'E')
+		if (map.map[(int)hit_y][(int)hit_x] == 'M')
 			return (take_damage(weapon->knife.damage, hit_x, hit_y, ennemies));
 	}
 	return (0);
