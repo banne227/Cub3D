@@ -6,7 +6,7 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:11:21 by jhauvill          #+#    #+#             */
-/*   Updated: 2026/02/20 14:38:55 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/23 15:29:27 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	dda(t_raycasting_utils *utils, t_game *game)
 {
-	// 4. DDA (Digital Differential Analysis) pour trouver le mur
-		// Calculer step_x, step_y et side_dist_x,	side_dist_y initial
 	if (utils->ray_dir_x < 0)
 	{
 		utils->step_x = -1;
@@ -44,7 +42,6 @@ void	dda(t_raycasting_utils *utils, t_game *game)
 
 void	touch_wall(t_raycasting_utils *utils, t_game *game)
 {
-	// Boucle jusqu'à toucher un mur
 	while (utils->hit == 0)
 	{
 		if (utils->side_dist_x < utils->side_dist_y)
@@ -74,8 +71,7 @@ int	convert_coords_textures(t_raycasting_utils *utils, t_game *game)
 		wall_x = game->player.pos_y + utils->perp_wall_dist * utils->ray_dir_y;
 	else
 		wall_x = game->player.pos_x + utils->perp_wall_dist * utils->ray_dir_x;
-	wall_x -= floor(wall_x); // garder partie decimale
-	// convert en coords x de texture
+	wall_x -= floor(wall_x);
 	img_x = (int)(wall_x * (double)utils->img->width);
 	if (img_x >= utils->img->width)
 		img_x = utils->img->width - 1;
@@ -92,9 +88,7 @@ int	pixel_to_fill(t_raycasting_utils *utils, t_game *game)
 {
 	int	line_height;
 
-	// Calculate height of line to draw on screen
 	line_height = (int)(game->win_h / utils->perp_wall_dist);
-	// calculate lowest and highest pixel to fill in current stripe
 	utils->draw_start = -line_height / 2 + game->win_h / 2;
 	utils->draw_end = line_height / 2 + game->win_h / 2;
 	if (utils->draw_start < 0)
@@ -107,7 +101,6 @@ int	pixel_to_fill(t_raycasting_utils *utils, t_game *game)
 void	calculate_ray_dir(t_raycasting_utils *utils, t_game *game, int x)
 {
 	utils->hit = 0;
-	// 1. calcul direction rayon
 	utils->camera_x = 2 * x / (double)game->win_w - 1;
 	utils->ray_dir_x = game->player.dir_x + game->player.plane_x
 		* utils->camera_x;
