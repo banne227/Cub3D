@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:09:25 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 11:13:21 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 14:16:04 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_data_with_weapons(&data);
-	if (data.error)
-	{
-		free_data(&data);
-		return (1);
-	}
 	printf("Parsing successful!\n");
 	print_controls();
 	data.game.map = data.map;
@@ -54,7 +49,7 @@ int	main(int argc, char **argv)
 	mlx_mouse_hide(data.game.mlx, data.game.win);
 	mlx_mouse_move(data.game.mlx, data.game.win, WIN_W / 2, WIN_H / 2);
 	mlx_hook(data.game.win, 2, 1L << 0, handle_key_press, &data);
-	mlx_hook(data.game.win, 3, 1L << 1, handle_keys_release, &data);  
+	mlx_hook(data.game.win, 3, 1L << 1, handle_keys_release, &data);
 	mlx_hook(data.game.win, 4, 1L << 2, handle_mouse, &data);
 	mlx_hook(data.game.win, 6, 1L << 6, handle_mouse_move, &data);
 	mlx_hook(data.game.win, 17, 0, close_game, &data);
