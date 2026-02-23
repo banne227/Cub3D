@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 11:48:45 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 13:16:30 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@
 
 #define MAX_AMMO 8
 
-#define RELOAD_SOUND "/home/banne/git_hub/Cub3D/sounds/gun_reload.wav"
-#define SHOOT_SOUND "/home/banne/git_hub/Cub3D/sounds/gun_sound.wav"
-#define BACKGROUND_SOUND "/home/banne/git_hub/Cub3D/sounds/Mortal_Kombat.wav"
-#define KNIFE_SOUND "/home/banne/git_hub/Cub3D/sounds/knife_attack.wav"
-#define BLOOD_SOUND "/home/banne/git_hub/Cub3D/sounds/blood_sound.wav"
-#define DEATH_SOUND "/home/banne/git_hub/Cub3D/sounds/death_sound.wav"
+#define RELOAD_SOUND "./sounds/gun_reload.wav"
+#define SHOOT_SOUND "./sounds/gun_sound.wav"
+#define BACKGROUND_SOUND "./sounds/Mortal_Kombat.wav"
+#define KNIFE_SOUND "./sounds/knife_attack.wav"
+#define BLOOD_SOUND "./sounds/blood_sound.wav"
+#define DEATH_SOUND "./sounds/death_sound.wav"
 
 /* Movement */
 #define KEY_W 119 // w
@@ -259,7 +259,7 @@ typedef struct s_game
 	int bits_per_pixel;
 	int line_length; // cree nouvelle struct pour le screen
 	int endian;		 // pas oublier de init tt se que tu met dans la structure
-	t_img textures[4];
+	t_img textures[5];
 	t_map map;
 	int win_w;
 	int win_h;

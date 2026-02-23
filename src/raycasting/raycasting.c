@@ -6,7 +6,7 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 11:00:27 by jhauvill          #+#    #+#             */
-/*   Updated: 2026/02/20 14:37:18 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/23 12:46:58 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,25 @@ void	draw_textured_line(t_game *game, int x,
 
 static void	get_texture(t_raycasting_utils *utils, t_game *game)
 {
-	//char wall_type;
+	char wall_type;
 
-	//wall_type = game->map.map[map_y][map_x];
-	//if (wall_type == 'D')
-	//	img = &game->door; // door texture
+	wall_type = game->map.map[utils->map_y][utils->map_x];
 	if (utils->side == 0)
 	{
 		if (utils->ray_dir_x > 0)
-			utils->img = &game->textures[3];
+		utils->img = &game->textures[3];
 		else
-			utils->img = &game->textures[2];
+		utils->img = &game->textures[2];
 	}
 	else
 	{
 		if (utils->ray_dir_y > 0)
-			utils->img = &game->textures[1];
+		utils->img = &game->textures[1];
 		else
-			utils->img = &game->textures[0];
+		utils->img = &game->textures[0];
 	}
+	if (wall_type == 'D')
+		utils->img = &game->textures[4]; // door texture
 }
 
 void	raycasting(t_game *game)
