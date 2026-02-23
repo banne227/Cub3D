@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:28:52 by jhauvill          #+#    #+#             */
-/*   Updated: 2025/12/29 08:57:01 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 16:52:48 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void				free_tab(char **tab);
 int					ft_isspace(char c);
 int					ft_strcmp(char *s1, char *s2);
 void				ft_strcpy(char *dest, const char *src);
+int					ft_isspace(char c);
 
 typedef struct s_list
 {

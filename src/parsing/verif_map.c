@@ -6,11 +6,12 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:17 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 17:47:57 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 16:53:54 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+#include <ctype.h>
 
 static bool	print_pos_error(int x, int y)
 {
@@ -62,8 +63,11 @@ static bool	have_valid_chars(char **map)
 		{
 			if (map[y][x] != '0' && map[y][x] != '1' && map[y][x] != 'V'
 				&& map[y][x] != 'N' && map[y][x] != 'S' && map[y][x] != 'E'
-				&& map[y][x] != 'W' && map[y][x] != 'D' && map[y][x] != 'M')
+				&& map[y][x] != 'W' && map[y][x] != 'D' && map[y][x] != 'M'
+				&& map[y][x] != ' ' && ft_isspace(map[y][x]) == 0)
+			{
 				return (false);
+			}
 			x++;
 		}
 		y++;
@@ -113,7 +117,7 @@ bool	map_valid(t_data *data)
 	}
 	if (!have_valid_chars(data->map.map))
 	{
-		ft_printf("Error\nMap contains invalid characters\n");
+		ft_printf("Map contains invalid characters\n");
 		return (false);
 	}
 	if (!only_one_player(data->map.map, data))
