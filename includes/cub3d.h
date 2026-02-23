@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 16:12:00 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:38:09 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@
 
 # define WIN_W 1280
 # define WIN_H 720
-# define MOVE_SPEED 0.03
-# define ROT_SPEED 0.03
-# define SENSI 0.003
+# define MOVE_SPEED 0.015
+# define ROT_SPEED 0.01
+# define SENSI 0.0015
 
 # define MINI_TILE 10
 # define WALL_COLOR 0xFFFFFF
