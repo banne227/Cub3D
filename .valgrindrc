@@ -1,5 +1,5 @@
 --track-fds=yes
---trace-children=no
+--trace-children=yes
 --leak-check=full
 --show-leak-kinds=all
 --suppressions=./pulseaudio.supp
