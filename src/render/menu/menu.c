@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:49:57 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 17:49:58 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 09:07:54 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*get_menu_image(t_game *game, char *filename)
 
 static void	help_render_menu(t_data *data, void *menu_enter, void *menu_quit)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = &data->game;
 	if (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE)

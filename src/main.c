@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:09:25 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 17:07:33 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/23 11:13:21 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ int	main(int argc, char **argv)
 	mlx_hook(data.game.win, 6, 1L << 6, handle_mouse_move, &data);
 	mlx_hook(data.game.win, 17, 0, close_game, &data);
 	mlx_loop(data.game.mlx);
-	stop_background_music(&data.game);
+	free(data.game.z_buffer);
 	return (0);
 }

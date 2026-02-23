@@ -6,23 +6,28 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 09:43:01 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 13:59:06 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 11:33:45 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_dimensions	extract_dim(char *line)
+t_dimensions extract_dim(char *line)
 {
-	t_dimensions	dim;
-	char			**parts;
-	char			*trimmed;
+	t_dimensions dim;
+	char **parts;
+	char *trimmed;
+	char *temp;
 
 	if (!line)
 		return ((t_dimensions){0, 0});
 	trimmed = ft_strtrim(line, "\n");
+	temp = trimmed;
 	trimmed = ft_strtrim(trimmed, "\"");
+	free(temp);
+	temp = trimmed;
 	trimmed = ft_strtrim(trimmed, "'");
+	free(temp);
 	parts = ft_split(trimmed, ' ');
 	if (!parts || !parts[0] || !parts[1])
 	{
@@ -39,12 +44,12 @@ t_dimensions	extract_dim(char *line)
 	return (dim);
 }
 
-t_dimensions	get_dim(char *path)
+t_dimensions get_dim(char *path)
 {
-	t_dimensions	dim;
-	char			*line;
-	int				fd;
-	int				i;
+	t_dimensions dim;
+	char *line;
+	int fd;
+	int i;
 
 	if (!path)
 		return ((t_dimensions){0, 0});
@@ -53,10 +58,13 @@ t_dimensions	get_dim(char *path)
 		return ((t_dimensions){0, 0});
 	i = 0;
 	dim = (t_dimensions){0, 0};
-	line = get_next_line(fd);
-	while (i < 3 && line)
+	line = NULL;
+	while (i < 4)
 	{
+		free(line);
 		line = get_next_line(fd);
+		if (!line)
+			break;
 		i++;
 	}
 	if (line)

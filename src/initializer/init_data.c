@@ -6,24 +6,11 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 17:39:23 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 11:38:06 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-t_text init_text(void)
-{
-	t_text text;
-
-	text.no = NULL;
-	text.so = NULL;
-	text.we = NULL;
-	text.ea = NULL;
-	text.f = NULL;
-	text.c = NULL;
-	return (text);
-}
 
 void init_screen(t_data *data)
 {
@@ -54,7 +41,6 @@ t_data init_data(void)
 		i++;
 	}
 	data.anim.enter_frame = 0;
-	data.tex = init_text();
 	data.map = init_map();
 	data.start_map_index = -1;
 	data.error = false;
@@ -68,6 +54,7 @@ t_data init_data(void)
 	data.game.win = mlx_new_window(data.game.mlx, WIN_W, WIN_H, "CUB3D");
 	if (!data.game.win)
 		data.error = true;
+	data.game.img = NULL;
 	return (data);
 }
 

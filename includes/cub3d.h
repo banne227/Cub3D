@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/20 14:33:49 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/23 11:48:45 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@
 
 #define MAX_AMMO 8
 
-#define RELOAD_SOUND "/home/banne/git_hub/cub/sounds/gun_reload.wav"
-#define SHOOT_SOUND "/home/banne/git_hub/cub/sounds/gun_sound.wav"
-#define BACKGROUND_SOUND "/home/banne/git_hub/cub/sounds/Mortal_Kombat.wav"
-#define KNIFE_SOUND "/home/banne/git_hub/cub/sounds/knife_attack.wav"
-#define BLOOD_SOUND "/home/banne/git_hub/cub/sounds/blood_sound.wav"
-#define DEATH_SOUND "/home/banne/git_hub/cub/sounds/death_sound.wav"
+#define RELOAD_SOUND "/home/banne/git_hub/Cub3D/sounds/gun_reload.wav"
+#define SHOOT_SOUND "/home/banne/git_hub/Cub3D/sounds/gun_sound.wav"
+#define BACKGROUND_SOUND "/home/banne/git_hub/Cub3D/sounds/Mortal_Kombat.wav"
+#define KNIFE_SOUND "/home/banne/git_hub/Cub3D/sounds/knife_attack.wav"
+#define BLOOD_SOUND "/home/banne/git_hub/Cub3D/sounds/blood_sound.wav"
+#define DEATH_SOUND "/home/banne/git_hub/Cub3D/sounds/death_sound.wav"
 
 /* Movement */
 #define KEY_W 119 // w
@@ -72,23 +72,46 @@
 #define KEY_ENTER 65293
 #define KEY_SPACE 32
 
+typedef struct s_img
+{
+	void *img;
+	char *addr;
+	int width;
+	int height;
+	int bits_per_pixel;
+	int line_length;
+	int endian;
+} t_img;
+typedef struct s_sprite_utils
+{
+	double transform_x;
+	double transform_y;
+	int sprite_screen_x;
+	int line_height;
+	int draw_start_x;
+	int draw_end_x;
+	int draw_start;
+	int draw_end;
+	t_img *img;
+} t_sprite_utils;
+
 typedef struct t_fade
 {
-	int	x;
-	int	y;
-	int	bits;
-	int	line_len;
-	int	endian;
-}	t_fade;
+	int x;
+	int y;
+	int bits;
+	int line_len;
+	int endian;
+} t_fade;
 
 typedef struct t_mini
 {
-	int	x;
-	int	y;
-	int	bpp;
-	int	line_len;
-	int	endian;
-}	t_mini;
+	int x;
+	int y;
+	int bpp;
+	int line_len;
+	int endian;
+} t_mini;
 
 typedef struct s_rgb
 {
@@ -115,38 +138,27 @@ typedef struct s_text
 	void *c;
 } t_text;
 
-typedef struct s_img
-{
-	void *img;
-	char *addr;
-	int width;
-	int height;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
-} t_img;
-
 typedef struct s_raycasting_utils
 {
-	double	camera_x;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	int	map_x;
-	int	map_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	int	step_x;
-	int	step_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	int	hit;
+	double camera_x;
+	double ray_dir_x;
+	double ray_dir_y;
+	int map_x;
+	int map_y;
+	double delta_dist_x;
+	double delta_dist_y;
+	int step_x;
+	int step_y;
+	double side_dist_x;
+	double side_dist_y;
+	int hit;
 	t_img *img;
 	int side;
-	double	perp_wall_dist;
-	int	draw_start;
-	int	draw_end;
-	int	line_height;
-}	t_raycasting_utils;
+	double perp_wall_dist;
+	int draw_start;
+	int draw_end;
+	int line_height;
+} t_raycasting_utils;
 
 typedef struct s_pos
 {
@@ -237,7 +249,6 @@ typedef struct s_weapon
 	void *ammo[2];
 	pid_t sound;
 } t_weapon;
-
 
 typedef struct s_game
 {
@@ -336,8 +347,7 @@ void render_menu(t_game *game, t_data *data);
 long timestamp(void);
 void display_enter(t_data *data);
 void play_background_music(t_game *game);
-void stop_background_music(t_game *game);
-void destroy_img(void *mlx, void *img);
+void destroy_img(void *mlx, void **img);
 void init_anim(t_data *data);
 void load_weapons(t_weapon *weapon, void *mlx);
 t_game init_game(void);
@@ -358,7 +368,8 @@ void stop_sounds(pid_t pid);
 t_ennemy *init_ennemies(char **map, void *mlx);
 void *load(t_game *game, char *path);
 int take_damage(int damage, double pos_x, double pos_y,
-				 t_ennemy *ennemies);
+				t_ennemy *ennemies);
+void free_ennemies(t_ennemy *ennemies, void *mlx, int count);
 void open_door(t_map *map, int x, int y);
 int verif_open_door(t_map *map, int x, int y);
 bool is_door(t_map *map, int x, int y);
@@ -367,26 +378,26 @@ void draw_image_transparent(t_game *game, void *img_src,
 t_dimensions get_dim(char *path);
 t_dimensions get_image_dimensions(void *mlx, char *path);
 t_weapon init_weapon(void *mlx);
-int	handle_mouse(int button, int x, int y, void *param);
-int	handle_mouse_move(int x, int y, void *param);
-int	handle_key_press(int keycode, void *param);
-int	handle_keys_release(int keycode, void *param);
-int	get_texture_color(t_img *img, int x, int y);
+int handle_mouse(int button, int x, int y, void *param);
+int handle_mouse_move(int x, int y, void *param);
+int handle_key_press(int keycode, void *param);
+int handle_keys_release(int keycode, void *param);
+int get_texture_color(t_img *img, int x, int y);
+int	count_ennemies(char **map);
 
 // raycasting
 void my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void print_sky_n_floor(t_data *data);
-void	load_wall_textures(t_data *data);
+void load_wall_textures(t_data *data);
 void raycasting(t_game *game);
 
-//raycasting_utils
+// raycasting_utils
 void dda(t_raycasting_utils *utils, t_game *game);
-void	touch_wall(t_raycasting_utils *utils, t_game *game);
-int	convert_coords_textures(t_raycasting_utils *utils, t_game *game);
-int	pixel_to_fill(t_raycasting_utils *utils, t_game *game);
-void	calculate_ray_dir(t_raycasting_utils *utils, t_game *game, int x);
-void	render_ennemies(t_game *game);
-
+void touch_wall(t_raycasting_utils *utils, t_game *game);
+int convert_coords_textures(t_raycasting_utils *utils, t_game *game);
+int pixel_to_fill(t_raycasting_utils *utils, t_game *game);
+void calculate_ray_dir(t_raycasting_utils *utils, t_game *game, int x);
+void render_ennemies(t_game *game);
 
 // color utils
 int rgb_to_int(char *rgb_str);

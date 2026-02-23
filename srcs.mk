@@ -81,13 +81,14 @@ SRCS = 	src/audio/audio.c \
 	src/render/menu/menu.c \
 	src/render/minimap/minimap.c \
 	src/render/render.c \
+	src/render/render_ennemies.c \
 	src/utils/copy.c \
 	src/utils/free.c \
+	src/utils/free_ennemies.c \
 	src/utils/time.c \
 	src/weapons/ammo.c \
 	src/weapons/cut.c \
 	src/weapons/draw_weapons.c \
 	src/weapons/enneny.c \
 	src/weapons/reload.c \
-	src/weapons/shoot.c \
-	src/render/render_ennemies.c
+src/weapons/shoot.c

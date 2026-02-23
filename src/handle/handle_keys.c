@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:59:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 18:21:56 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 11:02:21 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	case_keycode_m(t_data *data, int keycode)
 		else if (data->game.state == STATE_PLAY)
 		{
 			data->game.state = STATE_MENU;
-			stop_background_music(&data->game);
 		}
 		return (1);
 	}

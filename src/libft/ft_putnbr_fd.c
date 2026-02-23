@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:09:46 by jhauvill          #+#    #+#             */
-/*   Updated: 2025/10/15 14:50:29 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/23 08:42:38 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int div;
-	int mod;
-	int ret;
+	int	div;
+	int	mod;
+	int	ret;
 
 	div = 0;
 	mod = 0;

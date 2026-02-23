@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:49:53 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 17:51:54 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 09:06:42 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ void	fade_display_img(t_data *data, void *img, int opacity)
 		fade.x = 0;
 		while (fade.x < 512)
 		{
-			pixel = *(unsigned int *)(addr + fade.y * fade.line_len + fade.x * 4);
+			pixel = *(unsigned int *)(addr + fade.y * fade.line_len
+					+ fade.x * 4);
 			pixel = (pixel & 0xFFFFFF) | ((unsigned int)(opacity) << 24);
-			*(unsigned int *)(addr + fade.y * fade.line_len + fade.x * 4) = pixel;
+			*(unsigned int *)(addr + fade.y * fade.line_len
+					+ fade.x * 4) = pixel;
 			fade.x++;
 		}
 		fade.y++;

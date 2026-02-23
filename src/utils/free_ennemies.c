@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   free_ennemies.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 10:42:34 by jhauvill          #+#    #+#             */
-/*   Updated: 2026/02/23 08:42:47 by banne            ###   ########.fr       */
+/*   Created: 2026/02/23 11:05:40 by banne             #+#    #+#             */
+/*   Updated: 2026/02/23 11:10:56 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/cub3d.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void free_ennemies(t_ennemy *ennemies, void *mlx, int count)
 {
-	int	i;
-	int	ret;
+	int i;
+	int j;
 
+	if (!ennemies)
+		return;
 	i = 0;
-	while (s[i])
+	while (i < count)
 	{
-		ret = write(fd, &s[i], 1);
-		if (ret == -1)
-			return ;
+		j = 0;
+		while (j < 4)
+		{
+			if (ennemies[i].img[j])
+				mlx_destroy_image(mlx, ennemies[i].img[j]);
+			j++;
+		}
 		i++;
 	}
+	free(ennemies);
 }
-
-// int main(void)
-//{
-//	ft_putstr_fd("abcde ds",1);
-//	return (0);
-//}

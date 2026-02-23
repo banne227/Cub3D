@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:40 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 17:44:03 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 08:44:36 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	**get_map(char **file, t_data *data)
 	while (i < map_size)
 	{
 		map[i] = trim_spaces(trim_endf(ft_strdup(file[start_index + i])),
-							max_len(file, start_index, map_size));
+				max_len(file, start_index, map_size));
 		i++;
 	}
 	data->map.map = map;

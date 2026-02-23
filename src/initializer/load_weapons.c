@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:48:26 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/19 17:40:42 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 09:25:44 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	*load_weapon_textures(void *mlx, char *path, int w, int h)
 void	load_gun_shoot(t_weapon *weapon, void *mlx)
 {
 	weapon->gun.damage = 40;
-	weapon->gun.range = 8;
+	weapon->gun.range = 15;
 	weapon->gun.freload = 0;
 	weapon->gun.fshoot = 0;
 	weapon->gun.ammo = 8;

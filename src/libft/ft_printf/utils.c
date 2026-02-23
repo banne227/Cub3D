@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 09:36:13 by jhauvill          #+#    #+#             */
-/*   Updated: 2025/11/27 12:57:11 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/23 08:44:01 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_strlen_printf(char *str)
+int	ft_strlen_printf(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -22,17 +22,17 @@ int ft_strlen_printf(char *str)
 	return (i);
 }
 
-int ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	if (write(1, &c, 1) == -1)
 		return (-1);
 	return (1);
 }
 
-int ft_printadress(unsigned long address)
+int	ft_printadress(unsigned long address)
 {
-	int count;
-	char *base;
+	int		count;
+	char	*base;
 
 	count = 0;
 	base = "0123456789abcdef";
@@ -46,10 +46,10 @@ int ft_printadress(unsigned long address)
 	return (count);
 }
 
-int ft_putstr(char *s)
+int	ft_putstr(char *s)
 {
-	int i;
-	int ret;
+	int	i;
+	int	ret;
 
 	i = 0;
 	if (!s)
@@ -64,10 +64,10 @@ int ft_putstr(char *s)
 	return (i);
 }
 
-int ft_putnbr(int n)
+int	ft_putnbr(int n)
 {
-	int div;
-	int count;
+	int	div;
+	int	count;
 
 	div = 0;
 	count = 0;

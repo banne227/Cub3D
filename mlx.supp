@@ -1,13 +1,35 @@
 {
-	MLX_any_leak
-	Memcheck:Leak
-	match-leak-kinds: reachable
-	fun:*mlx*
+   MLX_Leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*
+   obj:*/usr/lib/x86_64-linux-gnu/*
 }
 
 {
-	MLX_any_leak_obj
-	Memcheck:Leak
-	match-leak-kinds: reachable
-	obj:*mlx*
+   Dynamic_Loader_Leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:_dl_*
+   fun:dlopen*
+}
+
+{
+   MLX_Internal_Leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*mlx*
+   obj:*mlx*
+}
+
+{
+   MLX_XPM_Leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:mlx_int_new_xshm_image
+   fun:mlx_new_image
+   fun:mlx_int_parse_xpm
+   fun:mlx_xpm_file_to_image
 }

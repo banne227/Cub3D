@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 16:00:12 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 17:37:50 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 08:36:49 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	handle_mouse_move(int x, int y, void *param)
 	data = (t_data *)param;
 	mouse.center_x = WIN_W / 2;
 	mouse.center_y = WIN_H / 2;
-	if (data->game.state != STATE_PLAY ||
-		(x == mouse.center_x && y == mouse.center_y))
+	if (data->game.state != STATE_PLAY
+		|| (x == mouse.center_x && y == mouse.center_y))
 		return (0);
 	mouse.delta_x = x - mouse.center_x;
 	mouse.rot_speed = mouse.delta_x * SENSI;

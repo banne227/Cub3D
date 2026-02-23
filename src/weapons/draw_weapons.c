@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:50:08 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/19 18:07:23 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 09:03:44 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	draw_weapon(t_game *game)
 			draw_image_transparent(game, game->weapon.crosshair[1], 16, 16, x,
 				y);
 		game->weapon.hit += 1;
-		if (game->weapon.hit > 2)
+		if (game->weapon.hit > 15)
 			game->weapon.hit = 0;
 	}
 	display_ammo(&game->weapon, game);

@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 08:21:06 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 18:05:43 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 09:01:59 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int take_damage(int damage, double pos_x, double pos_y, t_ennemy *ennemies)
 		return (0);
 	if (ennemy->alive)
 	{
-		ennemy->hit_frame = 10;
+		ennemy->hit_frame = 20;
 		ennemy->health -= damage;
 		if (ennemy->health <= 0)
 		{
@@ -46,6 +46,7 @@ int take_damage(int damage, double pos_x, double pos_y, t_ennemy *ennemies)
 		}
 		else
 			play_sounds(BLOOD_SOUND);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
