@@ -2,5 +2,5 @@
 --trace-children=no
 --leak-check=full
 --show-leak-kinds=all
---suppressions=/home/banne/git_hub/Cub3D/pulseaudio.supp
---suppressions=/home/banne/git_hub/Cub3D/mlx.supp 
+--suppressions=./pulseaudio.supp
+--suppressions=./mlx.supp 
