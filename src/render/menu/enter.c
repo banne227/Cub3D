@@ -6,20 +6,20 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:49:53 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 09:06:42 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 11:50:45 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	fade_display_img(t_data *data, void *img, int opacity)
+void fade_display_img(t_data *data, void *img, int opacity)
 {
-	char			*addr;
-	unsigned int	pixel;
-	t_fade			fade;
+	char *addr;
+	unsigned int pixel;
+	t_fade fade;
 
 	if (!img || !data->game.mlx || !data->game.win)
-		return ;
+		return;
 	addr = mlx_get_data_addr(img, &fade.bits, &fade.line_len, &fade.endian);
 	fade.y = 0;
 	while (fade.y < 512)
@@ -27,11 +27,9 @@ void	fade_display_img(t_data *data, void *img, int opacity)
 		fade.x = 0;
 		while (fade.x < 512)
 		{
-			pixel = *(unsigned int *)(addr + fade.y * fade.line_len
-					+ fade.x * 4);
+			pixel = *(unsigned int *)(addr + fade.y * fade.line_len + fade.x * 4);
 			pixel = (pixel & 0xFFFFFF) | ((unsigned int)(opacity) << 24);
-			*(unsigned int *)(addr + fade.y * fade.line_len
-					+ fade.x * 4) = pixel;
+			*(unsigned int *)(addr + fade.y * fade.line_len + fade.x * 4) = pixel;
 			fade.x++;
 		}
 		fade.y++;
@@ -40,13 +38,13 @@ void	fade_display_img(t_data *data, void *img, int opacity)
 	data->anim.last_img = img;
 }
 
-void	display_img(t_data *data, void *img)
+void display_img(t_data *data, void *img)
 {
-	int	h;
-	int	w;
+	int h;
+	int w;
 
 	if (!img || !data->game.mlx || !data->game.win)
-		return ;
+		return;
 	h = 0;
 	w = 0;
 	if (data->anim.last_img != img)
@@ -58,65 +56,64 @@ void	display_img(t_data *data, void *img)
 	data->anim.last_img = img;
 }
 
-void	load_enter(void *mlx, t_anim *enter)
+void load_enter(void *mlx, t_anim *enter)
 {
-	int	w;
-	int	h;
+	int w;
+	int h;
 
 	w = 0;
 	h = 0;
 	enter->ent[0] = mlx_xpm_file_to_image(mlx, "textures/menu/enter/enter0.xpm",
-			&w, &h);
+										  &w, &h);
 	enter->ent[1] = mlx_xpm_file_to_image(mlx, "textures/menu/enter/enter1.xpm",
-			&w, &h);
+										  &w, &h);
 	enter->ent[2] = mlx_xpm_file_to_image(mlx, "textures/menu/enter/enter2.xpm",
-			&w, &h);
+										  &w, &h);
 	enter->ent[3] = mlx_xpm_file_to_image(mlx, "textures/menu/enter/enter3.xpm",
-			&w, &h);
+										  &w, &h);
 	enter->ent[4] = mlx_xpm_file_to_image(mlx, "textures/menu/enter/enter4.xpm",
-			&w, &h);
+										  &w, &h);
 	enter->ent[5] = mlx_xpm_file_to_image(mlx, "textures/menu/enter/enter5.xpm",
-			&w, &h);
+										  &w, &h);
 	enter->ent[6] = mlx_xpm_file_to_image(mlx, "textures/menu/enter/enter6.xpm",
-			&w, &h);
+										  &w, &h);
 	enter->ent[7] = mlx_xpm_file_to_image(mlx, "textures/menu/enter/enter7.xpm",
-			&w, &h);
+										  &w, &h);
 	enter->ent[8] = mlx_xpm_file_to_image(mlx, "textures/menu/enter/enter8.xpm",
-			&w, &h);
+										  &w, &h);
 	enter->ent[9] = mlx_xpm_file_to_image(mlx, "textures/menu/enter/enter9.xpm",
-			&w, &h);
+										  &w, &h);
 }
 
-void	destroy_enter(t_data *data)
+void destroy_enter(t_data *data)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < 10)
 	{
-		if (data->anim.ent[i])
-			destroy_img(data->game.mlx, data->anim.ent[i]);
+		destroy_img(data->game.mlx, &data->anim.ent[i]);
 		i++;
 	}
 }
 
-void	init_anim(t_data *data)
+void init_anim(t_data *data)
 {
 	load_enter(data->game.mlx, &data->anim);
 	data->anim.last_frame_time = timestamp();
 }
 
-void	display_enter(t_data *data)
+void display_enter(t_data *data)
 {
-	int	elapsed;
-	int	opacity;
+	int elapsed;
+	int opacity;
 
 	if (data->anim.enter_frame > 9)
 	{
 		destroy_enter(data);
 		data->game.state = STATE_PLAY;
 		data->game.menu_option = 0;
-		return ;
+		return;
 	}
 	elapsed = timestamp() - data->anim.last_frame_time;
 	if (elapsed < 50)

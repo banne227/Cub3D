@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 17:54:38 by jhauvill          #+#    #+#             */
-/*   Updated: 2025/11/27 12:59:18 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/23 12:32:35 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 7
+#  define BUFFER_SIZE 42
 # endif
 
 # include <fcntl.h>
@@ -31,5 +31,6 @@ char	*ft_check(char *tmp, char *buffer);
 void	ft_exchange(char **ptr);
 char	*ft_extract_line(char **ptr_tmp, char **ptr_buffer, ssize_t b);
 char	*get_next_line(int fd);
+void	free_gnl_static(void);
 
-#endif
+#endif	

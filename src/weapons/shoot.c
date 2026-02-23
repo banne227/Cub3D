@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:11:01 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/19 11:15:31 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 12:06:14 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,8 @@ int bullet_hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
 			return (0);
 		if (map.map[(int)bullet_y][(int)bullet_x] == 'M')
 		{
-			take_damage(weapon->gun.damage, bullet_x, bullet_y,
-						ennemies);
-			return (1);
+			return (take_damage(weapon->gun.damage, bullet_x, bullet_y,
+						ennemies));
 		}
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 09:43:01 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 11:33:45 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 12:31:57 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,21 @@ t_dimensions extract_dim(char *line)
 	return (dim);
 }
 
+static void free_n_get_dim(char *line, t_dimensions *dim, int fd)
+{
+	if (line)
+	{
+		*dim = extract_dim(line);
+	}
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+}
+
+
 t_dimensions get_dim(char *path)
 {
 	t_dimensions dim;
@@ -59,19 +74,13 @@ t_dimensions get_dim(char *path)
 	i = 0;
 	dim = (t_dimensions){0, 0};
 	line = NULL;
-	while (i < 4)
+	while (i++ < 4)
 	{
 		free(line);
 		line = get_next_line(fd);
 		if (!line)
 			break;
-		i++;
 	}
-	if (line)
-	{
-		dim = extract_dim(line);
-		free(line);
-	}
-	close(fd);
+	free_n_get_dim(line, &dim, fd);
 	return (dim);
 }

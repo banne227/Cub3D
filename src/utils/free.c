@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 09:14:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 11:48:06 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 12:22:44 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void destroy_weapon_images(t_weapon *weapon, void *mlx)
 {
 	int i;
 
-	destroy_img(mlx, &weapon->img);
 	destroy_img(mlx, &weapon->crosshair[0]);
 	destroy_img(mlx, &weapon->crosshair[1]);
 	i = 0;
@@ -80,6 +79,12 @@ void destroy_weapon_images(t_weapon *weapon, void *mlx)
 	while (i < 4)
 	{
 		destroy_img(mlx, &weapon->gun.reload[i]);
+		i++;
+	}
+	i = 0;
+	while (i < 2)
+	{
+		destroy_img(mlx, &weapon->knife.img[i]);
 		i++;
 	}
 }

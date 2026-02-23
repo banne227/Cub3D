@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 17:55:14 by jhauvill          #+#    #+#             */
-/*   Updated: 2025/11/27 13:03:50 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/23 12:22:20 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ char	*ft_extract_line(char **ptr_tmp, char **ptr_buffer, ssize_t b)
 
 char	*get_next_line(int fd)
 {
-	static char	*tmp;
 	char		*buffer;
 	ssize_t		byte;
+	static char	*tmp;
 
 	buffer = NULL;
 	byte = 1;
