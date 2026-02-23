@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:50:21 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 17:59:18 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 13:40:54 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	put_pixel_to_img(t_game *game, int *img_data, int line_len,
 	img_data[y * (line_len / 4) + x] = color;
 }
 
-void	draw_player_direction(t_game *game, int *img_data, int line_len, int x,
-		int y)
+void	draw_player_direction(t_game *game, int *img_data, int line_len,
+		t_pos player_pos)
 {
 	int		i;
 	t_pos	pos;
@@ -34,8 +34,8 @@ void	draw_player_direction(t_game *game, int *img_data, int line_len, int x,
 	i = 0;
 	while (i < 8)
 	{
-		pos.x = x + (int)(game->player.dir_x * i);
-		pos.y = y + (int)(game->player.dir_y * i);
+		pos.x = player_pos.x + (int)(game->player.dir_x * i);
+		pos.y = player_pos.y + (int)(game->player.dir_y * i);
 		put_pixel_to_img(game, img_data, line_len, pos, 0x00FF00);
 		i++;
 	}
@@ -64,17 +64,18 @@ void	print_player_pos(t_game *game, int *img_data, int line_len)
 		i++;
 	}
 	draw_player_direction(game, img_data, line_len,
-		(int)(game->player.pos_x * MINI_TILE),
-		(int)(game->player.pos_y * MINI_TILE));
+		(t_pos){(int)(game->player.pos_x * MINI_TILE),
+		(int)(game->player.pos_y * MINI_TILE)});
 }
 
 void	draw_minimap(t_game *game)
 {
-	t_mini mini;
-	int	color;
-	int	*img_data;
+	t_mini	mini;
+	int		color;
+	int		*img_data;
 
-	img_data = (int *)mlx_get_data_addr(game->img, &mini.bpp, &mini.line_len, &mini.endian);
+	img_data = (int *)mlx_get_data_addr(game->img, &mini.bpp,
+			&mini.line_len, &mini.endian);
 	if (!img_data)
 		return ;
 	mini.y = 0;
@@ -89,8 +90,7 @@ void	draw_minimap(t_game *game)
 			else
 				color = FLOOR_COLOR;
 			put_pixel_to_img(game, img_data, mini.line_len,
-					(t_pos){mini.x, mini.y}, color);
-			mini.x++;
+				(t_pos){mini.x++, mini.y}, color);
 		}
 		mini.y++;
 	}

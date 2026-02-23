@@ -73,6 +73,7 @@ SRCS = 	src/audio/audio.c \
 	src/parsing/verif_data.c \
 	src/parsing/verif_map.c \
 	src/raycasting/raycasting.c \
+	src/raycasting/raycasting_ennemies.c \
 	src/raycasting/raycasting_init.c \
 	src/raycasting/raycasting_utils.c \
 	src/raycasting/sky_n_floor.c \
@@ -85,6 +86,7 @@ SRCS = 	src/audio/audio.c \
 	src/utils/copy.c \
 	src/utils/free.c \
 	src/utils/free_ennemies.c \
+	src/utils/helper.c \
 	src/utils/time.c \
 	src/weapons/ammo.c \
 	src/weapons/cut.c \

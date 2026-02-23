@@ -6,16 +6,16 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:26 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 11:38:02 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 13:09:37 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-char **realloc_map(char **map, int new_size)
+char	**realloc_map(char **map, int new_size)
 {
-	char **new_map;
-	int i;
+	char	**new_map;
+	int		i;
 
 	new_map = malloc(sizeof(char *) * (new_size + 1));
 	if (!new_map)
@@ -33,10 +33,10 @@ char **realloc_map(char **map, int new_size)
 	return (new_map);
 }
 
-char *trim_endf(char *line)
+char	*trim_endf(char *line)
 {
-	int len;
-	char *trimmed;
+	int		len;
+	char	*trimmed;
 
 	len = 0;
 	while (line && line[len] && line[len] != '\n')
@@ -52,12 +52,12 @@ char *trim_endf(char *line)
 	return (trimmed);
 }
 
-char **trim_file(char **file)
+char	**trim_file(char **file)
 {
-	int size;
-	char **trimmed;
-	char *tmp;
-	int i;
+	int		size;
+	char	**trimmed;
+	char	*tmp;
+	int		i;
 
 	size = 0;
 	i = 0;
@@ -68,7 +68,7 @@ char **trim_file(char **file)
 		{
 			free(file[i]);
 			i++;
-			continue;
+			continue ;
 		}
 		trimmed = realloc_map(trimmed, size + 1);
 		if (!trimmed)
@@ -81,12 +81,12 @@ char **trim_file(char **file)
 	return (trimmed);
 }
 
-char **get_file(int fd)
+char	**get_file(int fd)
 {
-	int size;
-	char **result;
-	char *line;
-	char *tmp;
+	int		size;
+	char	**result;
+	char	*line;
+	char	*tmp;
 
 	size = 0;
 	result = NULL;
@@ -107,10 +107,10 @@ char **get_file(int fd)
 	return (result);
 }
 
-int get_data(char *filename, t_data *data)
+int	get_data(char *filename, t_data *data)
 {
-	char **file;
-	int fd;
+	char	**file;
+	int		fd;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)

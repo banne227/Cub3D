@@ -6,13 +6,13 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 08:21:06 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 09:01:59 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 13:03:39 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_ennemy *get_ennemy_at(int pos_x, int pos_y, t_ennemy *ennemies)
+t_ennemy	*get_ennemy_at(int pos_x, int pos_y, t_ennemy *ennemies)
 {
 	while (ennemies)
 	{
@@ -23,11 +23,11 @@ t_ennemy *get_ennemy_at(int pos_x, int pos_y, t_ennemy *ennemies)
 	return (NULL);
 }
 
-int take_damage(int damage, double pos_x, double pos_y, t_ennemy *ennemies)
+int	take_damage(int damage, double pos_x, double pos_y, t_ennemy *ennemies)
 {
-	t_ennemy *ennemy;
-	int x;
-	int y;
+	t_ennemy	*ennemy;
+	int			x;
+	int			y;
 
 	x = (int)pos_x;
 	y = (int)pos_y;

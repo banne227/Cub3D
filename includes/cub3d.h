@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 13:16:30 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/23 13:43:59 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,10 +310,12 @@ typedef struct s_data
 	t_img *textures[4];
 } t_data;
 
+void calculate_transform(t_game *game, t_ennemy *e, t_sprite_utils *utils);
 bool extension_check(char *filename);
 bool file_check(char *filename);
 char **realloc_map(char **map, int new_size);
 char *trim_endf(char *line);
+t_img	create_sprite_img(void *mlx_img);
 char **trim_file(char **file);
 char **get_file(int fd);
 int get_data(char *filename, t_data *data);
@@ -384,6 +386,10 @@ int handle_key_press(int keycode, void *param);
 int handle_keys_release(int keycode, void *param);
 int get_texture_color(t_img *img, int x, int y);
 int	count_ennemies(char **map);
+int	calculate_dimensions(t_sprite_utils *sprite, t_game *game);
+int	get_sprite_tex_x(t_sprite_utils *sprite, int x);
+void	load_enter(void *mlx, t_anim *enter);
+void	init_anim(t_data *data);
 
 // raycasting
 void my_mlx_pixel_put(t_game *game, int x, int y, int color);

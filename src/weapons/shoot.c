@@ -6,24 +6,20 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:11:01 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/23 12:06:14 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 13:07:31 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void shoot(t_weapon *weapon, t_game *game)
+void	shoot(t_weapon *weapon, t_game *game)
 {
-	pid_t sound;
-
-	sound = 0;
-	if (weapon->type == 0 || weapon->attack == 0 || weapon->gun.ammo == 0 || weapon->gun.freload > 0)
-		return;
+	if (weapon->type == 0 || weapon->attack == 0 || weapon->gun.ammo == 0
+		|| weapon->gun.freload > 0)
+		return ;
 	if (weapon->gun.fshoot == 0)
 	{
-		sound = play_sounds(SHOOT_SOUND);
-		if (sound && sound > 0)
-			weapon->sound = sound;
+		play_sounds(SHOOT_SOUND);
 		if (bullet_hit(weapon, game->player, game->map, game->ennemys))
 			weapon->hit = 1;
 	}
@@ -45,12 +41,12 @@ void shoot(t_weapon *weapon, t_game *game)
 	}
 }
 
-int bullet_hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
+int	bullet_hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
 {
-	double bullet_x;
-	double bullet_y;
-	double step_size;
-	double distance_traveled;
+	double	bullet_x;
+	double	bullet_y;
+	double	step_size;
+	double	distance_traveled;
 
 	bullet_x = player.pos_x;
 	bullet_y = player.pos_y;
@@ -61,14 +57,14 @@ int bullet_hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
 		bullet_x += player.dir_x * step_size;
 		bullet_y += player.dir_y * step_size;
 		distance_traveled += step_size;
-		if ((int)bullet_x < 0 || (int)bullet_x >= map.width || (int)bullet_y < 0 || (int)bullet_y >= map.height)
-			break;
-		if (map.map[(int)bullet_y][(int)bullet_x] == '1')
-			return (0);
+		if ((int)bullet_x < 0 || (int)bullet_x >= map.width
+			|| (int)bullet_y >= map.height || (int)bullet_y < 0
+			|| map.map[(int)bullet_y][(int)bullet_x] == '1')
+			break ;
 		if (map.map[(int)bullet_y][(int)bullet_x] == 'M')
 		{
 			return (take_damage(weapon->gun.damage, bullet_x, bullet_y,
-						ennemies));
+					ennemies));
 		}
 	}
 	return (0);
