@@ -3,36 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:57:11 by banne             #+#    #+#             */
-/*   Updated: 2026/02/20 13:33:21 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/23 13:57:23 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	render(void *param)
+void	help_render(t_data *data)
 {
-	t_data	*data;
-	int		i;
+	int	i;
 
-	data = (t_data *)param;
-	if (data->game.state == STATE_EXIT)
-		return (close_game(data));
-	if (!data->game.img)
-		data->game.img = mlx_new_image(data->game.mlx, data->game.win_w,
-				data->game.win_h);
-	if (data->game.state == STATE_MENU)
-	{
-		render_menu(&data->game, data);
-		return (0);
-	}
-	if (data->game.state == STATE_ANIMATION)
-	{
-		display_enter(data);
-		return (0);
-	}
 	if (data->game.weapon.attack)
 	{
 		if (data->game.weapon.type == 0)
@@ -56,5 +39,28 @@ int	render(void *param)
 	draw_weapon(&data->game);
 	move_player(&data->game);
 	rotate_player(data);
+}
+
+int	render(void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	if (data->game.state == STATE_EXIT)
+		return (close_game(data));
+	if (!data->game.img)
+		data->game.img = mlx_new_image(data->game.mlx, data->game.win_w,
+				data->game.win_h);
+	if (data->game.state == STATE_MENU)
+	{
+		render_menu(&data->game, data);
+		return (0);
+	}
+	if (data->game.state == STATE_ANIMATION)
+	{
+		display_enter(data);
+		return (0);
+	}
+	help_render(data);
 	return (0);
 }

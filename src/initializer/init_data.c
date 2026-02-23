@@ -6,13 +6,13 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 11:38:06 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 13:51:43 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void init_screen(t_data *data)
+void	init_screen(t_data *data)
 {
 	data->screen = (t_img *)malloc(sizeof(t_img));
 	if (!data->screen)
@@ -29,10 +29,10 @@ void init_screen(t_data *data)
 	}
 }
 
-t_data init_data(void)
+t_data	init_data(void)
 {
-	t_data data;
-	int i;
+	t_data	data;
+	int		i;
 
 	i = 0;
 	while (i < 6)
@@ -58,11 +58,11 @@ t_data init_data(void)
 	return (data);
 }
 
-t_data init_data_with_weapons(t_data *data)
+t_data	init_data_with_weapons(t_data *data)
 {
-	t_player parsed_player;
-	void *mlx_tmp;
-	void *win_tmp;
+	t_player	parsed_player;
+	void		*mlx_tmp;
+	void		*win_tmp;
 
 	parsed_player = data->game.player;
 	mlx_tmp = data->game.mlx;

@@ -6,13 +6,13 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 09:14:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 12:22:44 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 13:54:17 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void destroy_mlx(t_game *game)
+void	destroy_mlx(t_game *game)
 {
 	if (game->mlx)
 	{
@@ -26,13 +26,13 @@ void destroy_mlx(t_game *game)
 	}
 }
 
-void free_data(t_data *data)
+void	free_data(t_data *data)
 {
-	int i;
-	t_game *game;
+	int		i;
+	t_game	*game;
 
 	if (!data)
-		return;
+		return ;
 	i = 0;
 	while (i < 6)
 	{
@@ -54,7 +54,7 @@ void free_data(t_data *data)
 		free(data->screen);
 }
 
-void destroy_img(void *mlx, void **img)
+void	destroy_img(void *mlx, void **img)
 {
 	if (img && *img)
 	{
@@ -63,9 +63,9 @@ void destroy_img(void *mlx, void **img)
 	}
 }
 
-void destroy_weapon_images(t_weapon *weapon, void *mlx)
+void	destroy_weapon_images(t_weapon *weapon, void *mlx)
 {
-	int i;
+	int	i;
 
 	destroy_img(mlx, &weapon->crosshair[0]);
 	destroy_img(mlx, &weapon->crosshair[1]);
@@ -89,10 +89,10 @@ void destroy_weapon_images(t_weapon *weapon, void *mlx)
 	}
 }
 
-int close_game(void *param)
+int	close_game(void *param)
 {
-	t_data *data;
-	static int closing = 0;
+	t_data		*data;
+	static int	closing = 0;
 
 	if (closing)
 		return (0);
@@ -101,7 +101,7 @@ int close_game(void *param)
 	data = (t_data *)param;
 	free(data->game.z_buffer);
 	free_ennemies(data->game.ennemys, data->game.mlx,
-				  count_ennemies(data->map.map));
+		count_ennemies(data->map.map));
 	if (data && data->game.mlx && data->game.win)
 		mlx_clear_window(data->game.mlx, data->game.win);
 	if (data && data->game.mlx)

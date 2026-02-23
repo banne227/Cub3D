@@ -6,19 +6,19 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:05:40 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 11:10:56 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 13:54:37 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void free_ennemies(t_ennemy *ennemies, void *mlx, int count)
+void	free_ennemies(t_ennemy *ennemies, void *mlx, int count)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (!ennemies)
-		return;
+		return ;
 	i = 0;
 	while (i < count)
 	{

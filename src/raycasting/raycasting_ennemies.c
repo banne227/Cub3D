@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 13:19:54 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 13:23:45 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 13:47:16 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_img	create_sprite_img(void *mlx_img)
 	return (img);
 }
 
-	int	calculate_dimensions(t_sprite_utils *sprite, t_game *game)
+int	calculate_dimensions(t_sprite_utils *sprite, t_game *game)
 {
 	t_raycasting_utils	utils;
 
