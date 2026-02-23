@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:11:01 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/23 13:07:31 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 15:02:28 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,24 @@ void	shoot(t_weapon *weapon, t_game *game)
 	}
 }
 
+bool	is_ennemy(double pos_x, double pos_y, t_ennemy *ennemies)
+{
+	double	dist_x;
+	double	dist_y;
+	double	radius;
+
+	radius = 0.15;
+	while (ennemies)
+	{
+		dist_x = pos_x - (ennemies->pos.x + 0.5);
+		dist_y = pos_y - (ennemies->pos.y + 0.5);
+		if (dist_x * dist_x + dist_y * dist_y < radius * radius)
+			return (true);
+		ennemies = ennemies->next;
+	}
+	return (false);
+}
+
 int	bullet_hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
 {
 	double	bullet_x;
@@ -61,11 +79,10 @@ int	bullet_hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
 			|| (int)bullet_y >= map.height || (int)bullet_y < 0
 			|| map.map[(int)bullet_y][(int)bullet_x] == '1')
 			break ;
-		if (map.map[(int)bullet_y][(int)bullet_x] == 'M')
-		{
+		if (is_ennemy(bullet_x, bullet_y, ennemies)
+			&& is_alive((int)bullet_x, (int)bullet_y, ennemies))
 			return (take_damage(weapon->gun.damage, bullet_x, bullet_y,
 					ennemies));
-		}
 	}
 	return (0);
 }

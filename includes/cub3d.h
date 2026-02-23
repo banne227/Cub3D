@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 13:43:59 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 14:53:16 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,6 +287,16 @@ typedef enum e_direction
 	C
 } t_direction;
 
+typedef struct img_utils
+{
+	char			*src_addr;
+	int				bpp;
+	int				line_len;
+	int				endian;
+	unsigned int	color;
+	int				x;
+	int				y;
+} t_img_utils;
 typedef struct s_anim
 {
 	void *last_img;
@@ -310,6 +320,7 @@ typedef struct s_data
 	t_img *textures[4];
 } t_data;
 
+int rounds(double num);
 void calculate_transform(t_game *game, t_ennemy *e, t_sprite_utils *utils);
 bool extension_check(char *filename);
 bool file_check(char *filename);
@@ -341,7 +352,7 @@ int close_game(void *param);
 int load_textures(t_data *data);
 void free_data(t_data *data);
 void draw_minimap(t_game *game);
-void print_player_pos(t_game *game, int *img_data, int line_len);
+void	print_player_pos(t_game *game);
 int render(void *param);
 void move_player(t_game *game);
 void rotate_player(t_data *data);
@@ -375,8 +386,8 @@ void free_ennemies(t_ennemy *ennemies, void *mlx, int count);
 void open_door(t_map *map, int x, int y);
 int verif_open_door(t_map *map, int x, int y);
 bool is_door(t_map *map, int x, int y);
-void draw_image_transparent(t_game *game, void *img_src,
-							int img_width, int img_height, int pos_x, int pos_y);
+void	render_pixel(t_game *game, int x, int *y, int color);
+void	draw_image_transparent(t_game *game, void *img_src, t_dimensions dim, t_pos player_pos);
 t_dimensions get_dim(char *path);
 t_dimensions get_image_dimensions(void *mlx, char *path);
 t_weapon init_weapon(void *mlx);
@@ -390,6 +401,7 @@ int	calculate_dimensions(t_sprite_utils *sprite, t_game *game);
 int	get_sprite_tex_x(t_sprite_utils *sprite, int x);
 void	load_enter(void *mlx, t_anim *enter);
 void	init_anim(t_data *data);
+bool	is_alive(int pos_x, int pos_y, t_ennemy *ennemies);
 
 // raycasting
 void my_mlx_pixel_put(t_game *game, int x, int y, int color);

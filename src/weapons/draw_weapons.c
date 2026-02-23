@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:50:08 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/23 13:02:49 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 14:37:17 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 static void	draw_crosshair(t_game *game)
 {
-	int	x;
-	int	y;
-	int	crosshair_index;
+	t_pos			pos;
+	int				crosshair_index;
+	t_dimensions	dim;
 
-	x = (game->win_w - 16) / 2;
-	y = (game->win_h - 16) / 2;
+	dim.height = 16;
+	dim.width = 16;
+	pos.x = (game->win_w - 16) / 2;
+	pos.y = (game->win_h - 16) / 2;
 	crosshair_index = (game->weapon.hit != 0);
 	if (game->weapon.crosshair[crosshair_index])
 		draw_image_transparent(game, game->weapon.crosshair[crosshair_index],
-			16, 16, x, y);
+			dim, pos);
 	if (game->weapon.hit != 0)
 	{
 		game->weapon.hit++;
@@ -41,8 +43,8 @@ void	draw_weapon(t_game *game)
 		return ;
 	x = (game->win_w - 60) / 2;
 	y = game->win_h - 128;
-	draw_image_transparent(game, game->weapon.img, game->weapon.width,
-		game->weapon.height, x, y);
+	draw_image_transparent(game, game->weapon.img,
+		(t_dimensions){game->weapon.width, game->weapon.height}, (t_pos){x, y});
 	draw_crosshair(game);
 	display_ammo(&game->weapon, game);
 }

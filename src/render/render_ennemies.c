@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-static void	render_pixel(t_game *game, int x, int *y, int color)
+void	render_pixel(t_game *game, int x, int *y, int color)
 {
 	if (color != 0x000000)
 		my_mlx_pixel_put(game, x, *y, color);

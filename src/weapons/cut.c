@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:10:54 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/23 12:56:04 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 14:48:27 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	hit(t_weapon *weapon, t_player player, t_map map, t_ennemy *ennemies)
 			break ;
 		if (map.map[(int)hit_y][(int)hit_x] == '1')
 			return (0);
-		if (map.map[(int)hit_y][(int)hit_x] == 'M')
+		if (map.map[(int)hit_y][(int)hit_x] == 'M'
+			&& is_alive((int)hit_x, (int)hit_y, ennemies))
 			return (take_damage(weapon->knife.damage, hit_x, hit_y, ennemies));
 	}
 	return (0);

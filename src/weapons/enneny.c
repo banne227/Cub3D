@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 08:21:06 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 13:03:39 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 14:49:08 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ t_ennemy	*get_ennemy_at(int pos_x, int pos_y, t_ennemy *ennemies)
 		ennemies = ennemies->next;
 	}
 	return (NULL);
+}
+
+bool	is_alive(int pos_x, int pos_y, t_ennemy *ennemies)
+{
+	t_ennemy	*ennemy;
+
+	ennemy = get_ennemy_at(pos_x, pos_y, ennemies);
+	return (ennemy && ennemy->alive);
 }
 
 int	take_damage(int damage, double pos_x, double pos_y, t_ennemy *ennemies)

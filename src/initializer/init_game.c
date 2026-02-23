@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 14:00:09 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 12:35:33 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 14:43:58 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_game	init_game(void)
 	game.player = init_player();
 	game.floor_color = 0;
 	game.ceiling_color = 0;
-	game.state = STATE_MENU;
+	game.state = STATE_PLAY;
 	game.last_key = 0;
 	game.menu_option = 0;
 	game.music_pid = 0;
