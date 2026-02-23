@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:49:57 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 09:07:54 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/23 12:42:16 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*get_menu_image(t_game *game, char *filename)
 	return (menu_img);
 }
 
-static void	help_render_menu(t_data *data, void *menu_enter, void *menu_quit)
+static void	help_render_menu(t_data *data)
 {
 	t_game	*game;
 
@@ -37,8 +37,6 @@ static void	help_render_menu(t_data *data, void *menu_enter, void *menu_quit)
 	if (game->last_key == KEY_ENTER || game->last_key == KEY_SPACE)
 	{
 		mlx_clear_window(game->mlx, game->win);
-		mlx_destroy_image(game->mlx, menu_enter);
-		mlx_destroy_image(game->mlx, menu_quit);
 		if (game->menu_option == 0)
 		{
 			init_anim(data);
@@ -69,9 +67,7 @@ void	render_menu(t_game *game, t_data *data)
 		menu = menu_enter;
 	else
 		menu = menu_quit;
-	help_render_menu(data, menu_enter, menu_quit);
+	help_render_menu(data);
 	mlx_clear_window(game->mlx, game->win);
 	mlx_put_image_to_window(game->mlx, game->win, menu, 0, 0);
-	mlx_destroy_image(game->mlx, menu_enter);
-	mlx_destroy_image(game->mlx, menu_quit);
 }
