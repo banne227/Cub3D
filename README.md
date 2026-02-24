@@ -105,20 +105,7 @@ make re          # Full recompilation
 ### References & Documentation
 
 - **Raycasting Algorithm**: 
-  - [Raycasting Tutorial - Permadi](https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/)
   - [Lode Vandevelde's Raycasting Guide](https://lodev.org/cgtutor/raycasting.html)
-  
-- **3D Graphics Math**:
-  - [3D Rotations and Transformations](https://en.wikipedia.org/wiki/Rotation_(mathematics))
-  - [Linear Algebra for Game Development](https://en.wikipedia.org/wiki/Vector_space)
-
-- **C Programming**:
-  - [The C Programming Language - K&R](https://en.wikipedia.org/wiki/The_C_Programming_Language)
-  - [Linux Manual Pages](https://man7.org/linux/man-pages/)
-
-- **Game Development**:
-  - [Game Engine Architecture](https://www.gameenginebook.com/)
-  - [Sprite Rendering Techniques](https://en.wikipedia.org/wiki/Sprite_(computer_graphics))
 
 ---
 
