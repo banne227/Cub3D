@@ -14,12 +14,24 @@
 
 void	destroy_mlx(t_game *game)
 {
+	int	i;
+
 	if (game->mlx)
 	{
 		if (game->win)
 			mlx_destroy_window(game->mlx, game->win);
 		if (game->img)
 			mlx_destroy_image(game->mlx, game->img);
+		i = 0;
+		while (i < 5)
+		{
+			if (game->textures[i].img)
+			{
+				mlx_destroy_image(game->mlx, game->textures[i].img);
+				game->textures[i].img = NULL;
+			}
+			i++;
+		}
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 		game->mlx = NULL;
@@ -67,8 +79,11 @@ void	destroy_weapon_images(t_weapon *weapon, void *mlx)
 {
 	int	i;
 
+	destroy_img(mlx, &weapon->gun.img);
 	destroy_img(mlx, &weapon->crosshair[0]);
 	destroy_img(mlx, &weapon->crosshair[1]);
+	destroy_img(mlx, &weapon->ammo[0]);
+	destroy_img(mlx, &weapon->ammo[1]);
 	i = 0;
 	while (i < 6)
 	{
