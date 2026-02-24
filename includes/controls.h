@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 08:23:32 by banne             #+#    #+#             */
-/*   Updated: 2026/02/24 08:24:05 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/24 12:21:29 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define ROT_SPEED 0.01
 # define SENSI 0.0015
 
-# define MINI_TILE 10
+# define MINI_TILE 6
 # define WALL_COLOR 0xFFFFFF
 # define FLOOR_COLOR 0x777777
 

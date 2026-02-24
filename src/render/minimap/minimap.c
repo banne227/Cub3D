@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:50:21 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 14:14:39 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/24 12:26:34 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	draw_player_direction(t_game *game, t_pos player_pos)
 	t_pos	pos;
 
 	i = 0;
-	while (i < 8)
+	while (i < 4)
 	{
 		pos.x = player_pos.x + (int)(game->player.dir_x * i);
 		pos.y = player_pos.y + (int)(game->player.dir_y * i);
@@ -51,7 +51,7 @@ void	print_player_pos(t_game *game)
 	int	size;
 
 	color = 0xFF0000;
-	size = 3;
+	size = 2;
 	i = -size;
 	while (i <= size)
 	{
