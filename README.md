@@ -141,29 +141,6 @@ cub3d/
 
 ---
 
-## Technical Decisions
-
-1. **Raycasting over 3D Graphics**: Chosen for its elegant simplicity and historical relevance, making the rendering process more educational and efficient for a single-threaded C application.
-
-2. **Fixed Map Grid**: Maps use a discrete grid-based system for simplicity and efficient collision detection.
-
-3. **Software Rendering**: Pixel-by-pixel manipulation for maximum control and understanding of the rendering pipeline.
-
-4. **Modular Architecture**: Each game system (parsing, rendering, input, audio) is separated into its own module for maintainability and reusability.
-
-5. **Audio via External Process**: Sound effects are played through external process spawning rather than a dedicated audio library, reducing dependencies.
-
----
-
-## Known Limitations
-
-- Requires X11 display server (Linux only)
-- Sound support depends on system audio availability
-- Fixed window resolution (1280x720)
-- Raycasting algorithm may have minor texture distortion at extreme angles
-
----
-
 ## Author
 
 **banne**  **jhauvill** - 42 Student
