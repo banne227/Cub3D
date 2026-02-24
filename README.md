@@ -84,7 +84,7 @@ C 225,30,0
 | **A** | Strafe left |
 | **D** | Strafe right |
 | **← →** or **Mouse Movement** | Rotate view left/right |
-| **Mouse Left Click** | Shoot (pistol) | Use knife attack |
+| **Mouse Left Click** | Shoot (pistol) or Use knife attack |
 | **E** | Open door |
 | **M** | Open menu |
 | **R** or **Mouse Right Click** | Reload weapon |
