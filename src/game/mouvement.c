@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 12:07:09 by banne             #+#    #+#             */
-/*   Updated: 2026/02/19 17:27:49 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/24 11:21:36 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	other_move(t_game *game, double *pos_x, double *pos_y)
 {
-	if (game->keys[KEY_S])
+	if (game->keys[KEY_S] && !game->keys[KEY_W])
 	{
 		*pos_x = game->player.pos_x - game->player.dir_x * MOVE_SPEED;
 		*pos_y = game->player.pos_y - game->player.dir_y * MOVE_SPEED;
 	}
-	if (game->keys[KEY_A])
+	if (game->keys[KEY_A] && !game->keys[KEY_D])
 	{
 		*pos_x = game->player.pos_x - game->player.plane_x * MOVE_SPEED / 2;
 		*pos_y = game->player.pos_y - game->player.plane_y * MOVE_SPEED / 2;
 	}
-	if (game->keys[KEY_D])
+	if (game->keys[KEY_D] && !game->keys[KEY_A])
 	{
 		*pos_x = game->player.pos_x + game->player.plane_x * MOVE_SPEED / 2;
 		*pos_y = game->player.pos_y + game->player.plane_y * MOVE_SPEED / 2;
@@ -40,7 +40,7 @@ void	move_player(t_game *game)
 	newpos_y = -1;
 	if (game->state != STATE_PLAY)
 		return ;
-	if (game->keys[KEY_W])
+	if (game->keys[KEY_W] && !game->keys[KEY_S])
 	{
 		newpos_x = game->player.pos_x + game->player.dir_x * MOVE_SPEED;
 		newpos_y = game->player.pos_y + game->player.dir_y * MOVE_SPEED;
@@ -67,11 +67,11 @@ void	rotate_player(t_data *data)
 	olddir_x = data->game.player.dir_x;
 	oldplane_x = data->game.player.plane_x;
 	rot_speed = ROT_SPEED;
-	if (data->game.keys[KEY_LEFT])
-		rot_speed = -ROT_SPEED;
-	else if ((data->game.keys[KEY_LEFT] && data->game.keys[KEY_RIGHT])
+	if ((data->game.keys[KEY_LEFT] && data->game.keys[KEY_RIGHT])
 		|| (!data->game.keys[KEY_LEFT] && !data->game.keys[KEY_RIGHT]))
 		return ;
+	if (data->game.keys[KEY_LEFT])
+		rot_speed = -ROT_SPEED;
 	data->game.player.dir_x = data->game.player.dir_x * cos(rot_speed)
 		- data->game.player.dir_y * sin(rot_speed);
 	data->game.player.dir_y = olddir_x * sin(rot_speed)
