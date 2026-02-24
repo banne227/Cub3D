@@ -24,7 +24,6 @@ Cub3D is a realistic 3D maze exploration game developed in C using the **raycast
 - **Pure Software Rendering**: No 3D graphics libraries, entirely using pixel manipulation
 - **Efficient File Parsing**: Robust `.cub` map format parser with validation
 - **Memory Management**: Proper allocation and deallocation with leak-free gameplay
-- **Modular Architecture**: Well-organized code structure with separate modules for different subsystems
 
 ---
 
