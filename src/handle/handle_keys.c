@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:59:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 11:02:21 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/24 10:34:08 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	handle_key_press(int keycode, void *param)
 				(int)(data->game.player.pos_x + data->game.player.dir_x),
 				(int)(data->game.player.pos_y + data->game.player.dir_y));
 		}
+		else if (keycode == KEY_R)
+			make_action(data, keycode);
 	}
 	return (0);
 }
