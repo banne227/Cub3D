@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:17 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 16:53:54 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/25 17:53:31 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	map_is_closed(char **map, int width, int height)
 		return (false);
 	while (y < height)
 	{
-		x = 0;
+		x = -1;
 		while (x++ < width)
 		{
 			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
