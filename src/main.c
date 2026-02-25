@@ -15,6 +15,7 @@
 
 static void	print_controls(void)
 {
+	printf("Parsing successful!\n");
 	printf(CYAN "\n");
 	printf("░█▀▀░█░█░█▀▄░▀▀█░█▀▄░░░█▀▀░█▀█░█▀█░▀█▀░█▀▄░█▀█░█░░░█▀▀\n");
 	printf("░█░░░█░█░█▀▄░░▀▄░█░█░░░█░░░█░█░█░█░░█░░█▀▄░█░█░█░░░▀▀█\n");
@@ -33,6 +34,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	ft_memset(&data, 0, sizeof(t_data));
 	data = init_data();
 	if (data.error || parse(argc, argv, &data) != 0)
 	{
@@ -40,12 +42,11 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_data_with_weapons(&data);
-	printf("Parsing successful!\n");
 	print_controls();
 	data.game.map = data.map;
 	data.game.ennemys = init_ennemies(data.game.map.map, data.game.mlx);
 	load_wall_textures(&data);
-	mlx_loop_hook(data.game.mlx, render, &data);
+	// mlx_loop_hook(data.game.mlx, render, &data);  a remttre si probleme de rotation souris
 	mlx_mouse_hide(data.game.mlx, data.game.win);
 	mlx_mouse_move(data.game.mlx, data.game.win, WIN_W / 2, WIN_H / 2);
 	mlx_hook(data.game.win, 2, 1L << 0, handle_key_press, &data);

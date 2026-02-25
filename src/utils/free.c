@@ -87,6 +87,9 @@ void	destroy_weapon_images(t_weapon *weapon, void *mlx)
 		destroy_img(mlx, &weapon->knife.img[i]);
 		i++;
 	}
+	destroy_img(mlx, &weapon->gun.img);
+	destroy_img(mlx, &weapon->ammo[0]);
+	destroy_img(mlx, &weapon->ammo[1]);
 }
 
 int	close_game(void *param)
@@ -110,6 +113,7 @@ int	close_game(void *param)
 		destroy_weapon_images(&data->game.weapon, data->game.mlx);
 	if (data)
 		free_data(data);
+	mlx
 	exit(0);
 	return (0);
 }

@@ -34,6 +34,7 @@ t_data	init_data(void)
 	t_data	data;
 	int		i;
 
+	ft_memset(&data, 0, sizeof(t_data));
 	i = 0;
 	while (i < 6)
 	{
