@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/24 08:34:27 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/25 15:25:17 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ int					rgb_to_int(char *rgb_str);
 int					close_game(void *param);
 void				free_data(t_data *data);
 void				destroy_img(void *mlx, void **img);
+void				free_textures(t_game *game);
 
 /* ========================================================================== */
 /* UTILITIES */

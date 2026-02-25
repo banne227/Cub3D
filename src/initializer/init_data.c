@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 08:18:24 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 13:51:43 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/25 15:26:48 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ t_data	init_data(void)
 	data.game.win = mlx_new_window(data.game.mlx, WIN_W, WIN_H, "CUB3D");
 	if (!data.game.win)
 		data.error = true;
-	data.game.img = NULL;
-	return (data);
+	return (data.game.img = NULL, data);
 }
 
 t_data	init_data_with_weapons(t_data *data)
