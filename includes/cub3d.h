@@ -6,7 +6,7 @@
 /*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/25 15:25:17 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/25 17:58:11 by jhauvill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int					get_first_map_index(char **file);
 int					max_len(char **file, int start_index, int map_size);
 char				**realloc_map(char **map, int new_size);
 char				*get_direction_texture(char *line);
-char				*get_color_texture(char *line);
 
 /* ========================================================================== */
 /* INITIALIZATION */
@@ -149,7 +148,6 @@ int					get_sprite_tex_x(t_sprite_utils *sprite, int x);
 /* ========================================================================== */
 bool				is_wall(t_map *map, double x, double y);
 bool				is_door(t_map *map, int x, int y);
-int					verif_open_door(t_map *map, int x, int y);
 void				open_door(t_map *map, int x, int y);
 
 /* ========================================================================== */
@@ -157,7 +155,6 @@ void				open_door(t_map *map, int x, int y);
 /* ========================================================================== */
 pid_t				play_sounds(char *path);
 void				stop_sounds(pid_t pid);
-void				play_background_music(t_game *game);
 
 /* ========================================================================== */
 /* TEXTURE & IMAGE UTILITIES */
