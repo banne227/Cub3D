@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:48:26 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/23 09:25:44 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/27 12:34:58 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	load_gun_shoot(t_weapon *weapon, void *mlx)
 	weapon->gun.range = 15;
 	weapon->gun.freload = 0;
 	weapon->gun.fshoot = 0;
-	weapon->gun.ammo = 8;
+	weapon->gun.ammo = MAX_AMMO;
 	weapon->gun.dim = get_dim("textures/weapons/gun/gun.xpm");
 	weapon->gun.img = load_weapon_textures(mlx, "textures/weapons/gun/gun.xpm",
 			weapon->gun.dim.width, weapon->gun.dim.height);

@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:10:58 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/19 18:07:29 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/27 12:34:20 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	reload(t_weapon *weapon)
 	{
 		weapon->img = weapon->gun.img;
 		weapon->gun.freload = 0;
-		weapon->gun.ammo = 8;
+		weapon->gun.ammo = MAX_AMMO;
 		weapon->height = weapon->gun.dim.height;
 		weapon->width = weapon->gun.dim.width;
 	}
