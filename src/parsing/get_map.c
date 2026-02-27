@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:40 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 08:44:36 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/27 12:17:48 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ char	*trim_spaces(char *line, int size)
 		if (line[i] != ' ')
 			trimmed[i] = line[i];
 		else
-			trimmed[i] = 'V';
+			trimmed[i] = ' ';
 		i++;
 	}
 	while (i < size + 1)
 	{
-		trimmed[i] = 'V';
+		trimmed[i] = ' ';
 		i++;
 	}
 	trimmed[size + 1] = '\0';

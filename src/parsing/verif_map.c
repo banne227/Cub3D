@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:17 by banne             #+#    #+#             */
-/*   Updated: 2026/02/25 17:53:31 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/27 12:22:32 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static bool	map_is_closed(char **map, int width, int height)
 			{
 				if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
 					return (print_pos_error(x, y));
-				if (map[y - 1][x] == 'V' || map[y + 1][x] == 'V' || map[y][x
-					- 1] == 'V' || map[y][x + 1] == 'V')
+				if (ft_isspace(map[y - 1][x]) || ft_isspace(map[y + 1][x])
+					|| ft_isspace(map[y][x + 1]) || ft_isspace(map[y][x - 1]))
 					return (print_pos_error(x, y));
 			}
 		}
@@ -61,11 +61,13 @@ static bool	have_valid_chars(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] != '0' && map[y][x] != '1' && map[y][x] != 'V'
+			if (map[y][x] != '0' && map[y][x] != '1'
 				&& map[y][x] != 'N' && map[y][x] != 'S' && map[y][x] != 'E'
 				&& map[y][x] != 'W' && map[y][x] != 'D' && map[y][x] != 'M'
 				&& map[y][x] != ' ' && ft_isspace(map[y][x]) == 0)
 			{
+				ft_printf("Error\nInvalid character '%c' in map at (%d, %d)\n",
+					map[y][x], x, y);
 				return (false);
 			}
 			x++;
@@ -110,14 +112,13 @@ bool	map_valid(t_data *data)
 		return (false);
 	if (data->map.map[0] == NULL)
 		return (false);
+	if (!have_valid_chars(data->map.map))
+	{
+		return (false);
+	}
 	if (!map_is_closed(data->map.map, data->map.width, data->map.height))
 	{
 		ft_printf("Map isn't closed\n");
-		return (false);
-	}
-	if (!have_valid_chars(data->map.map))
-	{
-		ft_printf("Map contains invalid characters\n");
 		return (false);
 	}
 	if (!only_one_player(data->map.map, data))

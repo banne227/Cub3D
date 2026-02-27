@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 09:14:59 by banne             #+#    #+#             */
-/*   Updated: 2026/02/25 15:26:11 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/27 12:12:37 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ int	close_game(void *param)
 	free_ennemies(data->game.ennemys, data->game.mlx,
 		count_ennemies(data->map.map));
 	free_textures(&data->game);
-	mlx_mouse_show(data->game.mlx, data->game.win);
 	if (data && data->game.mlx)
 		mlx_loop_end(data->game.mlx);
 	if (data && data->game.mlx)
