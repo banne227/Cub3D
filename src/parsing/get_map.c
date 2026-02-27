@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:40 by banne             #+#    #+#             */
-/*   Updated: 2026/02/27 13:33:27 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/27 13:39:44 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ bool	have_digit(char *line)
 {
 	int	i;
 
+	if (!line)
+		return (false);
 	i = 0;
-	while (ft_isspace(line[i]))
+	while (line[i] && ft_isspace(line[i]))
 		i++;
-	if (line[i] >= '0' && line[i] <= '9')
+	if (line[i] && line[i] >= '0' && line[i] <= '9')
 		return (true);
 	return (false);
 }
@@ -28,10 +30,12 @@ int	get_first_map_index(char **file)
 {
 	int	i;
 
+	if (!file)
+		return (-1);
 	i = 0;
 	while (file[i])
 	{
-		if (have_digit(file[i]) && (file[i][0] != 'F' && file[i][0] != 'C'))
+		if (have_digit(file[i]) && (file[i][0] != 'F' && file[i][0] != 'C' ))
 			return (i);
 		i++;
 	}
