@@ -6,47 +6,45 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:17 by banne             #+#    #+#             */
-/*   Updated: 2026/02/27 12:22:32 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/27 12:56:52 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 #include <ctype.h>
 
-static bool	print_pos_error(int x, int y)
-{
-	ft_printf("Error\nInvalid position at (%d, %d)\n", x, y);
-	return (false);
-}
+//static bool	print_pos_error(int x, int y)
+//{
+//	ft_printf("Error\nInvalid position at (%d, %d)\n", x, y);
+//	return (false);
+//}
 
-static bool	map_is_closed(char **map, int width, int height)
-{
-	int	x;
-	int	y;
+//static bool	map_is_closed(char **map, int width, int height)
+//{
+//	int	x;
+//	int	y;
 
-	y = 0;
-	if (!map)
-		return (false);
-	while (y < height)
-	{
-		x = -1;
-		while (x++ < width)
-		{
-			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
-				|| map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == 'D'
-				|| map[y][x] == 'M')
-			{
-				if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
-					return (print_pos_error(x, y));
-				if (ft_isspace(map[y - 1][x]) || ft_isspace(map[y + 1][x])
-					|| ft_isspace(map[y][x + 1]) || ft_isspace(map[y][x - 1]))
-					return (print_pos_error(x, y));
-			}
-		}
-		y++;
-	}
-	return (true);
-}
+//	y = 0;
+//	if (!map)
+//		return (false);
+//	while (y < height)
+//	{
+//		x = -1;
+//		while (x++ < width)
+//		{
+//			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
+//				|| map[y][x] == 'E' || map[y][x] == 'W' || map[y][x] == 'D'
+//				|| map[y][x] == 'M')
+//			{
+//				if (ft_isspace(map[y - 1][x]) || ft_isspace(map[y + 1][x])
+//					|| ft_isspace(map[y][x + 1]) || ft_isspace(map[y][x - 1]))
+//					return (print_pos_error(x, y));
+//			}
+//		}
+//		y++;
+//	}
+//	return (true);
+//}
 
 static bool	have_valid_chars(char **map)
 {
@@ -116,9 +114,9 @@ bool	map_valid(t_data *data)
 	{
 		return (false);
 	}
-	if (!map_is_closed(data->map.map, data->map.width, data->map.height))
+	if (!all_accessible(&data->map, &data->game))
 	{
-		ft_printf("Map isn't closed\n");
+		ft_printf("Error\nMap isn't valid\n");
 		return (false);
 	}
 	if (!only_one_player(data->map.map, data))

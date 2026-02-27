@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 08:23:32 by banne             #+#    #+#             */
-/*   Updated: 2026/02/24 12:21:29 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/27 12:35:33 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define WALL_COLOR 0xFFFFFF
 # define FLOOR_COLOR 0x777777
 
-# define MAX_AMMO 8
+# define MAX_AMMO 10
 
 # define RELOAD_SOUND "./sounds/gun_reload.wav"
 # define SHOOT_SOUND "./sounds/gun_sound.wav"

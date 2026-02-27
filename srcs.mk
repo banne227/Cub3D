@@ -66,6 +66,7 @@ SRCS = 	src/audio/audio.c \
 	src/main.c \
 	src/parsing/color_utils.c \
 	src/parsing/file_checker.c \
+	src/parsing/flood_fill.c \
 	src/parsing/get_data.c \
 	src/parsing/get_map.c \
 	src/parsing/get_value.c \
@@ -86,6 +87,7 @@ SRCS = 	src/audio/audio.c \
 	src/utils/copy.c \
 	src/utils/free.c \
 	src/utils/free_ennemies.c \
+	src/utils/free_textures.c \
 	src/utils/helper.c \
 	src/utils/time.c \
 	src/weapons/ammo.c \
@@ -93,5 +95,4 @@ SRCS = 	src/audio/audio.c \
 	src/weapons/draw_weapons.c \
 	src/weapons/enneny.c \
 	src/weapons/reload.c \
-	src/weapons/shoot.c \
-	src/utils/free_textures.c
+src/weapons/shoot.c

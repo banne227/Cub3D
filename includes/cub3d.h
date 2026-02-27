@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhauvill <jhauvill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 08:03:34 by banne             #+#    #+#             */
-/*   Updated: 2026/02/25 17:58:11 by jhauvill         ###   ########.fr       */
+/*   Updated: 2026/02/27 12:51:24 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int					convert_coords_textures(t_raycasting_utils *utils,
 						t_game *game);
 int					pixel_to_fill(t_raycasting_utils *utils, t_game *game);
 void				print_sky_n_floor(t_data *data);
+int					all_accessible(t_map *map, t_game *game);
 
 /* ========================================================================== */
 /* RENDERING */
