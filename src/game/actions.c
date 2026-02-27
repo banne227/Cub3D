@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 13:48:10 by banne             #+#    #+#             */
-/*   Updated: 2026/02/23 11:02:15 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/27 13:36:42 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	make_action(t_data *data, int keycode)
 	}
 	else if (keycode == MOUSE_RIGHT || keycode == 3 || keycode == KEY_R)
 	{
-		if (data->game.weapon.type == 1 && data->game.weapon.gun.ammo < 8
+		if (data->game.weapon.type == 1
+			&& data->game.weapon.gun.ammo < MAX_AMMO
 			&& data->game.weapon.gun.freload == 0)
 			data->game.weapon.gun.freload = 1;
 	}

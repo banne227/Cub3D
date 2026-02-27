@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 19:10:58 by codespace         #+#    #+#             */
-/*   Updated: 2026/02/27 12:34:20 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/27 13:34:54 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	reload(t_weapon *weapon)
 {
-	if (weapon->type == 0 || weapon->gun.ammo == 8)
+	if (weapon->type == 0 || weapon->gun.ammo == MAX_AMMO)
 		return ;
 	if (weapon->gun.freload == 0 || weapon->gun.freload == 1)
 	{

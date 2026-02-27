@@ -6,7 +6,7 @@
 /*   By: banne <banne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 09:15:40 by banne             #+#    #+#             */
-/*   Updated: 2026/02/27 12:17:48 by banne            ###   ########.fr       */
+/*   Updated: 2026/02/27 13:33:27 by banne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	get_first_map_index(char **file)
 	i = 0;
 	while (file[i])
 	{
-		if (have_digit(file[i]) && (file[i][0] != 'F' || file[i][0] != 'C'))
+		if (have_digit(file[i]) && (file[i][0] != 'F' && file[i][0] != 'C'))
 			return (i);
 		i++;
 	}
